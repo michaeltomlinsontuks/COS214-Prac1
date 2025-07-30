@@ -17,4 +17,5 @@ You can import the following libraries:
 using namespace std;
 int main() {
         cout<<"Welcome to the Shape Factory!\n";
+        return 0;
     }

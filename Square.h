@@ -10,8 +10,7 @@
 
 class Square : public Shape {
 public:
-    Square();
-    // Square-specific methods
+    Shape* clone(); // Prototype pattern method
 };
 
 #endif // SQUARE_H

@@ -1,0 +1,9 @@
+Prototype:
+    - Shape has private properties - No protected properties?
+        - Rectangle, Square, Textbox (Concrete Product Classes)
+          • Inherit from Shape
+          • Only Textbox has an additional attribute text.
+            This is the text that a textbox can contain.
+        - This implies the fields are meant to be protected.
+        - Answer: the private is fine for inheritance,
+         and because we are using clone we don't want ot be able to access the base class

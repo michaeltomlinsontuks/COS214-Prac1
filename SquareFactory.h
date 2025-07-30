@@ -11,8 +11,8 @@
 
 class SquareFactory : public ShapeFactory {
 public:
-    Shape* createShape() override;
-    std::string toString() override;
+    Shape* createShape();
+    void toString();
 };
 
 #endif // SQUAREFACTORY_H

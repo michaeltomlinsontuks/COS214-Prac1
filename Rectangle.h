@@ -10,8 +10,7 @@
 
 class Rectangle : public Shape {
 public:
-    Rectangle();
-    // Rectangle-specific methods
+    Shape* clone(); // Prototype pattern method
 };
 
 #endif // RECTANGLE_H

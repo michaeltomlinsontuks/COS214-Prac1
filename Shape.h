@@ -9,14 +9,14 @@
 #include <string>
 
 class Shape {
-public:
+private:
     int length;
     int width;
     std::string colour;
     int positionX;
     int positionY;
-    virtual ~Shape() = default;
-    // Add virtual methods for drawing, cloning, etc.
+public:
+    virtual Shape* clone() const = 0; // Prototype pattern method
 };
 
 #endif // SHAPE_H

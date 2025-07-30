@@ -10,10 +10,9 @@
 #include <string>
 
 class ShapeFactory {
-public:
-    virtual Shape* createShape() = 0;
-    virtual std::string toString() = 0;
-    virtual ~ShapeFactory() = default;
+protected:
+    virtual Shape* createShape();
+    virtual void toString();
 };
 
 #endif // SHAPEFACTORY_H

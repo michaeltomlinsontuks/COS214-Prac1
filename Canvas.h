@@ -10,9 +10,11 @@
 // =============================
 
 class Canvas {
-public:
+private:
     std::vector<Shape*> shapes;
-    // Methods to add, remove, and display shapes can be added here
+public:
+    Memento* captureCurrent();
+    void undoAction(Memento* prev);
 };
 
 #endif // CANVAS_H

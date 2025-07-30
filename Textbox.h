@@ -10,10 +10,10 @@
 // =============================
 
 class Textbox : public Shape {
+private:
+    std::string text; // Text content of the textbox
 public:
-    std::string text;
-    Textbox();
-    // Textbox-specific methods
+    Shape* clone(); // Prototype pattern method
 };
 
 #endif // TEXTBOX_H
