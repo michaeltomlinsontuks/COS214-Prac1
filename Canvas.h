@@ -3,6 +3,7 @@
 
 #include <vector>
 #include "Shape.h"
+#include "Memento.h"
 
 // =============================
 // Factory Method, Prototype, Memento
@@ -13,7 +14,7 @@ class Canvas {
 private:
     std::vector<Shape*> shapes;
 public:
-    Memento* captureCurrent();
+    Memento* captureCurrent() const;
     void undoAction(Memento* prev);
 };
 

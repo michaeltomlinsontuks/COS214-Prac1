@@ -10,7 +10,7 @@
 
 class Square : public Shape {
 public:
-    Shape* clone(); // Prototype pattern method
+    Shape* clone() const override; // Prototype pattern method
 };
 
 #endif // SQUARE_H

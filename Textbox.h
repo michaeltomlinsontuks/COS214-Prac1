@@ -13,7 +13,7 @@ class Textbox : public Shape {
 private:
     std::string text; // Text content of the textbox
 public:
-    Shape* clone(); // Prototype pattern method
+    Shape* clone() const override; // Prototype pattern method
 };
 
 #endif // TEXTBOX_H

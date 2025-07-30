@@ -11,8 +11,8 @@
 
 class ShapeFactory {
 protected:
-    virtual Shape* createShape();
-    virtual void toString();
+    virtual Shape* createShape() = 0;
+    virtual void toString() = 0;
 };
 
 #endif // SHAPEFACTORY_H

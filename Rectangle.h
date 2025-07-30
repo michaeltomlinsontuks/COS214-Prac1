@@ -10,7 +10,7 @@
 
 class Rectangle : public Shape {
 public:
-    Shape* clone(); // Prototype pattern method
+    Shape* clone() const override; // Prototype pattern method
 };
 
 #endif // RECTANGLE_H
