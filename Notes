@@ -8,6 +8,13 @@ Prototype:
         - Answer: the private is fine for inheritance,
          and because we are using clone we don't want ot be able to access the base class
 
+##
+For prototype we are going to need getters and setters, since the values are private, we should add those 
+##
+
+
 ToString: What is the output they want?
     - I think fitchfork just checks coverage so it doesn't matter.
     - We'll have to pick something that makes sense for the demo.
+
+

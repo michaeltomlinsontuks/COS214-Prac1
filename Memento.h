@@ -6,12 +6,12 @@
 #define MEMENTO_H
 
 #include "Shape.h"
-#include vector
+#include <vector>
 
 class Memento {
 public:
     Memento(Shape* elements) : elements(elements) {}
 private:
     std::vector<Shape*> elements; // Pointer to the shape element being saved
-
+}
 #endif //MEMENTO_H
