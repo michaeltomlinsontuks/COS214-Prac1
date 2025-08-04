@@ -19,7 +19,7 @@ You can import the following libraries:
 // prac spec include
 
 // testing framework include
-#include "TestingFrameworkFolder/testing.h"
+#include "TestingFramework/testing.h"
 
 using namespace std;
 
