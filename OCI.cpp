@@ -67,9 +67,9 @@ void OCI::displayBanner() const {
     middleLine += BHBLU;
     middleLine += "║";
     middleLine += CRESET;
-    logger->printRaw(topBorder);
-    logger->printRaw(middleLine);
-    logger->printRaw(bottomBorder);
+    std::cout << topBorder << std::endl;
+    std::cout << middleLine << std::endl;
+    std::cout << bottomBorder << std::endl;
 }
 
 void OCI::displayMenu(int menuCode) const {
@@ -398,9 +398,49 @@ int OCI::validateNumberInput(int max) const {
     if (std::cin.fail() || input < 0 || input > max) {
         std::cin.clear();
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        logger->log("Invalid input: not an integer in range 0-" + std::to_string(max));
+        logger->log("Invalid input: not an integer in range 0-" + std::to_string(max), logger::ERROR, false);
         std::cout << "Error: Please enter a valid number between 0 and " << max << ".\n";
         return -1;
     }
     return input;
+}
+
+void OCI::displayBanner() {
+	// TODO - implement OCI::displayBanner
+	throw "Not yet implemented";
+}
+
+void OCI::displayMenu(int menuCode, int menuCode) {
+	// TODO - implement OCI::displayMenu
+	throw "Not yet implemented";
+}
+
+void OCI::getShapeList() {
+	// TODO - implement OCI::getShapeList
+	throw "Not yet implemented";
+}
+
+void OCI::getShapeInfo() {
+	// TODO - implement OCI::getShapeInfo
+	throw "Not yet implemented";
+}
+
+void OCI::drawCanvas() {
+	// TODO - implement OCI::drawCanvas
+	throw "Not yet implemented";
+}
+
+void OCI::help() {
+	// TODO - implement OCI::help
+	throw "Not yet implemented";
+}
+
+void OCI::log() {
+	// TODO - implement OCI::log
+	throw "Not yet implemented";
+}
+
+int OCI::validateNumberInput(int max, int max) {
+	// TODO - implement OCI::validateNumberInput
+	throw "Not yet implemented";
 }
