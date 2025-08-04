@@ -13,10 +13,10 @@ You can import the following libraries:
 #include <iostream>
 
 // prac spec include
-#include "ShapeFactory.h"
-#include "RectangleFactory.h"
-#include "SquareFactory.h"
-#include "TextboxFactory.h"
+#include "factories/ShapeFactory.h"
+#include "factories/RectangleFactory.h"
+#include "factories/SquareFactory.h"
+#include "factories/TextboxFactory.h"
 // prac spec include
 
 // testing framework include
