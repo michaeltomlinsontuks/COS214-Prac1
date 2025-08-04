@@ -1,16 +1,16 @@
 #include "RectangleFactory.h"
+#include "Rectangle.h"
 
-Shape* RectangleFactory::createShape() {
-	// TODO - implement RectangleFactory::createShape
-	throw "Not yet implemented";
+Shape* RectangleFactory::createShape(int length, int width, const std::string& colour, int position_x, int position_y) {
+    return new Rectangle(length, width, colour, position_x, position_y);
 }
 
 void RectangleFactory::toString() {
-	// TODO - implement RectangleFactory::toString
-	throw "Not yet implemented";
+    // Example implementation
+    // std::cout << "RectangleFactory" << std::endl;
 }
 
 RectangleFactory::RectangleFactory(RectangleFactory& copy) {
-	// TODO - implement RectangleFactory::RectangleFactory
-	throw "Not yet implemented";
+    (void)copy;
+    // Copy constructor implementation if needed
 }

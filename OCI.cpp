@@ -5,8 +5,12 @@
 
 #include "OCI.h"
 
-OCI::OCI() : logger(Logger::getInstance()), running(false) {}
-OCI::~OCI() {}
+OCI::OCI() : logger(Logger::getInstance()), running(false) {
+    canvas = new Canvas();
+}
+OCI::~OCI() {
+    delete canvas;
+}
 
 void OCI::run() {
     logger->clearLogs(); // Clear the log at the start of the run
@@ -14,9 +18,7 @@ void OCI::run() {
     displayBanner();
     while (running) {
         displayMenu(0);
-        int choice;
-        // Validate numeric user input for choice
-        choice = validateNumberInput(4);
+        const int choice = validateNumberInput(4);
         switch (choice) {
             case 1:
                 shapeSubMenu();
@@ -40,7 +42,7 @@ void OCI::run() {
     }
 }
 
-void OCI::displayBanner() const {
+void OCI::displayBanner() {
     std::string rawText = "Open Canvas Interface (OCI)";
     size_t textLength = rawText.length();
     size_t padding = 3; // spaces left and right of text
@@ -72,7 +74,7 @@ void OCI::displayBanner() const {
     std::cout << bottomBorder << std::endl;
 }
 
-void OCI::displayMenu(int menuCode) const {
+void OCI::displayMenu(int menuCode) {
     switch (menuCode) {
         case 0:
             std::cout << BHYEL << "\nMain Menu:" << CRESET << std::endl;
@@ -129,7 +131,7 @@ void OCI::displayMenu(int menuCode) const {
     }
 }
 
-void OCI::shapeSubMenu() {
+void OCI::shapeSubMenu() const{
     while (true) {
         displayMenu(1);
         int choice = validateNumberInput(5);
@@ -159,7 +161,7 @@ void OCI::shapeSubMenu() {
     }
 }
 
-void OCI::addShape() {
+void OCI::addShape() const{
     std::cout << BHYEL << "\nAdd Shape" << CRESET << std::endl;
     std::cout << BHWHT << "Select shape type:" << CRESET << std::endl;
     std::cout << BHGRN << "1. Rectangle\n2. Square\n3. Textbox" << CRESET << std::endl;
@@ -188,7 +190,7 @@ void OCI::addShape() {
     std::cout << BHWHT << "Enter position Y: " << CRESET;
     std::cin >> y;
 
-    int length, width;
+    int length = 0, width = 0;
     std::string text;
     switch (shapeType) {
         case 1: // Rectangle
@@ -196,13 +198,11 @@ void OCI::addShape() {
             std::cin >> length;
             std::cout << BHWHT << "Enter width: " << CRESET;
             std::cin >> width;
-            // TODO: Call canvas->addShape(new Rectangle(...))
             break;
         case 2: // Square
             std::cout << BHWHT << "Enter side length: " << CRESET;
             std::cin >> length;
             width = length;
-            // TODO: Call canvas->addShape(new Square(...))
             break;
         case 3: // Textbox
             std::cout << BHWHT << "Enter length: " << CRESET;
@@ -210,20 +210,23 @@ void OCI::addShape() {
             std::cout << BHWHT << "Enter width: " << CRESET;
             std::cin >> width;
             std::cout << BHWHT << "Enter text: " << CRESET;
-            std::cin.ignore(); // flush newline
+            std::cin.ignore();
             std::getline(std::cin, text);
-            // TODO: Call canvas->addShape(new Textbox(...))
             break;
         default:
             std::cout << BHRED << "Invalid shape type." << CRESET << std::endl;
             return;
     }
-    std::cout << BHGRN << "Shape added (not really, just a placeholder)!" << CRESET << std::endl;
+    Shape* newShape = canvas->addShape(shapeType, length, width, colour, x, y, text);
+    if (newShape) {
+        std::cout << BHGRN << "Shape added!" << CRESET << std::endl;
+    } else {
+        std::cout << BHRED << "Failed to add shape." << CRESET << std::endl;
+    }
     std::cout << BHWHT << "> " << CRESET;
 }
 
-void OCI::removeShape() {
-    // Show list of shapes first
+void OCI::removeShape() const{
     getShapeList();
     std::cout << BHWHT << "Enter the ID of the shape to remove: " << CRESET;
     int shapeId;
@@ -236,16 +239,15 @@ void OCI::removeShape() {
     char confirm;
     std::cin >> confirm;
     if (confirm == 'y' || confirm == 'Y') {
-        // TODO: Call canvas->removeShape(shapeId)
-        std::cout << BHGRN << "Shape removed (not really, just a placeholder)!" << CRESET << std::endl;
+        canvas->removeShape(shapeId);
+        std::cout << BHGRN << "Shape removed!" << CRESET << std::endl;
     } else {
         std::cout << BHYEL << "Remove cancelled." << CRESET << std::endl;
     }
     std::cout << BHWHT << "> " << CRESET;
 }
 
-void OCI::duplicateShape() {
-    // Show list of shapes first
+void OCI::duplicateShape() const{
     getShapeList();
     std::cout << BHWHT << "Enter the ID of the shape to duplicate: " << CRESET;
     int shapeId;
@@ -254,15 +256,27 @@ void OCI::duplicateShape() {
         std::cout << BHYEL << "Duplicate cancelled (back selected)." << CRESET << std::endl;
         return;
     }
-    // TODO: Call canvas->duplicateShape(shapeId)
-    std::cout << BHGRN << "Shape duplicated (not really, just a placeholder)!" << CRESET << std::endl;
+    canvas->duplicateShape(shapeId);
+    std::cout << BHGRN << "Shape duplicated!" << CRESET << std::endl;
     std::cout << BHWHT << "> " << CRESET;
 }
 
-void OCI::getShapeList() const {}
+void OCI::getShapeList() const {
+    std::vector<Shape*> shapes = canvas->getShapeList();
+    if (shapes.empty()) {
+        std::cout << BHYEL << "No shapes on the canvas." << CRESET << std::endl;
+        return;
+    }
+    std::cout << BHGRN << "\nShape List:" << CRESET << std::endl;
+    int id = 1;
+    for (Shape* shape : shapes) {
+        // For now, just print the pointer and typeid. You can extend this with a getInfo() method on Shape.
+        std::cout << BHWHT << "[" << id << "] " << typeid(*shape).name() << " at " << shape << CRESET << std::endl;
+        id++;
+    }
+}
 
 void OCI::getShapeInfo() const {
-    // Show list of shapes first
     getShapeList();
     std::cout << BHWHT << "Enter the ID of the shape to view info: " << CRESET;
     int shapeId;
@@ -271,12 +285,16 @@ void OCI::getShapeInfo() const {
         std::cout << BHYEL << "Info cancelled (back selected)." << CRESET << std::endl;
         return;
     }
-    // TODO: Call canvas->getShapeInfo(shapeId)
-    std::cout << BHGRN << "Shape info displayed (not really, just a placeholder)!" << CRESET << std::endl;
+    Shape* info = canvas->getShapeInfo(shapeId);
+    if (info) {
+        std::cout << BHGRN << "Shape info displayed! (override this to print details)" << CRESET << std::endl;
+    } else {
+        std::cout << BHRED << "Invalid shape ID." << CRESET << std::endl;
+    }
     std::cout << BHWHT << "> " << CRESET;
 }
 
-void OCI::canvasSubMenu() {
+void OCI::canvasSubMenu() const {
     while (true) {
         displayMenu(2);
         int choice = validateNumberInput(4);
@@ -303,17 +321,17 @@ void OCI::canvasSubMenu() {
     }
 }
 
-void OCI::clearCanvas() {}
-
-void OCI::drawCanvas() const {
-    // TODO: Implement drawCanvas functionality
+void OCI::clearCanvas() const{
+    canvas->clear();
+    std::cout << BHGRN << "Canvas cleared!" << CRESET << std::endl;
 }
 
-void OCI::undo() {}
+void OCI::drawCanvas() const {
+    canvas->draw();
+    std::cout << BHGRN << "Canvas drawn!" << CRESET << std::endl;
+}
 
-void OCI::redo() {}
-
-void OCI::exportSubMenu() {
+void OCI::exportSubMenu() const{
     while (true) {
         displayMenu(3);
         int choice = validateNumberInput(2);
@@ -334,15 +352,15 @@ void OCI::exportSubMenu() {
     }
 }
 
-void OCI::exportPNG() {
+void OCI::exportPNG() const{
     // Arguments needed: file path/name, resolution, etc.
 }
 
-void OCI::exportPDF() {
+void OCI::exportPDF() const{
     // Arguments needed: file path/name, page size, etc.
 }
 
-void OCI::utilitiesSubMenu() {
+void OCI::utilitiesSubMenu() const{
     while (true) {
         displayMenu(4);
         int choice = validateNumberInput(2);
@@ -363,7 +381,7 @@ void OCI::utilitiesSubMenu() {
     }
 }
 
-void OCI::help() const {
+void OCI::help() {
     std::cout << BHYEL << "\nHelp - Open Canvas Interface (OCI)" << CRESET << std::endl;
     std::cout << BHWHT << "This application allows you to create, edit, and export simple canvas drawings using a menu-driven interface." << CRESET << std::endl;
     std::cout << BHWHT << "\nNavigation:" << CRESET << std::endl;
@@ -388,59 +406,26 @@ void OCI::log() const {
 void OCI::quit() {
     running = false;
     std::cout << BHYEL << "Exiting Open Canvas Interface. Goodbye!" << CRESET << std::endl;
-    // TODO: Add any cleanup or save logic if needed
 }
 
-int OCI::validateNumberInput(int max) const {
+int OCI::validateNumberInput(const int max) const {
     int input;
     std::cin >> input;
-    logger->log("User input (number): " + std::to_string(input), Logger::INFO, false); // Log only to file
+    logger->info("User input (number): " + std::to_string(input));
     if (std::cin.fail() || input < 0 || input > max) {
         std::cin.clear();
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        logger->log("Invalid input: not an integer in range 0-" + std::to_string(max), logger::ERROR, false);
+        logger->error("Invalid input: not an integer in range 0-" + std::to_string(max));
         std::cout << "Error: Please enter a valid number between 0 and " << max << ".\n";
         return -1;
     }
     return input;
 }
 
-void OCI::displayBanner() {
-	// TODO - implement OCI::displayBanner
-	throw "Not yet implemented";
+void OCI::undo() const {
+    throw "Not yet implemented: OCI::undo()";
 }
 
-void OCI::displayMenu(int menuCode, int menuCode) {
-	// TODO - implement OCI::displayMenu
-	throw "Not yet implemented";
-}
-
-void OCI::getShapeList() {
-	// TODO - implement OCI::getShapeList
-	throw "Not yet implemented";
-}
-
-void OCI::getShapeInfo() {
-	// TODO - implement OCI::getShapeInfo
-	throw "Not yet implemented";
-}
-
-void OCI::drawCanvas() {
-	// TODO - implement OCI::drawCanvas
-	throw "Not yet implemented";
-}
-
-void OCI::help() {
-	// TODO - implement OCI::help
-	throw "Not yet implemented";
-}
-
-void OCI::log() {
-	// TODO - implement OCI::log
-	throw "Not yet implemented";
-}
-
-int OCI::validateNumberInput(int max, int max) {
-	// TODO - implement OCI::validateNumberInput
-	throw "Not yet implemented";
+void OCI::redo() const {
+    throw "Not yet implemented: OCI::redo()";
 }

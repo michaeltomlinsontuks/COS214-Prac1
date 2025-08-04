@@ -1,17 +1,28 @@
 #ifndef LOGGER_H
 #define LOGGER_H
 
+#include <fstream>
+#include <map>
+#include <string>
+#include <iostream>
+#include "ANSI-color-codes.h"
+
 class Logger {
+	enum LogLevel {
+		INFO,
+		WARNING,
+		ERROR
+	};
 
 private:
 	static Logger* instance;
-	std::ofstream logFile;
+	std::fstream logFile;
 	std::map<std::string, clock_t> activeTicks;
 	std::string logFileName;
 
 	Logger(const std::string& filename = "application.log");
 
-	std::string getCurrentTimestamp();
+	static std::string getCurrentTimestamp();
 
 	std::string getLogLevelString(Logger::LogLevel level);
 
@@ -24,9 +35,7 @@ private:
 public:
 	static Logger* getInstance(const std::string& filename = "application.log");
 
-	void log(const std::string& message, Logger::LogLevel level, bool toConsole);
-
-	void log(const std::string& message, Logger::LogLevel level = Logger.LogLevel.INFO);
+	void log(const std::string& message, const Logger::LogLevel level = INFO, bool toConsole = false);
 
 	void info(const std::string& message);
 
@@ -34,19 +43,11 @@ public:
 
 	void error(const std::string& message);
 
-	void printRaw(const std::string& message);
-
-	void printLogFile();
+	void printLogFile() const;
 
 	void clearLogs();
 
-	void ~Logger();
-
-	enum LogLevel {
-		INFO, 
-		WARNING, 
-		ERROR
-	};
+	~Logger();
 };
 
 #endif

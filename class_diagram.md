@@ -4,34 +4,38 @@
 classDiagram
     class Shape {
         <<abstract>>
-        - int id
-        - int x
-        - int y
+        - int length
+        - int width
         - string colour
-        + draw()
+        - int positionX
+        - int positionY
         + clone()
-        + getInfo()
     }
     class Rectangle {
-        - int length
-        - int width
-        + draw()
         + clone()
-        + getInfo()
     }
     class Square {
-        - int side
-        + draw()
         + clone()
-        + getInfo()
     }
     class Textbox {
-        - int length
-        - int width
         - string text
-        + draw()
         + clone()
-        + getInfo()
+    }
+    class ShapeFactory {
+        <<abstract>>
+        + createShape() Shape*
+    }
+    class RectangleFactory {
+        + createShape() Shape*
+        + toString() string
+    }
+    class SquareFactory {
+        + createShape() Shape*
+        + toString() string
+    }
+    class TextboxFactory {
+        + createShape() Shape*
+        + toString() string
     }
     class Canvas {
         - vector~Shape*~ shapes
@@ -67,6 +71,24 @@ classDiagram
         + printLogFile()
         + printRaw(string)
     }
+    class ExportCanvas {
+        <<abstract>>
+        - Canvas* canvas
+        + export()
+        + prepareCanvas()
+        + renderElements()
+        + saveToFile()
+    }
+    class PNGExporter {
+        + prepareCanvas()
+        + renderElements()
+        + saveToFile()
+    }
+    class PDFExporter {
+        + prepareCanvas()
+        + renderElements()
+        + saveToFile()
+    }
     class OCI {
         - Logger* logger
         - Canvas* canvas
@@ -98,9 +120,14 @@ classDiagram
     Shape <|-- Rectangle
     Shape <|-- Square
     Shape <|-- Textbox
+    ShapeFactory <|-- RectangleFactory
+    ShapeFactory <|-- SquareFactory
+    ShapeFactory <|-- TextboxFactory
     Canvas o-- Shape
     Canvas --> Memento
     CareTaker o-- Memento
+    ExportCanvas <|-- PNGExporter
+    ExportCanvas <|-- PDFExporter
     OCI --> Logger
     OCI --> Canvas
     OCI --> CareTaker
@@ -108,4 +135,4 @@ classDiagram
 
 ---
 
-This Mermaid diagram represents the class structure and relationships for the Open Canvas Interface (OCI) system, using std::vector for all stack and collection types, in compliance with the allowed libraries.
+This Mermaid diagram now includes the Factory Method pattern with ShapeFactory and its concrete factories, as well as all other required design patterns and relationships for the Open Canvas Interface (OCI) system.

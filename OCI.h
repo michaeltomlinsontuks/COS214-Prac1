@@ -1,61 +1,68 @@
 #ifndef OCI_H
 #define OCI_H
 
+#include <iostream>
+#include <string>
+#include "Logger.h"
+#include "ANSI-color-codes.h"
+#include "Canvas.h"
+
+
 class OCI {
 
 private:
 	Logger* logger;
 	bool running;
+	Canvas* canvas; // Add Canvas pointer
 
 public:
 	OCI();
-
-	void ~OCI();
+	~OCI();
 
 	void run();
 
-	void displayBanner();
+	static void displayBanner();
 
-	void displayMenu(int menuCode);
+	static void displayMenu(int menuCode);
 
 private:
-	void shapeSubMenu();
+	void shapeSubMenu() const;
 
-	void addShape();
+	void addShape() const;
 
-	void removeShape();
+	void removeShape() const;
 
-	void duplicateShape();
+	void duplicateShape() const;
 
-	void getShapeList();
+	void getShapeList() const;
 
-	void getShapeInfo();
+	void getShapeInfo() const;
 
-	void canvasSubMenu();
+	void canvasSubMenu() const;
 
-	void clearCanvas();
+	void clearCanvas() const;
 
-	void drawCanvas();
+	void drawCanvas() const;
 
-	void undo();
+	void undo() const;
 
-	void redo();
+	void redo() const;
 
-	void exportSubMenu();
+	void exportSubMenu() const;
 
-	void exportPNG();
+	void exportPNG() const;
 
-	void exportPDF();
+	void exportPDF() const;
 
-	void utilitiesSubMenu();
+	void utilitiesSubMenu() const;
 
-	void help();
+	static void help();
 
-	void log();
+	void log() const;
 
 	void quit();
 
-	int validateNumberInput(int max);
+	int validateNumberInput(const int max) const;
 };
 
 #endif

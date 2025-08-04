@@ -1,6 +1,8 @@
-[2025-08-03 18:59:23] [INFO] User input (number): 3
-[2025-08-03 18:59:24] [INFO] User input (number): 1
-[2025-08-03 18:59:27] [INFO] User input (number): 1
-[2025-08-03 18:59:29] [INFO] User input (number): 0
-[2025-08-03 18:59:34] [INFO] User input (number): 4
-[2025-08-03 18:59:36] [INFO] User input (number): 2
+[2025-08-04 16:45:08] [INFO] User input (number): 1
+[2025-08-04 16:45:09] [INFO] User input (number): 1
+[2025-08-04 16:45:10] [INFO] User input (number): 1
+[2025-08-04 16:45:11] [INFO] User input (number): 1
+[2025-08-04 16:45:15] [INFO] Rectangle created with values: length = 1, width = 1, colour = Red, position_x = 1, position_y = 1
+[2025-08-04 16:45:21] [INFO] User input (number): 4
+[2025-08-04 16:45:30] [INFO] User input (number): 0
+[2025-08-04 16:45:31] [INFO] User input (number): 0

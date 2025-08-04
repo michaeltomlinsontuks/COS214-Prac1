@@ -1,19 +1,24 @@
 #ifndef SQUARE_H
 #define SQUARE_H
 
-class Square : Shape {
+#include <vector>
+#include "Shape.h"
+using std::vector;
 
+class SquareFactory; // Forward declaration
+
+class Square : public Shape {
+
+friend class SquareFactory;
+
+private:
+    Square(int length, int width, const string& colour, int position_x, int position_y);
+    Square(const Square& copy);
 
 public:
-	Shape* clone();
-
-	Square();
-
-	void ~Square();
-
-	Square(Square& copy);
-
-	vector<vector<char>> draw();
+    Shape* clone() override;
+    ~Square() override;
+    vector<vector<char>> draw() override;
 };
 
 #endif

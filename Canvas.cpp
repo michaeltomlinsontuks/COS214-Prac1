@@ -2,50 +2,76 @@
 
 Memento* Canvas::captureCurrent() {
 	// TODO - implement Canvas::captureCurrent
-	throw "Not yet implemented";
+	throw "Not yet implemented: Canvas::captureCurrent()";
 }
 
 void Canvas::undoAction(Memento* prev) {
-	// TODO - implement Canvas::undoAction
-	throw "Not yet implemented";
+    (void)prev;
+    throw "Not yet implemented: Canvas::undoAction(Memento*)";
 }
 
 Canvas::Canvas() {
-	// TODO - implement Canvas::Canvas
-	throw "Not yet implemented";
+    // No shapes at construction; vector is default-initialized
 }
 
-Shape* Canvas::addShape() {
-	// TODO - implement Canvas::addShape
-	throw "Not yet implemented";
+Shape* Canvas::addShape(int shapeType, int length, int width, const std::string& colour, int x, int y, const std::string& text) {
+    Shape* newShape = nullptr;
+    switch (shapeType) {
+        case 1: { // Rectangle
+            RectangleFactory rectFactory;
+            newShape = rectFactory.createShape(length, width, colour, x, y);
+            break;
+        }
+        case 2: { // Square
+            SquareFactory squareFactory;
+            newShape = squareFactory.createShape(length, width, colour, x, y);
+            break;
+        }
+        case 3: { // Textbox
+            TextboxFactory textboxFactory;
+            newShape = textboxFactory.createShape(length, width, colour, x, y, text);
+            break;
+        }
+        default:
+            return nullptr;
+    }
+    if (newShape) {
+        shapes.push_back(newShape);
+    }
+    return newShape;
 }
 
 void Canvas::removeShape(int shapeId) {
-	// TODO - implement Canvas::removeShape
-	throw "Not yet implemented";
+    (void)shapeId;
+    throw "Canvas::removeShape - Not yet implemented";
 }
 
 void Canvas::duplicateShape(int shapeId) {
-	// TODO - implement Canvas::duplicateShape
-	throw "Not yet implemented";
+    (void)shapeId;
+    throw "Canvas::duplicateShape - Not yet implemented";
 }
 
 vector<Shape*> Canvas::getShapeList() {
-	// TODO - implement Canvas::getShapeList
-	throw "Not yet implemented";
+    return shapes;
 }
 
 Shape* Canvas::getShapeInfo(int shapeId) {
-	// TODO - implement Canvas::getShapeInfo
-	throw "Not yet implemented";
+    (void)shapeId;
+    throw "Canvas::getShapeInfo - Not yet implemented";
 }
 
 void Canvas::clear() {
-	// TODO - implement Canvas::clear
-	throw "Not yet implemented";
+	throw "Canvas::clear - Not yet implemented";
 }
 
 void Canvas::draw() {
-	// TODO - implement Canvas::draw
-	throw "Not yet implemented";
+	throw "Canvas::draw - Not yet implemented";
+}
+
+Canvas::~Canvas() {
+    // Clean up all shapes
+    for (Shape* shape : shapes) {
+        delete shape;
+    }
+    shapes.clear();
 }

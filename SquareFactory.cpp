@@ -1,16 +1,16 @@
 #include "SquareFactory.h"
+#include "Square.h"
 
-Shape* SquareFactory::createShape() {
-	// TODO - implement SquareFactory::createShape
-	throw "Not yet implemented";
+Shape* SquareFactory::createShape(int length, int width, const std::string& colour, int position_x, int position_y) {
+    return new Square(length, width, colour, position_x, position_y);
 }
 
 void SquareFactory::toString() {
-	// TODO - implement SquareFactory::toString
-	throw "Not yet implemented";
+    // Example implementation
+    // std::cout << "SquareFactory" << std::endl;
 }
 
 SquareFactory::SquareFactory(SquareFactory& copy) {
-	// TODO - implement SquareFactory::SquareFactory
-	throw "Not yet implemented";
+    (void)copy;
+    // Copy constructor implementation if needed
 }

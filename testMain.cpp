@@ -7,8 +7,11 @@
 #include "OCI.h"
 
 int main() {
-    OCI oci;
-    oci.run();
-    
+    try {
+        OCI oci;
+        oci.run();
+    } catch (const char* msg) {
+        std::cerr << "Exception: " << msg << std::endl;
+    }
     return 0;
 }

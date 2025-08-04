@@ -2,5 +2,5 @@
 
 void PNGExporter::saveToFile() {
 	// TODO - implement PNGExporter::saveToFile
-	throw "Not yet implemented";
+	throw "Not yet implemented: PNGExporter::saveToFile()";
 }

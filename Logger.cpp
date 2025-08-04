@@ -7,12 +7,12 @@
 
 Logger* Logger::instance = nullptr;
 
-Logger* Logger::getInstance(const std::string& filename, const std::string& filename) {
+Logger* Logger::getInstance(const std::string& filename) {
     static Logger instance(filename); // Static for thread-safe singleton initialization
     return &instance;
 }
 
-Logger::Logger(const std::string& filename, const std::string& filename) : logFileName(filename) {
+Logger::Logger(const std::string& filename) : logFileName(filename) {
     logFile.open(logFileName, std::ios::app);
     if (!logFile.is_open()) {
         std::cerr << "Warning: Could not open log file '" << logFileName 
@@ -59,14 +59,14 @@ std::string Logger::getLogLevelColor(LogLevel level) {
     }
 }
 
-void Logger::writeToConsole(const std::string& message, LogLevel level) {
+void Logger::writeToConsole(const std::string& message, const LogLevel level) {
     // Print only the log level and message, no timestamp
     std::string levelStr = getLogLevelString(level);
     std::string colorCode = getLogLevelColor(level);
     std::cout << colorCode << "[" << levelStr << "] " << message << CRESET << std::endl;
 }
 
-void Logger::writeToFile(const std::string& message, const std::string& message) {
+void Logger::writeToFile(const std::string& message) {
     if (!logFile.is_open()) {
         return;
     }
@@ -106,20 +106,15 @@ void Logger::log(const std::string& message, LogLevel level, bool toConsole) {
     writeToFile(fileMessage);
 }
 
-// Overload for default behavior (console + file)
-void Logger::log(const std::string& message, LogLevel level) {
-    log(message, level, true);
-}
-
-void Logger::info(const std::string& message, const std::string& message) {
+void Logger::info(const std::string& message) {
     log(message, INFO);
 }
 
-void Logger::warning(const std::string& message, const std::string& message) {
+void Logger::warning(const std::string& message) {
     log(message, WARNING);
 }
 
-void Logger::error(const std::string& message, const std::string& message) {
+void Logger::error(const std::string& message) {
     log(message, ERROR);
 }
 
@@ -173,68 +168,4 @@ Logger::~Logger() {
     if (logFile.is_open()) {
         logFile.close();
     }
-}
-
-std::string Logger::getLogLevelString(Logger::LogLevel level, Logger::LogLevel level) {
-	// TODO - implement Logger::getLogLevelString
-	throw "Not yet implemented";
-}
-
-std::string Logger::getLogLevelColor(Logger::LogLevel level, Logger::LogLevel level) {
-	// TODO - implement Logger::getLogLevelColor
-	throw "Not yet implemented";
-}
-
-void Logger::writeToConsole(const std::string& message, Logger::LogLevel level, const std::string& message, Logger::LogLevel level) {
-	// TODO - implement Logger::writeToConsole
-	throw "Not yet implemented";
-}
-
-void Logger::log(const std::string& message, Logger::LogLevel level, bool toConsole, const std::string& message, Logger::LogLevel level, bool toConsole) {
-	// TODO - implement Logger::log
-	throw "Not yet implemented";
-}
-
-void Logger::log(const std::string& message, Logger::LogLevel level, const std::string& message, Logger::LogLevel level) {
-	// TODO - implement Logger::log
-	throw "Not yet implemented";
-}
-
-void Logger::printRaw(const std::string& message, const std::string& message) {
-	// TODO - implement Logger::printRaw
-	throw "Not yet implemented";
-}
-
-void Logger::printLogFile() {
-	// TODO - implement Logger::printLogFile
-	throw "Not yet implemented";
-}
-
-Logger::Logger(const std::string& filename) {
-	// TODO - implement Logger::Logger
-	throw "Not yet implemented";
-}
-
-void Logger::writeToFile(const std::string& message) {
-	// TODO - implement Logger::writeToFile
-	throw "Not yet implemented";
-}
-
-static Logger* Logger::getInstance(const std::string& filename) {
-	return this->instance;
-}
-
-void Logger::info(const std::string& message) {
-	// TODO - implement Logger::info
-	throw "Not yet implemented";
-}
-
-void Logger::warning(const std::string& message) {
-	// TODO - implement Logger::warning
-	throw "Not yet implemented";
-}
-
-void Logger::error(const std::string& message) {
-	// TODO - implement Logger::error
-	throw "Not yet implemented";
 }
