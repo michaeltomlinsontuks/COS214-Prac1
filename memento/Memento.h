@@ -5,7 +5,7 @@
 #ifndef MEMENTO_H
 #define MEMENTO_H
 
-#include "Shape.h"
+#include "../shapes/Shape.h"
 #include <vector>
 
 class Memento {

@@ -6,7 +6,7 @@
 // ShapeFactory is the abstract base class for all shape factories. It declares the interface for creating shapes.
 // =============================
 
-#include "Shape.h"
+#include "../shapes/Shape.h"
 #include <string>
 
 class ShapeFactory {

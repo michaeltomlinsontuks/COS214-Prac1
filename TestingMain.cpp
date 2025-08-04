@@ -6,6 +6,7 @@ You can import the following libraries:
 – vector
 – string
 – iostream
+- fstream (textfiles)
 – map
 – list
 */

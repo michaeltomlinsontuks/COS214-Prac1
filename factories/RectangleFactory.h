@@ -7,7 +7,7 @@
 // =============================
 
 #include "ShapeFactory.h"
-#include "Rectangle.h"
+#include "../shapes/Rectangle.h"
 
 class RectangleFactory : public ShapeFactory {
 public:

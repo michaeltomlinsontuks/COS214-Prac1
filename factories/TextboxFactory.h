@@ -7,7 +7,7 @@
 #define TEXTBOXFACTORY_H
 
 #include "ShapeFactory.h"
-#include "Textbox.h"
+#include "../shapes/Textbox.h"
 
 class TextboxFactory : public ShapeFactory {
 public:
