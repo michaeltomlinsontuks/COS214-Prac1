@@ -1,33 +1,24 @@
-# Makefile for COS214-Prac1
 
-CXX = g++
-CXXFLAGS = -std=c++17 -Wall -Wextra -g
+CXX := g++
+CXXFLAGS := -g -std=c++11
 
-# Source files
-SRCS = TestingMain.cpp \
-       Canvas.h \
-       Shape.h \
-       ShapeFactory.h \
-       RectangleFactory.h \
-       SquareFactory.h \
-       TextboxFactory.h \
-       Rectangle.h \
-       Square.h \
-       Textbox.h
+SRC := TestingMain.cpp  #<cpp files to run> do not put testing.cpp here
+OBJ := $(SRC:.cpp=.o)
+BIN := canvasApp
 
-# Object files (none, as all code is in headers and main)
-OBJS =
+all: $(BIN)
 
-# Output executable
-TARGET = test_canvas
+$(BIN):	$(OBJ)
+	$(CXX) $(CXXFLAGS) -o $@ $^
 
-all: $(TARGET)
+%.o:	%.cpp
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-$(TARGET): $(SRCS)
-	$(CXX) $(CXXFLAGS) TestingMain.cpp -o $(TARGET)
+run r:	$(BIN)
+	./$(BIN)
 
-run: $(TARGET)
-	./$(TARGET)
-
-clean:
-	rm -f $(TARGET)
+clean c:
+	rm -f $(OBJ) $(BIN) vgcore.*
+ 
+valgrind v:	$(BIN)
+	valgrind --leak-check=full --track-origins=yes ./$(BIN)
