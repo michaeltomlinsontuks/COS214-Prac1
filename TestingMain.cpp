@@ -15,7 +15,22 @@ You can import the following libraries:
 #include "SquareFactory.h"
 #include "TextboxFactory.h"
 using namespace std;
-int main() {
-        cout<<"Welcome to the Shape Factory!\n";
-        return 0;
-    }
+
+void michaelMain();
+void wilmarMain();
+
+int main()
+{
+    cout << "Welcome to the Shape Factory!\n";
+    michaelMain();
+    wilmarMain();
+    return 0;
+}
+
+void michaelMain()
+{
+}
+
+void wilmarMain()
+{
+}
