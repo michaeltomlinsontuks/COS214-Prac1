@@ -71,6 +71,15 @@
 #define BHCYN "\e[1;96m"
 #define BHWHT "\e[1;97m"
 
+// Intense Black text on all Intense Backgrounds
+#define BHBLK_ON_REDHB   "\e[1;30;101m"
+#define BHBLK_ON_GRNHB   "\e[1;30;102m"
+#define BHBLK_ON_YELHB   "\e[1;30;103m"
+#define BHBLK_ON_BLUHB   "\e[1;30;104m"
+#define BHBLK_ON_MAGHB   "\e[1;30;105m"
+#define BHBLK_ON_CYNHB   "\e[1;30;106m"
+#define BHBLK_ON_WHTHB   "\e[1;30;107m"
+
 //Reset
 #define CRESET "\e[0m"
 #define COLOR_RESET "\e[0m"

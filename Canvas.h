@@ -8,11 +8,17 @@
 #include "SquareFactory.h"
 #include "TextboxFactory.h"
 #include <string>
+#include <iostream>
+#include "ANSI-color-codes.h"
+#include "CanvasCell.h"
 
 class Canvas {
 
 private:
 	vector<Shape*> shapes;
+	std::vector<std::vector<CanvasCell>> canvas;
+	int width;
+	int height;
 
 public:
 	Memento* captureCurrent();
@@ -36,6 +42,8 @@ public:
 	void clear();
 
 	void draw();
+
+	void generateCanvas();
 };
 
 #endif

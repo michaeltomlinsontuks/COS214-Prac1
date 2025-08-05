@@ -1,9 +1,11 @@
 #ifndef MEMENTO_H
 #define MEMENTO_H
 
+#include "Shape.h"
+
 class Memento {
 
-private:
+public:
 	Shape* shapes;
 
 public:

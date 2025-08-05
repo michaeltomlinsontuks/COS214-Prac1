@@ -5,6 +5,8 @@
 #include <string>
 #include "ANSI-color-codes.h"
 #include "Logger.h"
+#include "CanvasCell.h"
+
 using std::vector;
 using std::string;
 
@@ -20,8 +22,10 @@ protected:
         : length(length), width(width), colour(colour), position_x(position_x), position_y(position_y) {}
 
 public:
+    int getPositionX() const { return position_x; }
+    int getPositionY() const { return position_y; }
     virtual Shape* clone() = 0;
-    virtual vector<vector<char>> draw() = 0;
+    virtual vector<vector<CanvasCell>> draw() = 0;
     virtual ~Shape() {}
 };
 

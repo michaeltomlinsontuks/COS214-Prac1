@@ -174,44 +174,70 @@ void OCI::addShape() const{
     if (colourChoice == -1) return;
     std::string colour;
     switch (colourChoice) {
-        case 1: colour = "Red"; break;
-        case 2: colour = "Green"; break;
-        case 3: colour = "Blue"; break;
-        case 4: colour = "Yellow"; break;
-        case 5: colour = "Magenta"; break;
-        case 6: colour = "Cyan"; break;
-        case 7: colour = "White"; break;
-        default: colour = "White"; break;
+        case 1: colour = REDHB; break;
+        case 2: colour = GRNHB; break;
+        case 3: colour = BLUHB; break;
+        case 4: colour = YELHB; break;
+        case 5: colour = MAGHB; break;
+        case 6: colour = CYNHB; break;
+        case 7: colour = WHTHB; break;
+        default: colour = WHTHB; break;
     }
 
     int x, y;
-    std::cout << BHWHT << "Enter position X: " << CRESET;
-    std::cin >> x;
-    std::cout << BHWHT << "Enter position Y: " << CRESET;
-    std::cin >> y;
+    do {
+        std::cout << BHWHT << "Enter position X (>=0): " << CRESET;
+        std::cin >> x;
+        if (x < 0) std::cout << BHRED << "X must be greater than or equal to 0." << CRESET << std::endl;
+    } while (x < 0);
+    do {
+        std::cout << BHWHT << "Enter position Y (>=0): " << CRESET;
+        std::cin >> y;
+        if (y < 0) std::cout << BHRED << "Y must be greater than or equal to 0." << CRESET << std::endl;
+    } while (y < 0);
 
     int length = 0, width = 0;
     std::string text;
     switch (shapeType) {
         case 1: // Rectangle
-            std::cout << BHWHT << "Enter length: " << CRESET;
-            std::cin >> length;
-            std::cout << BHWHT << "Enter width: " << CRESET;
-            std::cin >> width;
+            do {
+                std::cout << BHWHT << "Enter length (>0): " << CRESET;
+                std::cin >> length;
+                if (length <= 0) std::cout << BHRED << "Length must be greater than 0." << CRESET << std::endl;
+            } while (length <= 0);
+            do {
+                std::cout << BHWHT << "Enter width (>0): " << CRESET;
+                std::cin >> width;
+                if (width <= 0) std::cout << BHRED << "Width must be greater than 0." << CRESET << std::endl;
+            } while (width <= 0);
             break;
         case 2: // Square
-            std::cout << BHWHT << "Enter side length: " << CRESET;
-            std::cin >> length;
+            do {
+                std::cout << BHWHT << "Enter side length (>0): " << CRESET;
+                std::cin >> length;
+                if (length <= 0) std::cout << BHRED << "Side length must be greater than 0." << CRESET << std::endl;
+            } while (length <= 0);
             width = length;
             break;
         case 3: // Textbox
-            std::cout << BHWHT << "Enter length: " << CRESET;
-            std::cin >> length;
-            std::cout << BHWHT << "Enter width: " << CRESET;
-            std::cin >> width;
-            std::cout << BHWHT << "Enter text: " << CRESET;
-            std::cin.ignore();
-            std::getline(std::cin, text);
+            do {
+                std::cout << BHWHT << "Enter length (>0): " << CRESET;
+                std::cin >> length;
+                if (length <= 0) std::cout << BHRED << "Length must be greater than 0." << CRESET << std::endl;
+            } while (length <= 0);
+            do {
+                std::cout << BHWHT << "Enter width (>0): " << CRESET;
+                std::cin >> width;
+                if (width <= 0) std::cout << BHRED << "Width must be greater than 0." << CRESET << std::endl;
+            } while (width <= 0);
+            do {
+                std::cout << BHWHT << "Enter text: " << CRESET;
+                std::cin.ignore();
+                std::getline(std::cin, text);
+                if ((int)text.length() > width) {
+                    std::cout << BHRED << "Text is too long for the textbox width. Please enter text with " << width << " or fewer characters." << CRESET << std::endl;
+                }
+            } while ((int)text.length() > width);
             break;
         default:
             std::cout << BHRED << "Invalid shape type." << CRESET << std::endl;

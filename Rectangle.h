@@ -18,7 +18,7 @@ private:
 public:
     Shape* clone() override;
     ~Rectangle() override;
-    vector<vector<char>> draw() override;
+    vector<vector<CanvasCell>> draw() override;
 };
 
 #endif

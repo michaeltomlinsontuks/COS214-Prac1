@@ -1,20 +1,27 @@
 #include "Canvas.h"
 
 Memento* Canvas::captureCurrent() {
-	// TODO - implement Canvas::captureCurrent
-	throw "Not yet implemented: Canvas::captureCurrent()";
+    Logger::getInstance()->info("Canvas::captureCurrent called");
+    // TODO - implement Canvas::captureCurrent
+    throw "Not yet implemented: Canvas::captureCurrent()";
 }
 
 void Canvas::undoAction(Memento* prev) {
+    Logger::getInstance()->info("Canvas::undoAction called");
     (void)prev;
     throw "Not yet implemented: Canvas::undoAction(Memento*)";
 }
 
 Canvas::Canvas() {
+    Logger::getInstance()->info("Canvas constructed");
     // No shapes at construction; vector is default-initialized
+    width = 225;
+    height = 35;
+    generateCanvas();
 }
 
 Shape* Canvas::addShape(int shapeType, int length, int width, const std::string& colour, int x, int y, const std::string& text) {
+    Logger::getInstance()->info("Canvas::addShape called with shapeType = " + std::to_string(shapeType) + ", length = " + std::to_string(length) + ", width = " + std::to_string(width) + ", colour = " + colour + ", x = " + std::to_string(x) + ", y = " + std::to_string(y) + ", text = " + text);
     Shape* newShape = nullptr;
     switch (shapeType) {
         case 1: { // Rectangle
@@ -42,33 +49,82 @@ Shape* Canvas::addShape(int shapeType, int length, int width, const std::string&
 }
 
 void Canvas::removeShape(int shapeId) {
+    Logger::getInstance()->info("Canvas::removeShape called with shapeId = " + std::to_string(shapeId));
     (void)shapeId;
     throw "Canvas::removeShape - Not yet implemented";
 }
 
 void Canvas::duplicateShape(int shapeId) {
+    Logger::getInstance()->info("Canvas::duplicateShape called with shapeId = " + std::to_string(shapeId));
     (void)shapeId;
     throw "Canvas::duplicateShape - Not yet implemented";
 }
 
 vector<Shape*> Canvas::getShapeList() {
+    Logger::getInstance()->info("Canvas::getShapeList called");
     return shapes;
 }
 
 Shape* Canvas::getShapeInfo(int shapeId) {
+    Logger::getInstance()->info("Canvas::getShapeInfo called with shapeId = " + std::to_string(shapeId));
     (void)shapeId;
     throw "Canvas::getShapeInfo - Not yet implemented";
 }
 
 void Canvas::clear() {
-	throw "Canvas::clear - Not yet implemented";
+    Logger::getInstance()->info("Canvas::clear called");
+    // Reset the canvas to the background (black, space)
+    canvas.clear();
+    canvas.resize(height, std::vector<CanvasCell>(width, CanvasCell(BLKB, ' ')));
 }
 
 void Canvas::draw() {
-	throw "Canvas::draw - Not yet implemented";
+    Logger::getInstance()->info("Canvas::draw called");
+    // Clear the canvas to background
+    canvas.clear();
+    canvas.resize(height, std::vector<CanvasCell>(width, CanvasCell(BLKB, ' ')));
+
+    // Draw each shape onto the canvas
+    for (Shape* shape : shapes) {
+        auto shapeCells = shape->draw();
+        int posX = shape->getPositionX();
+        int posY = shape->getPositionY();
+        for (size_t i = 0; i < shapeCells.size(); ++i) {
+            for (size_t j = 0; j < shapeCells[i].size(); ++j) {
+                int canvasRow = posY + i;
+                int canvasCol = posX + j;
+                if (canvasRow >= 0 && canvasRow < height && canvasCol >= 0 && canvasCol < width) {
+                    canvas[canvasRow][canvasCol] = shapeCells[i][j];
+                }
+            }
+        }
+    }
+
+    // Print the canvas row by row, updating color only when it changes
+    for (int row = 0; row < height; ++row) {
+        std::string lastColor = "";
+        for (int col = 0; col < width; ++col) {
+            const CanvasCell& cell = canvas[row][col];
+            if (cell.colorCode != lastColor) {
+                std::cout << cell.colorCode;
+                lastColor = cell.colorCode;
+            }
+            std::cout << cell.ch;
+        }
+        std::cout << CRESET << std::endl;
+    }
 }
 
+void Canvas::generateCanvas() {
+    Logger::getInstance()->info("Canvas::generateCanvas called");
+    // Initialize the canvas with default black background and space character
+    canvas.clear();
+    canvas.resize(height, std::vector<CanvasCell>(width, CanvasCell(BLKB, ' ')));
+}
+
+
 Canvas::~Canvas() {
+    Logger::getInstance()->info("Canvas destroyed");
     // Clean up all shapes
     for (Shape* shape : shapes) {
         delete shape;

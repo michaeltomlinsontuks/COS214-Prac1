@@ -19,6 +19,9 @@ Rectangle::~Rectangle() {
     // Default destructor
 }
 
-vector<vector<char>> Rectangle::draw() {
-    throw "Rectangle::draw - Not yet implemented";
+vector<vector<CanvasCell>> Rectangle::draw() {
+    Logger::getInstance()->info("Rectangle drawn with values: length = " + std::to_string(this->length) + ", width = " + std::to_string(this->width) + ", colour = " + this->colour + ", position_x = " + std::to_string(this->position_x) + ", position_y = " + std::to_string(this->position_y));
+    vector<vector<CanvasCell>> result;
+    result.resize(length, vector<CanvasCell>(width, CanvasCell(colour, ' ')));
+    return result;
 }

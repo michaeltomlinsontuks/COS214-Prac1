@@ -21,7 +21,7 @@ public:
     string text;
     Shape* clone() override;
     ~Textbox() override;
-    vector<vector<char>> draw() override;
+    vector<vector<CanvasCell>> draw() override;
 };
 
 #endif
