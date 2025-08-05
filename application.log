@@ -1,32 +1,6 @@
-[2025-08-05 12:23:22] [INFO] User input (number): 1
-[2025-08-05 12:23:23] [INFO] User input (number): 1
-[2025-08-05 12:23:25] [INFO] User input (number): 2
-[2025-08-05 12:23:28] [INFO] User input (number): 7
-[2025-08-05 12:23:35] [INFO] Canvas::addShape called with shapeType = 2, length = 5, width = 5, colour = [0;107m, x = 40, y = 40, text = 
-[2025-08-05 12:23:35] [INFO] Square created with values: length = 5, width = 5, colour = [0;107m, position_x = 40, position_y = 40
-[2025-08-05 12:23:37] [INFO] User input (number): 0
-[2025-08-05 12:23:39] [INFO] User input (number): 2
-[2025-08-05 12:23:42] [INFO] User input (number): 2
-[2025-08-05 12:23:42] [INFO] Canvas::draw called
-[2025-08-05 12:23:42] [INFO] Square drawn with values: length = 5, width = 5, colour = [0;107m, position_x = 40, position_y = 40
-[2025-08-05 12:23:55] [INFO] User input (number): 1
-[2025-08-05 12:23:55] [INFO] Canvas::clear called
-[2025-08-05 12:24:03] [INFO] User input (number): 2
-[2025-08-05 12:24:03] [INFO] Canvas::draw called
-[2025-08-05 12:24:03] [INFO] Square drawn with values: length = 5, width = 5, colour = [0;107m, position_x = 40, position_y = 40
-[2025-08-05 12:24:16] [INFO] User input (number): 0
-[2025-08-05 12:24:17] [INFO] User input (number): 1
-[2025-08-05 12:24:19] [INFO] User input (number): 1
-[2025-08-05 12:24:20] [INFO] User input (number): 1
-[2025-08-05 12:24:21] [INFO] User input (number): 1
-[2025-08-05 12:24:28] [INFO] Canvas::addShape called with shapeType = 1, length = 5, width = 6, colour = [0;101m, x = 5, y = 5, text = 
-[2025-08-05 12:24:28] [INFO] Rectangle created with values: length = 5, width = 6, colour = [0;101m, position_x = 5, position_y = 5
-[2025-08-05 12:24:31] [INFO] User input (number): 0
-[2025-08-05 12:24:32] [INFO] User input (number): 2
-[2025-08-05 12:24:33] [INFO] User input (number): 2
-[2025-08-05 12:24:33] [INFO] Canvas::draw called
-[2025-08-05 12:24:33] [INFO] Square drawn with values: length = 5, width = 5, colour = [0;107m, position_x = 40, position_y = 40
-[2025-08-05 12:24:33] [INFO] Rectangle drawn with values: length = 5, width = 6, colour = [0;101m, position_x = 5, position_y = 5
-[2025-08-05 12:25:23] [INFO] User input (number): 0
-[2025-08-05 12:25:25] [INFO] User input (number): 0
-[2025-08-05 12:25:25] [INFO] Canvas destroyed
+[2025-08-05 12:38:58] [INFO] User input (number): 2
+[2025-08-05 12:39:00] [INFO] User input (number): 2
+[2025-08-05 12:39:00] [INFO] Canvas::draw called
+[2025-08-05 12:39:07] [INFO] User input (number): 0
+[2025-08-05 12:39:08] [INFO] User input (number): 0
+[2025-08-05 12:39:08] [INFO] Canvas destroyed

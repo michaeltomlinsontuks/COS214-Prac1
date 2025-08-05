@@ -17,6 +17,7 @@ Canvas::Canvas() {
     // No shapes at construction; vector is default-initialized
     width = 225;
     height = 35;
+    canvasColour = BLKB; // Default background color
     generateCanvas();
 }
 
@@ -71,18 +72,39 @@ Shape* Canvas::getShapeInfo(int shapeId) {
     throw "Canvas::getShapeInfo - Not yet implemented";
 }
 
+void Canvas::drawBorder() {
+    // Draw top and bottom border
+    std::string borderColor = BHBLK_ON_WHTHB; // White background for border
+    for (int col = 0; col < width; ++col) {
+        canvas[0][col] = CanvasCell(borderColor, '-');
+        canvas[height-1][col] = CanvasCell(borderColor, '-');
+    }
+    // Draw left and right border
+    for (int row = 1; row < height-1; ++row) {
+        canvas[row][0] = CanvasCell(borderColor, '|');
+        canvas[row][width-1] = CanvasCell(borderColor, '|');
+    }
+    // Corners
+    canvas[0][0] = CanvasCell(borderColor, '+');
+    canvas[0][width-1] = CanvasCell(borderColor, '+');
+    canvas[height-1][0] = CanvasCell(borderColor, '+');
+    canvas[height-1][width-1] = CanvasCell(borderColor, '+');
+}
+
 void Canvas::clear() {
     Logger::getInstance()->info("Canvas::clear called");
-    // Reset the canvas to the background (black, space)
     canvas.clear();
-    canvas.resize(height, std::vector<CanvasCell>(width, CanvasCell(BLKB, ' ')));
+    canvas.resize(height, std::vector<CanvasCell>(width, CanvasCell(canvasColour, ' ')));
+    drawBorder();
 }
 
 void Canvas::draw() {
     Logger::getInstance()->info("Canvas::draw called");
     // Clear the canvas to background
     canvas.clear();
-    canvas.resize(height, std::vector<CanvasCell>(width, CanvasCell(BLKB, ' ')));
+    canvas.resize(height, std::vector<CanvasCell>(width, CanvasCell(canvasColour, ' ')));
+
+    drawBorder();
 
     // Draw each shape onto the canvas
     for (Shape* shape : shapes) {
@@ -117,9 +139,9 @@ void Canvas::draw() {
 
 void Canvas::generateCanvas() {
     Logger::getInstance()->info("Canvas::generateCanvas called");
-    // Initialize the canvas with default black background and space character
     canvas.clear();
-    canvas.resize(height, std::vector<CanvasCell>(width, CanvasCell(BLKB, ' ')));
+    canvas.resize(height, std::vector<CanvasCell>(width, CanvasCell(canvasColour, ' ')));
+    drawBorder();
 }
 
 

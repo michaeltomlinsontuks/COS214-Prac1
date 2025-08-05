@@ -19,6 +19,9 @@ private:
 	std::vector<std::vector<CanvasCell>> canvas;
 	int width;
 	int height;
+	std::string canvasColour;
+
+	void drawBorder();
 
 public:
 	Memento* captureCurrent();
