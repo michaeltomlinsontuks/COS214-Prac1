@@ -7,7 +7,7 @@ private:
 	Canvas* canvas;
 
 public:
-	void export();
+	void exportToFile();
 
 private:
 	void prepareCanvas();

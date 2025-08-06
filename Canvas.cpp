@@ -15,8 +15,8 @@ void Canvas::undoAction(Memento* prev) {
 Canvas::Canvas() {
     Logger::getInstance()->info("Canvas constructed");
     // No shapes at construction; vector is default-initialized
-    width = 225;
-    height = 35;
+    width = 120;
+    height = 20;
     canvasColour = BLKB; // Default background color
     generateCanvas();
 }
@@ -51,14 +51,16 @@ Shape* Canvas::addShape(int shapeType, int length, int width, const std::string&
 
 void Canvas::removeShape(int shapeId) {
     Logger::getInstance()->info("Canvas::removeShape called with shapeId = " + std::to_string(shapeId));
-    (void)shapeId;
-    throw "Canvas::removeShape - Not yet implemented";
+    //Remove the shapeId from the shapes vector
+    shapes.erase(shapes.begin() + shapeId);
 }
 
 void Canvas::duplicateShape(int shapeId) {
     Logger::getInstance()->info("Canvas::duplicateShape called with shapeId = " + std::to_string(shapeId));
-    (void)shapeId;
-    throw "Canvas::duplicateShape - Not yet implemented";
+    //Clones the shapeId then adds it to the shapes vector
+    Shape* shape = shapes[shapeId];
+    Shape* newShape = shape->clone();
+    shapes.push_back(newShape);
 }
 
 vector<Shape*> Canvas::getShapeList() {
@@ -96,6 +98,8 @@ void Canvas::clear() {
     canvas.clear();
     canvas.resize(height, std::vector<CanvasCell>(width, CanvasCell(canvasColour, ' ')));
     drawBorder();
+    //Clear the shapes array
+    shapes.clear();
 }
 
 void Canvas::draw() {

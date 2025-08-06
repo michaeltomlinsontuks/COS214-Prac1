@@ -1,6 +1,6 @@
 #include "ExportCanvas.h"
 
-void ExportCanvas::export() {
+void ExportCanvas::exportToFile() {
 	// TODO - implement ExportCanvas::export
 	throw "Not yet implemented: ExportCanvas::export()";
 }
