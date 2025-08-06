@@ -6,7 +6,7 @@
 #include "../loggerOCI/ANSI-color-codes.h"
 #include "../loggerOCI/Logger.h"
 #include "../loggerOCI/CanvasCell.h"
-
+#include <iostream>
 using std::string;
 using std::vector;
 
@@ -27,13 +27,11 @@ protected:
         : length(length), width(width), colour(colour), position_x(position_x), position_y(position_y) {}
 
     // add to diagram
-    Shape(Shape *copy)
+    Shape(const Shape *copy)
         : length(copy->length), width(copy->width), colour(copy->colour), position_x(copy->position_x), position_y(copy->position_y) {}
 
-    bool operator==(Shape *copy)
-    {
-        return (copy->length == length && copy->width == width && copy->position_x == position_x && copy->position_y == position_y && copy->colour == colour);
-    }
+public:
+    bool operator==(Shape &copy);
 
 public:
     int getPositionX() const { return position_x; }
@@ -42,19 +40,5 @@ public:
     virtual vector<vector<CanvasCell>> draw() = 0;
     virtual ~Shape() {}
 };
-
-// change with the getters
-string to_string(const Shape *shape)
-{
-    string output = "";
-    output += "Length: " + std::to_string(shape->length) + "\n";
-    output += "Width: " + std::to_string(shape->width) + "\n";
-    output += "Position X: " + std::to_string(shape->getPositionX()) + "\n";
-    output += "Position Y: " + std::to_string(shape->getPositionY()) + "\n";
-    output += "Colour: " + std::to_string(shape->getPositionX()) + "\n";
-
-    return output;
-}
-// change with the getters
 
 #endif

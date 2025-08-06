@@ -36,7 +36,11 @@ void wilmarTesting()
         elements->push_back(Rec);
     }
     Memento mem(*elements);
-    Testing<Memento, Memento> tsMemento(mem, mem);
+    Array<string> arrInstruction(0);
+    arrInstruction.insert("TC");
+    arrInstruction.insert("==");
+    Testing<Memento, Memento> testingMemento(mem, mem);
+    testingMemento.createTestSuite(arrInstruction, "Memento test suite");
 
     for (int i = 0; i < elements->size(); i++)
     {

@@ -3,6 +3,7 @@
 
 #include "../shape/Shape.h"
 #include "../testingFramework/array.h"
+
 class Memento
 {
 	friend string to_string(const Memento& );

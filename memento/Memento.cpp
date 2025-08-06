@@ -7,7 +7,7 @@ Memento::Memento(vector<Shape *> &elements)
 
 	for (int i = 0; i < shapes->getLength(); i++)
 	{
-		shapes[i].insertNewItem(*elements[i]->clone());
+		shapes->operator[](i) = elements[i]->clone();
 	}
 }
 Memento::Memento(Memento &copy)
@@ -16,7 +16,7 @@ Memento::Memento(Memento &copy)
 
 	for (int i = 0; i < shapes->getLength(); i++)
 	{
-		shapes[i].insertNewItem(*copy.shapes->getIndex(i));
+		shapes->operator[](i) = copy.shapes->getIndex(i)->clone();
 	}
 }
 Memento::~Memento()
@@ -31,7 +31,7 @@ string to_string(const Memento &obj)
 	for (int i = 0; i < obj.shapes->getLength(); i++)
 	{
 		output += "Shape " + to_string(i) + ": \n";
-		output += to_string(obj.shapes[i]) + "\n";
+		output += to_string((*obj.shapes)[i]) + "\n";
 	}
 	return output;
 }
@@ -43,8 +43,12 @@ bool Memento::operator==(const Memento &copy)
 
 	for (int i = 0; i < shapes->getLength(); i++)
 	{
-		if (!(shapes->getIndex(i) == copy.shapes->getIndex(i)))
-			return false;
+
+		Shape *lhs = this->shapes->getIndex(i);
+		Shape *rhs = copy.shapes->getIndex(i);
+		
+		if (!(*lhs == *rhs))
+		return false;
 	}
 
 	return true;

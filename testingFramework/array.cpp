@@ -1,3 +1,4 @@
+/*
 #include "array.h"
 
 template <class T>
@@ -6,6 +7,7 @@ Array<T>::Array(int length)
     array = new T *[length]();
     this->length = length;
 }
+
 template <class T>
 Array<T>::Array(Array<T> &copy)
 {
@@ -18,6 +20,8 @@ Array<T>::Array(Array<T> &copy)
             array[i] = new T(*copy[i]);
     }
 }
+
+
 template <class T>
 void Array<T>::deleteAll()
 {
@@ -66,7 +70,7 @@ void Array<T>::setLength(int newLength)
     {
         deleteAll();
         delete[] array;
-        array = new T[newLength];
+        array = new T *[newLength];
         for (int i = 0; i < newLength; i++)
         {
             array[i] = NULL;
@@ -91,7 +95,7 @@ T *Array<T>::getIndex(int i)
     }
 }
 template <class T>
-T *Array<T>::operator[](int i)
+T *&Array<T>::operator[](int i)
 {
     if (i >= 0 && i < length)
     {
@@ -211,4 +215,40 @@ string to_string(Array<T> array)
 
     obj += " ]";
     return obj;
+}
+*/
+
+#include "array.h"
+#include "../shape/Shape.h"
+
+string to_string(Array<Shape> &array)
+{
+    string obj = "[ ";
+    for (int i = 0; i < array.getLength(); i++)
+    {
+        if (array[i])
+        {
+            obj += to_string(array[i]);
+        }
+        else
+            obj += "NULL";
+        if (i != array.getLength() - 1)
+            obj += ", ";
+    }
+
+    obj += " ]";
+    return obj;
+}
+
+template <>
+Array<Shape>::Array(Array<Shape> &copy)
+{
+    array = new Shape *[copy.length]();
+    this->length = copy.length;
+
+    for (int i = 0; i < length; i++)
+    {
+        if (copy[i])
+            array[i] = copy[i]->clone();
+    }
 }

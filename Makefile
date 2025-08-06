@@ -11,8 +11,9 @@ SRC =loggerOCI/OCI.cpp \
 	factories/SquareFactory.cpp \
 	shape/Textbox.cpp \
 	factories/TextboxFactory.cpp \
-	memento/Memento.cpp
-
+	memento/Memento.cpp \
+	testingFramework/array.cpp\
+	shape/shape.cpp 
 
 HEADERS = \
 	OCI.h \
