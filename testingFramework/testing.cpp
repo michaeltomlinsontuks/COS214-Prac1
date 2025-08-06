@@ -1,79 +1,119 @@
 #include "testing.h"
 
-// ############################ testing code ############################
+// ############################ Testing code ############################
 template <class T, class J>
-testing<T, J>::testing(T *testObject, J *correctObject) : testObject(testObject), correctObject(correctObject)
+Testing<T, J>::Testing(T testObject, J correctObject)
 {
-    this->passes = 0;
-    this->fails = 0;
+    this->testObject = new T(testObject);
+    this->correctObject = new J(correctObject);
+    testSuites = new Array<Suite<T, J>>(0);
 }
 
 template <class T, class j>
-testing<T, j>::~testing()
+Testing<T, j>::~Testing()
 {
     delete testObject;
     delete correctObject;
+    delete testSuites;
 }
 
 template <class T, class J>
-T *testing<T, J>::getTestObj()
+T *Testing<T, J>::getTestObj()
 {
     return testObject;
 }
 
 template <class T, class J>
-J *testing<T, J>::getCorrectObj()
+J *Testing<T, J>::getCorrectObj()
 {
     return correctObject;
 }
 template <class T, class J>
-void testing<T, J>::createTestSuite(string SuiteName, Array<string> testsToRun)
+void Testing<T, J>::createTestSuite(Array<string> testsToRun, string suiteName)
 {
-    Suite<T, J> *testSuite = new Suite<T, J>(SuiteName, testsToRun, testObject, correctObject);
-    testSuites->insertNewItem(testSuite);
+    Suite<T, J> nSuite(testsToRun, testObject, correctObject, suiteName);
+    testSuites->insertNewItem(nSuite);
+}
+template <class T, class J>
+Suite<T, J> *Testing<T, J>::getSuite(int i)
+{
+    return testSuites[i];
 }
 
 // ################################ Suite code ############################################
 template <class T, class J>
-Suite<T, J>::Suite(Array<string> testsToRun, T *testObj, J *correctObj, string suiteName) : testObj(*testObj), correctObj(*correctObj)
+Suite<T, J>::Suite(Array<string> &testsToRun, T *testObj, J *correctObj, string suiteName)
 {
 
     this->passes = 0;
     this->fails = 0;
-
+    this->testObj = new T(*testObj);
+    this->correctObj = new J(*correctObj);
     this->suiteName = suiteName;
+    runTests(testsToRun);
+}
+template <class T, class J>
+Suite<T, J>::Suite(Array<string> &testsToRun, T testObj, J correctObj, string suiteName)
+{
+
+    this->passes = 0;
+    this->fails = 0;
+    this->testObj = new T(testObj);
+    this->correctObj = new J(correctObj);
+    this->suiteName = suiteName;
+
+    runTests(testsToRun);
+}
+template <class T, class J>
+Suite<T, J>::Suite(Suite<T, J> &copy)
+{
+    passes = copy.passes;
+    fails = copy.fails;
+    testObj = new T(*copy.testObj);
+    correctObj = new J(*copy.correctObj);
+}
+
+template <class T, class J>
+void Suite<T, J>::runTests(Array<string> &testsToRun)
+{
     cout << +RED "\nStarting test suite " << suiteName + RESET << endl;
     for (int i = 0; i < testsToRun.getLength(); i++)
     {
 
-        if (testsToRun[i] == "==")
+        if (*testsToRun[i] == "==")
             equalsTest();
-        else if (testsToRun[i] == "TC")
+        else if (*testsToRun[i] == "TC")
         {
             textCompare();
         }
-        else if ((testsToRun[i]).substr(0, 3) == "TC=")
+        else
         {
-            string testStr = testsToRun[i].substr(4, testsToRun[i].length() - 1);
-            testCompare(testStr);
+            cout << "Illegitimate string given" << endl;
         }
     }
 }
+
 template <class T, class J>
 Suite<T, J>::~Suite()
 {
-    // dont delete testobj and correctObj
-    cout << this->suiteName << " Finished with " << passes << " passes and " << fails << " fails\n"
-         << endl;
+    delete testObj;
+    delete correctObj;
 }
 // prints the states upon deletion
 // requires that T and J have to_String() overloaded
 template <class T, class J>
 void Suite<T, J>::textCompare()
 {
+    textCompare(*testObj, *correctObj);
+}
+
+template <class T, class J>
+template <class X, class Y>
+void Suite<T, J>::textCompare(X &lhs, Y &rhs)
+{
     cout << "\nRunning text compare" << endl;
-    string tstString = to_string(testObj);
-    string corString = to_string(correctObj);
+    string tstString = to_string(lhs);
+    string corString = to_string(rhs);
     string output = "";
     bool testPassed = true;
     int index = 0;
@@ -108,15 +148,16 @@ void Suite<T, J>::textCompare()
 }
 
 template <class T, class J>
-void Suite<T, J>::testCompare(string testAgainst)
-{
-}
-
-template <class T, class J>
 void Suite<T, J>::equalsTest()
 {
+    equalsTest(*testObj, *correctObj);
+}
+template <class T, class J>
+template <class X, class Y>
+void Suite<T, J>::equalsTest(X &lhs, Y &rhs) // makes use of a copy constuctor
+{
     cout << "\nStarting equals test" << endl;
-    if (testObj == correctObj)
+    if (lhs == rhs)
     {
         passes++;
         cout << GREEN << "Items are equal" << RESET << endl;
@@ -131,9 +172,24 @@ void Suite<T, J>::equalsTest()
          << endl;
 }
 template <class T, class J>
-template <class X, class Y>
-void Suite<T, J>::equalsTest(X lhs, Y rhs) // makes use of a copy constuctor
+Suite<T, J> &Suite<T, J>::operator=(Suite<T, J> &copy)
 {
+
+    if (this == &copy)
+    {
+        return *this;
+    }
+    delete testObj;
+    delete correctObj;
+
+    testObj = new T(*copy.testObj);
+    correctObj = new J(*copy.correctObj);
+
+    passes = copy.passes;
+    fails = copy.fails;
+    suiteName = copy.suiteName;
+
+    return *this;
 }
 
 template <class T, class J>
@@ -159,4 +215,18 @@ string Suite<T, J>::printRed(int &index, string tstString, string corString)
 
     output += RESET;
     return output;
+}
+template <class T, class J>
+void Suite<T, J>::setTest(T *testObj)
+{
+
+    delete testObj;
+    testObj = new T(*testObj);
+    // makes a copy
+}
+template <class T, class J>
+void Suite<T, J>::setCorrect(J *corrObj)
+{
+    delete correctObj;
+    correctObj = new J(*correctObj);
 }
