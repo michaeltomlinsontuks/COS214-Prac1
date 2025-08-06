@@ -53,3 +53,7 @@
 TestingFramework
 
 vgcore.*
+
+*.log
+
+app

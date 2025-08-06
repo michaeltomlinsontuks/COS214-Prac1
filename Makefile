@@ -1,16 +1,18 @@
 CXX = g++
-CXXFLAGS = -std=c++17 -Wall -Wextra -g
+CXXFLAGS = -std=c++11 -g
 
 SRC = \
 	OCI.cpp \
+	testMain.cpp\
+	Logger.cpp\
 	Canvas.cpp \
 	Rectangle.cpp \
 	RectangleFactory.cpp \
 	Square.cpp \
 	SquareFactory.cpp \
 	Textbox.cpp \
-	TextboxFactory.cpp \
-	Logger.cpp \
+	TextboxFactory.cpp 
+
 
 HEADERS = \
 	OCI.h \
@@ -28,11 +30,22 @@ HEADERS = \
 	ShapeFactory.h \
 	ANSI-color-codes.h
 
-all: main
+OBJ := $(SRC:.cpp=.o)
+BIN := app
 
-main: $(SRC) testMain.cpp $(HEADERS)
-	$(CXX) $(CXXFLAGS) $(SRC) testMain.cpp -o testMain
+all: $(BIN)
 
-clean:
-	rm -f testMain *.o
+$(BIN):	$(OBJ)
+	$(CXX) $(CXXFLAGS) -o $@ $^
 
+%.o:	%.cpp
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+run r:	$(BIN)
+	./$(BIN)
+
+clean c:
+	rm -f $(OBJ) $(BIN) vgcore.*
+ 
+valgrind v:	$(BIN)
+	valgrind --leak-check=full --track-origins=yes ./$(BIN)

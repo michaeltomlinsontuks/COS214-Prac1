@@ -439,8 +439,6 @@ int OCI::validateNumberInput(const int max) const {
     std::cin >> input;
     logger->info("User input (number): " + std::to_string(input));
     if (std::cin.fail() || input < 0 || input > max) {
-        std::cin.clear();
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         logger->error("Invalid input: not an integer in range 0-" + std::to_string(max));
         std::cout << "Error: Please enter a valid number between 0 and " << max << ".\n";
         return -1;
