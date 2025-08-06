@@ -2,17 +2,19 @@
 #define MEMENTO_H
 
 #include "../shape/Shape.h"
-
+#include "../testingFramework/array.h"
 class Memento {
 
-public:
-	Shape* shapes;
-
-public:
-	Memento(Shape* elements);
-
 private:
+	Array<Shape>* shapes;
+
+public:
+	Memento(vector<Shape*>& elements);
 	Memento(Memento& copy);
+	// add to diagram 
+	~Memento();
+	
+
 };
 
 #endif

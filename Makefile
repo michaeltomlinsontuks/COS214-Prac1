@@ -10,7 +10,8 @@ SRC =loggerOCI/OCI.cpp \
 	shape/Square.cpp \
 	factories/SquareFactory.cpp \
 	shape/Textbox.cpp \
-	factories/TextboxFactory.cpp 
+	factories/TextboxFactory.cpp \
+	memento/Memento.cpp
 
 
 HEADERS = \
