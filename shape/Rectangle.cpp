@@ -10,7 +10,7 @@ Rectangle::Rectangle(int length, int width, const string& colour, int position_x
     Logger::getInstance()->info("Rectangle created with values: length = " + std::to_string(length) + ", width = " + std::to_string(width) + ", colour = " + colour + ", position_x = " + std::to_string(position_x) + ", position_y = " + std::to_string(position_y));
 }
 
-Rectangle::Rectangle(const Rectangle& copy)
+Rectangle::Rectangle(const Shape* copy)
     : Shape(copy) {
     Logger::getInstance()->info("Rectangle copied with values: length = " + std::to_string(copy.length) + ", width = " + std::to_string(copy.width) + ", colour = " + copy.colour + ", position_x = " + std::to_string(copy.position_x) + ", position_y = " + std::to_string(copy.position_y));
 }

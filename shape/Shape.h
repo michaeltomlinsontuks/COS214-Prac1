@@ -13,6 +13,10 @@ using std::vector;
 class Shape
 {
     // Changed this to protected because I can't do the Shape-based functions without these fields
+
+    // remove this when getters added
+    friend string to_string(const Shape *);
+
 protected:
     int length;
     int width;
@@ -23,8 +27,13 @@ protected:
         : length(length), width(width), colour(colour), position_x(position_x), position_y(position_y) {}
 
     // add to diagram
-    Shape(Shape &copy)
-        : length(copy.length), width(copy.width), colour(copy.colour), position_x(copy.position_x), position_y(copy.position_y) {}
+    Shape(Shape *copy)
+        : length(copy->length), width(copy->width), colour(copy->colour), position_x(copy->position_x), position_y(copy->position_y) {}
+
+    bool operator==(Shape *copy)
+    {
+        return (copy->length == length && copy->width == width && copy->position_x == position_x && copy->position_y == position_y && copy->colour == colour);
+    }
 
 public:
     int getPositionX() const { return position_x; }
@@ -33,5 +42,19 @@ public:
     virtual vector<vector<CanvasCell>> draw() = 0;
     virtual ~Shape() {}
 };
+
+// change with the getters
+string to_string(const Shape *shape)
+{
+    string output = "";
+    output += "Length: " + std::to_string(shape->length) + "\n";
+    output += "Width: " + std::to_string(shape->width) + "\n";
+    output += "Position X: " + std::to_string(shape->getPositionX()) + "\n";
+    output += "Position Y: " + std::to_string(shape->getPositionY()) + "\n";
+    output += "Colour: " + std::to_string(shape->getPositionX()) + "\n";
+
+    return output;
+}
+// change with the getters
 
 #endif

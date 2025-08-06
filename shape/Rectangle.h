@@ -13,7 +13,7 @@ friend class RectangleFactory;
 
 private:
     Rectangle(int length, int width, const string& colour, int position_x, int position_y);
-    Rectangle(const Rectangle& copy);
+    Rectangle(const Shape* copy);
 
 public:
     Shape* clone() override;
