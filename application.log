@@ -1,15 +1,8 @@
-[2025-08-06 14:47:07] [INFO] User input (number): 1
-[2025-08-06 14:47:08] [INFO] User input (number): 1
-[2025-08-06 14:47:09] [INFO] User input (number): 1
-[2025-08-06 14:47:10] [INFO] User input (number): 1
-[2025-08-06 14:47:13] [INFO] Canvas::addShape called with shapeType = 1, length = 4, width = 4, colour = [0;101m, x = 4, y = 4, text = 
-[2025-08-06 14:47:13] [INFO] Rectangle created with values: length = 4, width = 4, colour = [0;101m, position_x = 4, position_y = 4
-[2025-08-06 14:47:15] [INFO] User input (number): 0
-[2025-08-06 14:47:17] [INFO] User input (number): 2
-[2025-08-06 14:47:18] [INFO] User input (number): 2
-[2025-08-06 14:47:18] [INFO] Canvas::draw called
-[2025-08-06 14:47:18] [INFO] Rectangle drawn with values: length = 4, width = 4, colour = [0;101m, position_x = 4, position_y = 4
-[2025-08-06 14:47:20] [INFO] User input (number): 1
-[2025-08-06 14:47:20] [INFO] Canvas::clear called
-[2025-08-06 14:47:21] [INFO] User input (number): 2
-[2025-08-06 14:47:21] [INFO] Canvas::draw called
+[2025-08-06 17:02:54] [INFO] User input (number): -1
+[2025-08-06 17:02:54] [ERROR] Invalid input: not an integer in range 0-4
+[2025-08-06 17:02:56] [INFO] User input (number): -1
+[2025-08-06 17:02:56] [ERROR] Invalid input: not an integer in range 0-4
+[2025-08-06 17:02:57] [INFO] User input (number): -1
+[2025-08-06 17:02:57] [ERROR] Invalid input: not an integer in range 0-4
+[2025-08-06 17:02:58] [INFO] User input (number): -1
+[2025-08-06 17:02:58] [ERROR] Invalid input: not an integer in range 0-4
