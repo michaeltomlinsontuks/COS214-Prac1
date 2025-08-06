@@ -1,7 +1,7 @@
 #ifndef SHAPEFACTORY_H
 #define SHAPEFACTORY_H
 
-#include "Shape.h"
+#include "../shape/Shape.h"
 
 class ShapeFactory {
 public:

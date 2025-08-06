@@ -50,10 +50,9 @@
 # debug information files
 *.dwo
 
-TestingFramework
 
 vgcore.*
 
 *.log
 
-app
+app  

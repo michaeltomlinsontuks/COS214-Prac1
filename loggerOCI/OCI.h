@@ -5,7 +5,7 @@
 #include <string>
 #include "Logger.h"
 #include "ANSI-color-codes.h"
-#include "Canvas.h"
+#include "../canvas/Canvas.h"
 
 
 class OCI {

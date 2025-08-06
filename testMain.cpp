@@ -3,14 +3,18 @@
 //
 #include <iostream>
 #include <string>
-#include "ANSI-color-codes.h"
-#include "OCI.h"
+#include "loggerOCI/ANSI-color-codes.h"
+#include "loggerOCI/OCI.h"
 
-int main() {
-    try {
+int main()
+{
+    try
+    {
         OCI oci;
         oci.run();
-    } catch (const char* msg) {
+    }
+    catch (const char *msg)
+    {
         std::cerr << "Exception: " << msg << std::endl;
     }
     return 0;

@@ -1,17 +1,16 @@
 CXX = g++
 CXXFLAGS = -std=c++11 -g
 
-SRC = \
-	OCI.cpp \
+SRC =loggerOCI/OCI.cpp \
 	testMain.cpp\
-	Logger.cpp\
-	Canvas.cpp \
-	Rectangle.cpp \
-	RectangleFactory.cpp \
-	Square.cpp \
-	SquareFactory.cpp \
-	Textbox.cpp \
-	TextboxFactory.cpp 
+	loggerOCI/Logger.cpp\
+	canvas/Canvas.cpp \
+	shape/Rectangle.cpp \
+	factories/RectangleFactory.cpp \
+	shape/Square.cpp \
+	factories/SquareFactory.cpp \
+	shape/Textbox.cpp \
+	factories/TextboxFactory.cpp 
 
 
 HEADERS = \
