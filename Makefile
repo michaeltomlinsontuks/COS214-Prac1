@@ -13,7 +13,8 @@ SRC =loggerOCI/OCI.cpp \
 	factories/TextboxFactory.cpp \
 	memento/Memento.cpp \
 	testingFramework/array.cpp\
-	shape/shape.cpp 
+	shape/shape.cpp \
+	memento/Caretaker.cpp
 
 HEADERS = \
 	OCI.h \

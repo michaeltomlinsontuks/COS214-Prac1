@@ -37,7 +37,7 @@ void Testing<T, J>::createTestSuite(Array<string> testsToRun, string suiteName)
 template <class T, class J>
 Suite<T, J> *Testing<T, J>::getSuite(int i)
 {
-    return testSuites[i];
+    return (*testSuites)[i];
 }
 
 // ################################ Suite code ############################################

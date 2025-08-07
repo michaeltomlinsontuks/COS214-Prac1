@@ -13,6 +13,7 @@ class Array
 {
 public:
     Array(int length);
+    Array();
     Array(Array<T> &copy);
     ~Array();
 
@@ -30,6 +31,7 @@ public:
     int getLength() const;
     void insertNewItem(T &newItem);
     void insert(T item);
+    T *pop();
 
 private:
     T **array;
@@ -49,6 +51,12 @@ Array<T>::Array(int length)
 {
     array = new T *[length]();
     this->length = length;
+}
+template <class T>
+Array<T>::Array()
+{
+    array = new T *[0]();
+    this->length = 0;
 }
 
 template <class T>
@@ -241,9 +249,21 @@ void Array<T>::insert(T item)
     insertNewItem(item);
 }
 
-// These specializations and non-template functions must be moved to a .cpp file.
-// template <>
-// Array<Shape>::Array(const Array<Shape> &copy);
-// string to_string(Array<Shape> array);
+template <class T>
+T *Array<T>::pop()
+// pop the last item in the array
+{
+    for (int i = length - 1; i >= 0; i--)
+    {
+        if (array[i] != NULL)
+        {
+            T *copy = array[i];
+            array[i] = NULL;
+            return copy;
+        }
+    }
+
+    return NULL;
+}
 
 #endif

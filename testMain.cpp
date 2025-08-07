@@ -6,7 +6,7 @@
 #include "loggerOCI/ANSI-color-codes.h"
 #include "loggerOCI/OCI.h"
 #include "testingFramework/testing.h"
-
+#include "memento/Caretaker.h"
 void wilmarTesting();
 
 int main()
@@ -42,9 +42,19 @@ void wilmarTesting()
     Testing<Memento, Memento> testingMemento(mem, mem);
     testingMemento.createTestSuite(arrInstruction, "Memento test suite");
 
+    Suite<Memento, Memento> *TS = testingMemento.getSuite(0);
+    Caretaker careTakerTest;
+
+    careTakerTest.addMemento(mem);
+
+    Memento *copy = careTakerTest.getMemento();
+    TS->textCompare(*copy, mem);
+    TS->equalsTest(*copy, mem);
+
     for (int i = 0; i < elements->size(); i++)
     {
         delete elements->operator[](i);
     }
+    delete copy;
     delete elements;
 }
