@@ -142,7 +142,7 @@ void Suite<T, J>::textCompare(X &lhs, Y &rhs)
     if (testPassed)
         passes++;
 
-    cout << "The output was " << output << "\nThe output should be " << GREEN << corString << RESET << endl;
+    cout << "The output was \n" << output << "\nThe output should be \n" << GREEN << corString << RESET << endl;
     cout << "Text compare finished\n"
          << endl;
 }
