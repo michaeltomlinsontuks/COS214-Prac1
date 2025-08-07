@@ -9,3 +9,6 @@ Rectangle::Rectangle(const Shape *copy)
 // our responsibility to make sure a square doesnt use the rectangles copy contructor (even though it would work)
 
 Add all the getters and setters for shapes *michael job :)
+
+note to self after memento testing make it so that only canvas can change things in memento,
+make more things private, 
