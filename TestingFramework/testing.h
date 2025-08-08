@@ -3,12 +3,8 @@
 #include <iostream>
 #include <string>
 #include "array.h"
+#include "../interface/ANSI-color-codes.h"
 using namespace std;
-
-#define RED "\033[31m"
-#define YELLOW "\033[33m"
-#define RESET "\033[0m"
-#define GREEN "\033[32m"
 
 /*
 All classes put into T and J must have overloads of

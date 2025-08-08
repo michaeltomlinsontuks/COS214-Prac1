@@ -11,12 +11,11 @@ run.
 */
 
 #include <iostream>
-#include "ShapeFactory.h"
-#include "RectangleFactory.h"
-#include "SquareFactory.h"
-#include "TextboxFactory.h"
+#include "interface/OCI.h"
 using namespace std;
 
 int main() {
+    OCI oci;
+    oci.run();
     return 0;
 }

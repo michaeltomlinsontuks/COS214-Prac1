@@ -4,22 +4,49 @@
 #include <vector>
 #include "../shapes/Shape.h"
 #include "../memento/Memento.h"
+#include "../factories/RectangleFactory.h"
+#include "../factories/SquareFactory.h"
+#include "../factories/TextboxFactory.h"
+#include <string>
+#include <iostream>
+#include "../interface/ANSI-color-codes.h"
+#include "CanvasCell.h"
 
-// =============================
-// Factory Method, Prototype, Memento
-// Canvas class holds all shape elements added to the canvas. It is responsible for managing the collection of shapes and supports Memento pattern methods for undo functionality.
-// =============================
-
-class Canvas
-{
-    friend Memento;
+class Canvas {
 
 private:
-    std::vector<Shape *> shapes;
+	vector<Shape*> shapes;
+	std::vector<std::vector<CanvasCell>> canvas;
+	int width;
+	int height;
+	std::string canvasColour;
+
+	void drawBorder();
 
 public:
-    Memento *captureCurrent() const;
-    void undoAction(Memento *prev);
+	Memento* captureCurrent();
+
+	void undoAction(Memento* prev);
+
+	Canvas();
+
+	~Canvas();
+
+	Shape* addShape(int shapeType, int length, int width, const std::string& colour, int x, int y, const std::string& text = "");
+
+	void removeShape(int shapeId);
+
+	void duplicateShape(int shapeId);
+
+	vector<Shape*> getShapeList();
+
+	Shape* getShapeInfo(int shapeId);
+
+	void clear();
+
+	void draw();
+
+	void generateCanvas();
 };
 
-#endif // CANVAS_H
+#endif

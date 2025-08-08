@@ -1,19 +1,28 @@
 #ifndef TEXTBOX_H
 #define TEXTBOX_H
 
-#include "Shape.h"
+#include <vector>
 #include <string>
+#include "Shape.h"
+#include "../canvas/CanvasCell.h"
+using std::vector;
+using std::string;
 
-// =============================
-// Factory Method, Prototype
-// Textbox is a concrete product class representing textboxes. Inherits from Shape, adds a text attribute, and implements clone().
-// =============================
+class TextboxFactory; // Forward declaration
 
 class Textbox : public Shape {
+
+friend class TextboxFactory;
+
 private:
-    std::string text; // Text content of the textbox
+    Textbox(int length, int width, const string& colour, int position_x, int position_y, const string& text);
+    Textbox(const Textbox& copy);
+
 public:
-    Shape* clone() const override; // Prototype pattern method
+    string text;
+    Shape* clone() override;
+    ~Textbox() override;
+    vector<vector<CanvasCell>> draw() override;
 };
 
-#endif // TEXTBOX_H
+#endif
