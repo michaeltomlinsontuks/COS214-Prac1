@@ -41,7 +41,6 @@ void wilmarTesting()
     arrInstruction.insert("==");
     Testing<Memento, Memento> testingMemento(mem, mem);
     testingMemento.createTestSuite(arrInstruction, "Memento test suite");
-
     Suite<Memento, Memento> *TS = testingMemento.getSuite(0);
     Caretaker careTakerTest;
 

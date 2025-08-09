@@ -21,6 +21,7 @@ private:
     int position_y;
 
 protected:
+
     Shape(int length = 0, int width = 0, const string& colour = "", int position_x = 0, int position_y = 0)
         : length(length), width(width), colour(colour), position_x(position_x), position_y(position_y) {}
     Shape(const Shape *copy)
