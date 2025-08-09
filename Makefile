@@ -1,7 +1,7 @@
 CXX := g++
 CXXFLAGS := -g -std=c++11
 
-SRC := TestingMain.cpp  #<cpp files to run> do not put testing.cpp here
+SRC := testMain.cpp  #<cpp files to run> do not put testing.cpp here
 OBJ := $(SRC:.cpp=.o)
 BIN := canvasApp
 
@@ -13,7 +13,9 @@ DEMO_SRC := DemoMain.cpp \
     shapes/Rectangle.cpp shapes/Square.cpp shapes/Textbox.cpp shapes/Shape.cpp \
     factories/RectangleFactory.cpp factories/SquareFactory.cpp factories/TextboxFactory.cpp \
     exporter/ExportCanvas.cpp exporter/PDFExporter.cpp exporter/PNGExporter.cpp \
-    memento/Caretaker.cpp memento/Memento.cpp
+    memento/Caretaker.cpp memento/Memento.cpp\
+	TestingFramework/array.cpp
+
 DEMO_OBJ := $(DEMO_SRC:.cpp=.o)
 DEMO_BIN := demoApp
 
