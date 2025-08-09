@@ -7,6 +7,9 @@
 #include "ANSI-color-codes.h"
 #include "../canvas/Canvas.h"
 
+// Forward declaration for main
+int main();
+
 
 class OCI {
 
@@ -14,6 +17,8 @@ private:
 	Logger* logger;
 	bool running;
 	Canvas* canvas; // Add Canvas pointer
+
+	friend int ::main(); // Allow main() in DemoMain.cpp to access private/protected members
 
 public:
 	OCI();

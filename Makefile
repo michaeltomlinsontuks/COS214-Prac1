@@ -76,4 +76,35 @@ coverage cov: all
           --exclude '.*loggerOCI/.*' \
           --print-summary > coverage.txt
 
-# Clean coverage artifacts
+# --- Demo build and run ---
+DEMO_SRC = loggerOCI/OCI.cpp \
+      DemoMain.cpp \
+      loggerOCI/Logger.cpp \
+      canvas/Canvas.cpp \
+      shapes/Rectangle.cpp \
+      factories/RectangleFactory.cpp \
+      shapes/Square.cpp \
+      factories/SquareFactory.cpp \
+      shapes/Textbox.cpp \
+      factories/TextboxFactory.cpp \
+      memento/Memento.cpp \
+      TestingFramework/array.cpp \
+      shapes/Shape.cpp \
+      memento/Caretaker.cpp \
+      exporter/PDFExporter.cpp \
+      exporter/ExportCanvas.cpp \
+      exporter/PNGExporter.cpp
+
+DEMO_OBJ := $(DEMO_SRC:.cpp=.o)
+DEMO_BIN := demo
+
+demo: $(DEMO_BIN)
+
+$(DEMO_BIN): $(DEMO_OBJ)
+	$(CXX) $(CXXFLAGS) -o $@ $^
+
+run-demo:
+	./$(DEMO_BIN)
+
+leak: $(DEMO_BIN)
+	valgrind --leak-check=full --track-origins=yes ./$(DEMO_BIN)

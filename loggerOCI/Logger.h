@@ -32,6 +32,8 @@ private:
 
 	void writeToFile(const std::string& message);
 
+	std::string removeColourCodes(const std::string& input);
+
 public:
 	static Logger* getInstance(const std::string& filename = "application.log");
 
