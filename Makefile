@@ -3,7 +3,7 @@ CXXFLAGS = -Wall -Wextra -std=c++11 -g --coverage
 LDFLAGS = -lgcov
 
 SRC = loggerOCI/OCI.cpp \
-      testMain.cpp \
+      TestingMain.cpp \
       loggerOCI/Logger.cpp \
       canvas/Canvas.cpp \
       shapes/Rectangle.cpp \
