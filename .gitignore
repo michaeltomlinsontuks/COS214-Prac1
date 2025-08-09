@@ -135,6 +135,7 @@ vgcore.*
 *~
 # Optional: exclude compiled test binaries
 test*
+demo
 
 *.gz
 
