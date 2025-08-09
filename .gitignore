@@ -104,3 +104,5 @@ vgcore.*
 *.log
 
 app  
+
+.txt
