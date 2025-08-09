@@ -37,7 +37,7 @@ void Testing<T, J>::createTestSuite(Array<string> testsToRun, string suiteName)
 template <class T, class J>
 Suite<T, J> *Testing<T, J>::getSuite(int i)
 {
-    return (*testSuites)[i];
+    return testSuites[i];
 }
 
 // ################################ Suite code ############################################
@@ -74,9 +74,9 @@ Suite<T, J>::Suite(Suite<T, J> &copy)
 }
 
 template <class T, class J>
-void Suite<T, J>::runTests(Array<string> &testsToRun)
+void Suite<T, J>::runTests(Array<string>& testsToRun)
 {
-    cout << +RED "\nStarting test suite " << suiteName + RESET << endl;
+    cout << +RED "\nStarting test suite " << suiteName + CRESET << endl;
     for (int i = 0; i < testsToRun.getLength(); i++)
     {
 
@@ -136,13 +136,13 @@ void Suite<T, J>::textCompare(X &lhs, Y &rhs)
 
     if (tstString.length() != output.length())
     {
-        output += YELLOW + tstString.substr(index, tstString.length() - index) + RESET;
+        output += YEL + tstString.substr(index, tstString.length() - index) + CRESET;
     }
 
     if (testPassed)
         passes++;
 
-    cout << "The output was \n" << output << "\nThe output should be \n" << GREEN << corString << RESET << endl;
+    cout << "The output was " << output << "\nThe output should be " << GRN << corString << CRESET << endl;
     cout << "Text compare finished\n"
          << endl;
 }
@@ -160,12 +160,12 @@ void Suite<T, J>::equalsTest(X &lhs, Y &rhs) // makes use of a copy constuctor
     if (lhs == rhs)
     {
         passes++;
-        cout << GREEN << "Items are equal" << RESET << endl;
+        cout << GRN << "Items are equal" << CRESET << endl;
     }
     else
     {
         fails++;
-        cout << RED << "Items are not equal" << RESET << endl;
+        cout << RED << "Items are not equal" << CRESET << endl;
     }
 
     cout << "ending equals test\n"
@@ -195,13 +195,13 @@ Suite<T, J> &Suite<T, J>::operator=(Suite<T, J> &copy)
 template <class T, class J>
 string Suite<T, J>::printGreen(int &index, string tstString, string corString)
 {
-    string output = GREEN;
+    string output = GRN;
     while (index < tstString.length() && index < corString.length() && tstString[index] == corString[index])
     {
         output += tstString[index++];
     }
 
-    output += RESET;
+    output += CRESET;
     return output;
 }
 template <class T, class J>
@@ -213,7 +213,7 @@ string Suite<T, J>::printRed(int &index, string tstString, string corString)
         output += tstString[index++];
     }
 
-    output += RESET;
+    output += CRESET;
     return output;
 }
 template <class T, class J>

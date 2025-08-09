@@ -1,6 +1,8 @@
 #ifndef EXPORTCANVAS_H
 #define EXPORTCANVAS_H
 
+#include "../canvas/Canvas.h"
+
 class ExportCanvas {
 
 private:

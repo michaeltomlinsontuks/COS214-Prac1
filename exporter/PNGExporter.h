@@ -1,8 +1,9 @@
 #ifndef PNGEXPORTER_H
 #define PNGEXPORTER_H
 
+#include "ExportCanvas.h"
 
-class PNGExporter : ExportCanvas {
+class PNGExporter : public ExportCanvas {
 
 
 private:

@@ -2,14 +2,13 @@
 #define RECTANGLEFACTORY_H
 
 #include "ShapeFactory.h"
-#include "../shape/Rectangle.h"
+#include "../shapes/Rectangle.h"
 
 class RectangleFactory : ShapeFactory {
 
 
 public:
     RectangleFactory() = default;
-    
     Shape* createShape(int length, int width, const std::string& colour, int position_x, int position_y);
 
 	void toString();
