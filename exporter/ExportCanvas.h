@@ -3,20 +3,21 @@
 
 #include "../canvas/Canvas.h"
 
-class ExportCanvas {
+class ExportCanvas
+{
 
 private:
-	Canvas* canvas;
+	Canvas *canvas;
 
 public:
 	void exportToFile();
 
 private:
-	void prepareCanvas();
+	virtual void prepareCanvas() = 0;
 
-	void renderElements();
+	virtual void renderElements() = 0;
 
-	void saveToFile();
+	virtual void saveToFile() = 0;
 };
 
 #endif
