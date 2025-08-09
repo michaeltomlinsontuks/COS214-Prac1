@@ -19,6 +19,7 @@ private:
     Textbox(const Textbox& copy);
 
 public:
+// why text public
     string text;
     Shape* clone() override;
     ~Textbox() override;
