@@ -1,41 +1,41 @@
 CXX = g++
-CXXFLAGS =  -std=c++11 
+CXXFLAGS = -Wall -Wextra -std=c++11 -g --coverage 
 LDFLAGS = -lgcov
 
 
-SRC =    TestingMain.cpp 
-      #loggerOCI/OCI.cpp \  
-      #loggerOCI/Logger.cpp \
-      #canvas/Canvas.cpp \
-      #shapes/Rectangle.cpp \
-      #factories/RectangleFactory.cpp \
-      #shapes/Square.cpp \
-      #factories/SquareFactory.cpp \
-      #shapes/Textbox.cpp \
-      #factories/TextboxFactory.cpp \
-      #memento/Memento.cpp \
-      #TestingFramework/array.cpp \
-      #shapes/Shape.cpp \
-      #memento/Caretaker.cpp \
-      #exporter/PDFExporter.cpp \
-      #exporter/ExportCanvas.cpp \
-      #exporter/PNGExporter.cpp
+SRC =	TestingMain.cpp\
+	loggerOCI/OCI.cpp\
+	loggerOCI/Logger.cpp \
+	canvas/Canvas.cpp \
+	shapes/Rectangle.cpp \
+	factories/RectangleFactory.cpp \
+	shapes/Square.cpp \
+	factories/SquareFactory.cpp \
+	shapes/Textbox.cpp \
+	factories/TextboxFactory.cpp \
+	memento/Memento.cpp \
+	TestingFramework/array.cpp \
+	shapes/Shape.cpp \
+	memento/Caretaker.cpp \
+	exporter/PDFExporter.cpp \
+	exporter/ExportCanvas.cpp \
+	exporter/PNGExporter.cpp
 
 HEADERS = \
-      OCI.h \
-      Canvas.h \
-      Rectangle.h \
-      RectangleFactory.h \
-      Square.h \
-      SquareFactory.h \
-      Textbox.h \
-      TextboxFactory.h \
-      Logger.h \
-      Memento.h \
-      Caretaker.h \
-      Shape.h \
-      ShapeFactory.h \
-      ANSI-color-codes.h
+	OCI.h \
+	Canvas.h \
+	Rectangle.h \
+	RectangleFactory.h \
+	Square.h \
+	SquareFactory.h \
+	Textbox.h \
+	TextboxFactory.h \
+	Logger.h \
+	Memento.h \
+	Caretaker.h \
+	Shape.h \
+	ShapeFactory.h \
+	ANSI-color-codes.h
 
 OBJ := $(SRC:.cpp=.o)
 BIN := app
@@ -72,29 +72,29 @@ valgrind v: $(BIN)
 coverage cov: all
 	./$(BIN)
 	gcovr --root . \
-          --exclude '.*\.h' \
-          --exclude '.*TestingFramework/.*' \
-          --exclude '.*loggerOCI/.*' \
-          --print-summary > coverage.txt
+	    --exclude '.*\.h' \
+	    --exclude '.*TestingFramework/.*' \
+	    --exclude '.*loggerOCI/.*' \
+	    --print-summary > coverage.txt
 
-# --- Demo build and run ---
+
 DEMO_SRC = loggerOCI/OCI.cpp \
-      DemoMain.cpp \
-      loggerOCI/Logger.cpp \
-      canvas/Canvas.cpp \
-      shapes/Rectangle.cpp \
-      factories/RectangleFactory.cpp \
-      shapes/Square.cpp \
-      factories/SquareFactory.cpp \
-      shapes/Textbox.cpp \
-      factories/TextboxFactory.cpp \
-      memento/Memento.cpp \
-      TestingFramework/array.cpp \
-      shapes/Shape.cpp \
-      memento/Caretaker.cpp \
-      exporter/PDFExporter.cpp \
-      exporter/ExportCanvas.cpp \
-      exporter/PNGExporter.cpp
+	DemoMain.cpp \
+	loggerOCI/Logger.cpp \
+	canvas/Canvas.cpp \
+	shapes/Rectangle.cpp \
+	factories/RectangleFactory.cpp \
+	shapes/Square.cpp \
+	factories/SquareFactory.cpp \
+	shapes/Textbox.cpp \
+	factories/TextboxFactory.cpp \
+	memento/Memento.cpp \
+	TestingFramework/array.cpp \
+	shapes/Shape.cpp \
+	memento/Caretaker.cpp \
+	exporter/PDFExporter.cpp \
+	exporter/ExportCanvas.cpp \
+	exporter/PNGExporter.cpp
 
 DEMO_OBJ := $(DEMO_SRC:.cpp=.o)
 DEMO_BIN := demo
