@@ -9,7 +9,7 @@ private:
 public:
     Caretaker();
     ~Caretaker();
-    void addMemento(Memento &memento);
+    void addMemento(Memento *memento);
     Memento *getMemento();
 };
 

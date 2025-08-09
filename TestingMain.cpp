@@ -45,7 +45,7 @@ void wilmarTesting()
     for (int i = 1; i < 4; i++)
     {
 
-        Shape *Sqr = SF.createShape(i, i, REDHB, i, i);
+        Shape *Sqr = SF.createShape(i + 4, i + 4, BLUHB, i + 4, i + 4);
 
         elements->push_back(Sqr);
     }
@@ -55,18 +55,18 @@ void wilmarTesting()
     for (int i = 1; i < 4; i++)
     {
 
-        Shape *Text = TF.createShape(i, i, REDHB, i, i, "Trees");
+        Shape *Text = TF.createShape(i + 6, i + 6, GRNHB, 40 + i + 6, 5, "Trees");
 
         elements->push_back(Text);
     }
 
-    Memento mem(*elements);
+    Memento* mem  = new Memento(*elements);
     Array<string> arrInstruction(0);
 
     arrInstruction.insert("TC");
     arrInstruction.insert("==");
 
-    Testing<Memento, Memento> testingMemento(mem, mem);
+    Testing<Memento, Memento> testingMemento(*mem, *mem);
     testingMemento.createTestSuite(arrInstruction, "Memento test suite");
     Suite<Memento, Memento> *TS = testingMemento.getSuite(0);
     Caretaker careTakerTest;
@@ -74,15 +74,13 @@ void wilmarTesting()
     careTakerTest.addMemento(mem);
 
     Memento *copy = careTakerTest.getMemento();
-    TS->textCompare(*copy, mem);
-    TS->equalsTest(*copy, mem);
+    TS->textCompare(*copy, *mem);
+    TS->equalsTest(*copy,*mem);
 
     for (int i = 0; i < int(elements->size()); i++)
     {
         delete elements->operator[](i);
     }
-    delete copy;
-    delete elements;
 
     Canvas *canvas = new Canvas();
 
@@ -97,10 +95,18 @@ void wilmarTesting()
 
     pdf.exportToFile();
     png.exportToFile();
-    canvas->removeShape(1);
+
+    careTakerTest.addMemento(canvas->captureCurrent());
+
     canvas->draw();
+    canvas->removeShape(1);
     canvas->clear();
     canvas->draw();
-    canvas->generateCanvas();
+
+    canvas->undoAction(careTakerTest.getMemento());
+    canvas->draw();
+    canvas->undoAction(copy);
+    canvas->draw();
     delete canvas;
+    delete elements;
 }

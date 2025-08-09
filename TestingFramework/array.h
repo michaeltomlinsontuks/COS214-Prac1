@@ -32,6 +32,7 @@ public:
     void insertNewItem(T &newItem);
     void insert(T item);
     T *pop();
+    void push(T *item);
 
 private:
     T **array;
@@ -264,6 +265,24 @@ T *Array<T>::pop()
     }
 
     return NULL;
+}
+template <class T>
+void Array<T>::push(T *item)
+// add in the pointer directly (memory management falls to the array)
+// adds to the end of the array
+{
+
+    for (int i = 0; i < length; i++)
+    {
+        if (array[i] == NULL)
+        {
+            array[i] = item;
+            return;
+        }
+    }
+
+    increaseSizeBy(1);
+    array[length - 1] = item;
 }
 
 #endif

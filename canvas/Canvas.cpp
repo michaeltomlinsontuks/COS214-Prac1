@@ -25,6 +25,7 @@ void Canvas::undoAction(Memento *prev)
         shapes.push_back(restored);
     }
     generateCanvas(); // Redraw canvas with restored shapes
+    delete prev;
 }
 
 Canvas::Canvas()

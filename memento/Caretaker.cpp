@@ -9,10 +9,10 @@ Caretaker::Caretaker()
 Caretaker::~Caretaker()
 {
 }
-void Caretaker::addMemento(Memento &memento)
+void Caretaker::addMemento(Memento *memento)
 {
-    mementos.insertNewItem(memento);
-    // makes a copy of the memento
+
+    mementos.push(memento);
 }
 Memento *Caretaker::getMemento()
 {
