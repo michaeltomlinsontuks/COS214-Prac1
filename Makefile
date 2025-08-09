@@ -1,5 +1,5 @@
 CXX = g++
-CXXFLAGS = -Wall -Wextra -std=c++17 -fprofile-arcs -ftest-coverage
+CXXFLAGS = -Wall -Wextra -std=c++11 -fprofile-arcs -ftest-coverage
 LDFLAGS = -lgcov
 
 SRC = loggerOCI/OCI.cpp \
