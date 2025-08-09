@@ -39,24 +39,23 @@ HEADERS = \
 OBJ := $(SRC:.cpp=.o)
 BIN := app
 
-# Default build
+
 all: $(BIN)
 
-# Link object files into binary
+
 $(BIN): $(OBJ)
 	$(CXX) $(CXXFLAGS) -o $@ $^ 
 
-# Compile each source file with coverage flags
+
 %.o: %.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@  
 
 
 
-# Run the binary
+
 run r: $(BIN)
 	./$(BIN)
 
-# Clean build artifacts
 clean c:
 	find . -name '*.o' -delete
 	rm -f $(BIN) vgcore.*
@@ -65,7 +64,7 @@ clean c:
 	find . -name '*.gcov' -delete
 	rm -f application.log demo PDF.txt PNG.txt
 
-# Run with Valgrind
+
 valgrind v: $(BIN)
 	valgrind --leak-check=full --track-origins=yes ./$(BIN)
 

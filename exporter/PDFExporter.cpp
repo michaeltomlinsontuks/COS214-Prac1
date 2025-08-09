@@ -29,7 +29,7 @@ void PDFExporter::saveToFile()
 	cout << "What do you wish to save this PDF as? :[default is PDF.txt] ";
 	string fileName = "";
 
-	getline(std::cin, fileName);
+	//getline(std::cin, fileName);
 
 	if (fileName.empty())
 	{

@@ -63,8 +63,10 @@ void wilmarTesting()
     Memento* mem  = new Memento(*elements);
     Array<string> arrInstruction(0);
 
-    arrInstruction.insert("TC");
-    arrInstruction.insert("==");
+    string str = "TC";
+    arrInstruction.insertNewItem(str);
+    str = "==";
+    arrInstruction.insertNewItem(str);
 
     Testing<Memento, Memento> testingMemento(*mem, *mem);
     testingMemento.createTestSuite(arrInstruction, "Memento test suite");

@@ -29,7 +29,7 @@ void PNGExporter::saveToFile()
 	cout << "What do you wish to save this PNG as? :[default is PNG.txt] ";
 	string fileName = "";
 
-	getline(std::cin, fileName);
+	//getline(std::cin, fileName);
 
 	if (fileName.empty())
 	{

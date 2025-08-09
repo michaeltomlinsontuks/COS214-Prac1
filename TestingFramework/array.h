@@ -30,7 +30,6 @@ public:
 
     int getLength() const;
     void insertNewItem(T &newItem);
-    void insert(T item);
     T *pop();
     void push(T *item);
 
@@ -244,11 +243,6 @@ void Array<T>::insertNewItem(T &newItem)
     array[length - 1] = new T(newItem);
 }
 
-template <class T>
-void Array<T>::insert(T item)
-{
-    insertNewItem(item);
-}
 
 template <class T>
 T *Array<T>::pop()
