@@ -32,15 +32,37 @@ void wilmarTesting()
 {
     vector<Shape *> *elements = new vector<Shape *>();
     RectangleFactory RF;
-    for (int i = 1; i < 11; i++)
+    for (int i = 1; i < 4; i++)
     {
+
         Shape *Rec = RF.createShape(i, i, REDHB, i, i);
+
         elements->push_back(Rec);
     }
+    SquareFactory SF;
+    for (int i = 1; i < 4; i++)
+    {
+
+        Shape *Sqr = SF.createShape(i, i, REDHB, i, i);
+
+        elements->push_back(Sqr);
+    }
+
+    TextboxFactory TF;
+    for (int i = 1; i < 4; i++)
+    {
+
+        Shape *Text = SF.createShape(i, i, REDHB, i, i);
+
+        elements->push_back(Text);
+    }
+
     Memento mem(*elements);
     Array<string> arrInstruction(0);
+
     arrInstruction.insert("TC");
     arrInstruction.insert("==");
+
     Testing<Memento, Memento> testingMemento(mem, mem);
     testingMemento.createTestSuite(arrInstruction, "Memento test suite");
     Suite<Memento, Memento> *TS = testingMemento.getSuite(0);
@@ -52,7 +74,7 @@ void wilmarTesting()
     TS->textCompare(*copy, mem);
     TS->equalsTest(*copy, mem);
 
-    for (int i = 0; i < elements->size(); i++)
+    for (int i = 0; i < int(elements->size()); i++)
     {
         delete elements->operator[](i);
     }

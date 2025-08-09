@@ -44,11 +44,13 @@ all: $(BIN)
 
 # Link object files into binary
 $(BIN): $(OBJ)
-	$(CXX) $(CXXFLAGS) -o $@ $^
+	$(CXX) $(CXXFLAGS) -o $@ $^ 
 
 # Compile each source file with coverage flags
 %.o: %.cpp
-	$(CXX) $(CXXFLAGS) -c $< -o $@
+	$(CXX) $(CXXFLAGS) -c $< -o $@  
+
+
 
 # Run the binary
 run r: $(BIN)
@@ -61,7 +63,6 @@ clean c:
 	find . -name '*.gcno' -delete
 	find . -name '*.gcda' -delete
 	find . -name '*.gcov' -delete
-	rm *.gz
 
 # Run with Valgrind
 valgrind v: $(BIN)
@@ -69,11 +70,10 @@ valgrind v: $(BIN)
 
 coverage cov: all
 	./$(BIN)
-	gcovr --root . --exclude-directories TestingFramework --print-summary > coverage.txt
+	gcovr --root . \
+          --exclude '.*\.h' \
+          --exclude '.*TestingFramework/.*' \
+          --exclude '.*loggerOCI/.*' \
+          --print-summary > coverage.txt
 
 # Clean coverage artifacts
-clean-coverage c-cov:
-	find . -name '*.gcno' -delete
-	find . -name '*.gcda' -delete
-	find . -name '*.gcov' -delete
-	rm *.gz
