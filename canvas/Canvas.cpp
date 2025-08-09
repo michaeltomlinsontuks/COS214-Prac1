@@ -51,8 +51,11 @@ Shape* Canvas::addShape(int shapeType, int length, int width, const std::string&
 
 void Canvas::removeShape(int shapeId) {
     Logger::getInstance()->info("Canvas::removeShape called with shapeId = " + std::to_string(shapeId));
-    //Remove the shapeId from the shapes vector
-    shapes.erase(shapes.begin() + shapeId);
+    // Delete the shape to free memory before removing from vector
+    if (shapeId >= 0 && shapeId < static_cast<int>(shapes.size())) {
+        delete shapes[shapeId];
+        shapes.erase(shapes.begin() + shapeId);
+    }
 }
 
 void Canvas::duplicateShape(int shapeId) {
@@ -98,7 +101,10 @@ void Canvas::clear() {
     canvas.clear();
     canvas.resize(height, std::vector<CanvasCell>(width, CanvasCell(canvasColour, ' ')));
     drawBorder();
-    //Clear the shapes array
+    // Delete all shapes to free memory before clearing the vector
+    for (Shape* shape : shapes) {
+        delete shape;
+    }
     shapes.clear();
 }
 

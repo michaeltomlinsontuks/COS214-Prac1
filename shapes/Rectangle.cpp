@@ -1,7 +1,7 @@
 #include "Rectangle.h"
 
 Shape* Rectangle::clone() {
-    Logger::getInstance()->info("Rectangle cloned with values: length = " + std::to_string(this->length) + ", width = " + std::to_string(this->width) + ", colour = " + this->colour + ", position_x = " + std::to_string(this->position_x) + ", position_y = " + std::to_string(this->position_y));
+    Logger::getInstance()->info("Rectangle cloned with values: length = " + std::to_string(this->getLength()) + ", width = " + std::to_string(this->getWidth()) + ", colour = " + this->getColour() + ", position_x = " + std::to_string(this->getPositionX()) + ", position_y = " + std::to_string(this->getPositionY()));
     return new Rectangle(*this);
 }
 
@@ -12,7 +12,7 @@ Rectangle::Rectangle(int length, int width, const string& colour, int position_x
 
 Rectangle::Rectangle(const Rectangle& copy)
     : Shape(copy) {
-    Logger::getInstance()->info("Rectangle copied with values: length = " + std::to_string(copy.length) + ", width = " + std::to_string(copy.width) + ", colour = " + copy.colour + ", position_x = " + std::to_string(copy.position_x) + ", position_y = " + std::to_string(copy.position_y));
+    Logger::getInstance()->info("Rectangle copied with values: length = " + std::to_string(copy.getLength()) + ", width = " + std::to_string(copy.getWidth()) + ", colour = " + copy.getColour() + ", position_x = " + std::to_string(copy.getPositionX()) + ", position_y = " + std::to_string(copy.getPositionY()));
 }
 
 Rectangle::~Rectangle() {
@@ -20,8 +20,8 @@ Rectangle::~Rectangle() {
 }
 
 vector<vector<CanvasCell>> Rectangle::draw() {
-    Logger::getInstance()->info("Rectangle drawn with values: length = " + std::to_string(this->length) + ", width = " + std::to_string(this->width) + ", colour = " + this->colour + ", position_x = " + std::to_string(this->position_x) + ", position_y = " + std::to_string(this->position_y));
+    Logger::getInstance()->info("Rectangle drawn with values: length = " + std::to_string(this->getLength()) + ", width = " + std::to_string(this->getWidth()) + ", colour = " + this->getColour() + ", position_x = " + std::to_string(this->getPositionX()) + ", position_y = " + std::to_string(this->getPositionY()));
     vector<vector<CanvasCell>> result;
-    result.resize(length, vector<CanvasCell>(width, CanvasCell(colour, ' ')));
+    result.resize(getLength(), vector<CanvasCell>(getWidth(), CanvasCell(getColour(), ' ')));
     return result;
 }

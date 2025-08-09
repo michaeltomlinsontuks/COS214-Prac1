@@ -1,8 +1,8 @@
 #ifndef MEMENTO_H
 #define MEMENTO_H
 
-#include "../shape/Shape.h"
-#include "../testingFramework/array.h"
+#include "../shapes/Shape.h"
+#include "../TestingFramework/array.h"
 
 class Canvas;
 
@@ -11,6 +11,7 @@ class Memento
 	friend string to_string(const Memento &);
 	friend void wilmarTesting();
 	friend Canvas;
+	template <typename T> friend class Array;
 
 private:
 	Array<Shape> *shapes;
