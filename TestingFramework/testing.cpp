@@ -14,6 +14,11 @@ Testing<T, j>::~Testing()
 {
     delete testObject;
     delete correctObject;
+
+    for (int i = 0; i < testSuites->getLength(); i++)
+    {
+        (*testSuites)[i]->printReport();
+    }
     delete testSuites;
 }
 
@@ -71,10 +76,11 @@ Suite<T, J>::Suite(Suite<T, J> &copy)
     fails = copy.fails;
     testObj = new T(*copy.testObj);
     correctObj = new J(*copy.correctObj);
+    suiteName = copy.suiteName;
 }
 
 template <class T, class J>
-void Suite<T, J>::runTests(Array<string>& testsToRun)
+void Suite<T, J>::runTests(Array<string> &testsToRun)
 {
     cout << +RED "\nStarting test suite " << suiteName + CRESET << endl;
     for (int i = 0; i < testsToRun.getLength(); i++)
@@ -118,7 +124,7 @@ void Suite<T, J>::textCompare(X &lhs, Y &rhs)
     bool testPassed = true;
     int index = 0;
 
-    while (index <int( tstString.length()) && index < int (corString.length()))
+    while (index < int(tstString.length()) && index < int(corString.length()))
     {
         if (tstString[index] == corString[index])
             output += printGreen(index, tstString, corString);
@@ -196,7 +202,7 @@ template <class T, class J>
 string Suite<T, J>::printGreen(int &index, string tstString, string corString)
 {
     string output = GRN;
-    while (index < int(tstString.length()) && index < int(corString.length() )&& tstString[index] == corString[index])
+    while (index < int(tstString.length()) && index < int(corString.length()) && tstString[index] == corString[index])
     {
         output += tstString[index++];
     }
@@ -208,7 +214,7 @@ template <class T, class J>
 string Suite<T, J>::printRed(int &index, string tstString, string corString)
 {
     string output = RED;
-    while (index < int(tstString.length()) && index < int(corString.length() )&& tstString[index] != corString[index])
+    while (index < int(tstString.length()) && index < int(corString.length()) && tstString[index] != corString[index])
     {
         output += tstString[index++];
     }

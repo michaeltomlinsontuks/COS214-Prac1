@@ -5,13 +5,6 @@
 #include "array.h"
 using namespace std;
 
-/*
-All classes put into T and J must have overloads of
-==
-copy constructor
-string to_string(T obj)
-*/
-
 template <class T, class J>
 class Suite;
 
@@ -59,7 +52,7 @@ public:
     Suite(Suite<T, J> &copy);
     ~Suite();
     // prints the states upon deletion
-    void runTests(Array<string>& testsToRun);
+    void runTests(Array<string> &testsToRun);
     void textCompare();
     template <class X, class Y>
     void textCompare(X &lhs, Y &rhs);
@@ -73,6 +66,15 @@ public:
     Suite<T, J> &operator=(Suite<T, J> &copy);
     static string printGreen(int &index, string tstString, string corString);
     static string printRed(int &index, string tstString, string corString);
+
+    void printReport()
+    {
+        cout << "#############################################" << endl;
+        cout << "Test [" << suiteName << "] Results:" << endl;
+        cout << "Passes: " << passes << endl;
+        cout << "Fails:" << fails << endl;
+        cout << "#############################################" << endl;
+    }
 };
 
 #include "testing.cpp"
