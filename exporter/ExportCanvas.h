@@ -2,7 +2,7 @@
 #define EXPORTCANVAS_H
 
 #include "../canvas/Canvas.h"
-
+#include <fstream>
 class ExportCanvas
 {
 
@@ -13,6 +13,7 @@ public:
 
 protected:
 	Canvas *canvas;
+	string *canvasOutput;
 	virtual void prepareCanvas() = 0;
 
 	virtual void renderElements() = 0;
