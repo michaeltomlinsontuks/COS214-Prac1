@@ -106,3 +106,34 @@ vgcore.*
 app  
 
 *.txt
+
+
+# Build artifacts
+*.o
+app
+
+# Coverage files
+*.gcno
+*.gcda
+*.gcov
+coverage.info
+coverage-report/
+coverage.html
+
+# Valgrind dumps
+vgcore.*
+
+# Editor/IDE files
+*.swp
+*.swo
+*.bak
+*.tmp
+*.log
+*.DS_Store
+
+# Backup files
+*~
+# Optional: exclude compiled test binaries
+test*
+
+*.gz
