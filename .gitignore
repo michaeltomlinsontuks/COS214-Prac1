@@ -1,0 +1,106 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# CLion
+.idea/
+cmake-build-*/
+CMakeLists.txt.user
+*.iml
+
+# VSCode
+.vscode/
+
+# Kiro (if any)
+kiro*
+
+# General
+*.log
+*.tmp
+*.swp
+*~
+
+# C++ build
+*.o
+*.obj
+*.exe
+*.out
+*.a
+*.so
+*.dll
+*.dylib
+
+# Backup files
+*.bak
+*.old
+
+# Other
+Thumbs.db
+Desktop.ini
+
+# Ignore by pattern
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+
+# Default ignored files
+/shelf/
+/workspace.xml
+# Editor-based HTTP Client requests
+/httpRequests/
+# Datasource local storage ignored files
+/dataSources/
+/dataSources.local.xml
+
+
+# Prerequisites
+*.d
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Linker files
+*.ilk
+
+# Debugger Files
+*.pdb
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+# debug information files
+*.dwo
+
+
+vgcore.*
+
+*.log
+
+app  
