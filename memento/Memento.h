@@ -16,7 +16,7 @@ private:
 	Array<Shape> *shapes;
 	Memento(vector<Shape *> &elements);
 	Memento(Memento &copy);
-	// add to diagram
+	// add to diagramf
 	~Memento();
 	bool operator==(const Memento &);
 };
