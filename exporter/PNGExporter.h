@@ -3,11 +3,18 @@
 
 #include "ExportCanvas.h"
 
-class PNGExporter : public ExportCanvas {
+class PNGExporter : public ExportCanvas
+{
+public:
+	PNGExporter(Canvas *canvas);
+	virtual ~PNGExporter();
 
+protected:
+	virtual void prepareCanvas();
 
-private:
-	void saveToFile();
+	virtual void renderElements();
+
+	virtual void saveToFile();
 };
 
 #endif

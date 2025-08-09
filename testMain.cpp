@@ -8,6 +8,7 @@
 #include "TestingFramework/testing.h"
 #include "memento/Caretaker.h"
 #include "exporter/PDFExporter.h"
+#include "exporter/PNGExporter.h"
 void wilmarTesting();
 
 int main()
@@ -58,17 +59,19 @@ void wilmarTesting()
     delete copy;
     delete elements;
 
-    Canvas *pdfCanvas = new Canvas();
+    Canvas *canvas = new Canvas();
 
     for (int i = 1; i < 4; i++)
     {
-        int val = 2 * i;
+        int val = i;
 
-        pdfCanvas->addShape(val, val, val, REDHB, val, val);
+        canvas->addShape(val, val, val, REDHB, val, val);
     }
-    PDFExporter pdf(pdfCanvas);
+    PDFExporter pdf(canvas);
+    PNGExporter png(canvas);
 
     pdf.exportToFile();
+    png.exportToFile();
 
-    delete pdfCanvas;
+    delete canvas;
 }

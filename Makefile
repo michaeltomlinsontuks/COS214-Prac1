@@ -16,7 +16,8 @@ SRC =loggerOCI/OCI.cpp \
 	shapes/Shape.cpp \
 	memento/Caretaker.cpp\
 	exporter/PDFExporter.cpp\
-	exporter/ExportCanvas.cpp
+	exporter/ExportCanvas.cpp\
+	exporter/PNGExporter.cpp
 
 HEADERS = \
 	OCI.h \

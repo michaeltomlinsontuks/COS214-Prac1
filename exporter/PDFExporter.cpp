@@ -26,15 +26,15 @@ void PDFExporter::renderElements()
 void PDFExporter::saveToFile()
 {
 
-	cout << "What do you wish to save this PDF as? : ";
+	cout << "What do you wish to save this PDF as? :[default is PDF.txt] ";
 	string fileName = "";
-	do
-	{
-		cin >> fileName;
-		if (fileName.empty())
-			cout << "\nplease provide an appropriate name for the file" << endl;
 
-	} while (fileName.empty());
+	getline(std::cin, fileName);
+
+	if (fileName.empty())
+	{
+		fileName = "PDF";
+	}
 
 	ofstream file(fileName + ".txt");
 	if (!file)
@@ -42,7 +42,7 @@ void PDFExporter::saveToFile()
 		cout << RED << "Error in producing a file" << CRESET << endl;
 		return;
 	}
-	cout << *canvasOutput << endl;
 
 	file << *canvasOutput;
+	cout << "PDF successfully exported" << endl;
 }
