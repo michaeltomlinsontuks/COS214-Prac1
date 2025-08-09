@@ -1,16 +1,25 @@
 #ifndef SQUARE_H
 #define SQUARE_H
 
+#include <vector>
 #include "Shape.h"
+#include "../canvas/CanvasCell.h"
+using std::vector;
 
-// =============================
-// Factory Method, Prototype
-// Square is a concrete product class representing squares. Inherits from Shape and implements clone().
-// =============================
+class SquareFactory; // Forward declaration
 
 class Square : public Shape {
+
+friend class SquareFactory;
+
+private:
+    Square(int length, int width, const string& colour, int position_x, int position_y);
+    Square(const Square& copy);
+
 public:
-    Shape* clone() const override; // Prototype pattern method
+    Shape* clone() override;
+    ~Square() override;
+    vector<vector<CanvasCell>> draw() override;
 };
 
-#endif // SQUARE_H
+#endif

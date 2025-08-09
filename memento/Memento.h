@@ -1,17 +1,26 @@
-//
-// Created by Michael Tomlinson on 2025/07/30.
-//
-
 #ifndef MEMENTO_H
 #define MEMENTO_H
 
 #include "../shapes/Shape.h"
-#include <vector>
+#include "../TestingFramework/array.h"
 
-class Memento {
-public:
-    Memento(Shape* elements) : elements(elements) {}
+class Canvas;
+
+class Memento
+{
+	friend string to_string(const Memento &);
+	friend void wilmarTesting();
+	friend Canvas;
+	template <typename T> friend class Array;
+
 private:
-    std::vector<Shape*> elements; // Pointer to the shape element being saved
-}
-#endif //MEMENTO_H
+	Array<Shape> *shapes;
+	Memento(vector<Shape *> &elements);
+	Memento(Memento &copy);
+	// add to diagramf
+	~Memento();
+	bool operator==(const Memento &);
+};
+string to_string(const Memento &);
+
+#endif

@@ -1,0 +1,14 @@
+- We need to change the copy constructor the shapes to make use of pointers for their copying 
+
+Rectangle::Rectangle(const Shape *copy)
+    : Shape(copy)
+{
+    // Logger::getInstance()->info("Rectangle copied with values: length = " + std::to_string(copy->length) + ", width = " + std::to_string(copy.width) + ", colour = " + copy.colour + ", position_x = " + std::to_string(copy.position_x) + ", position_y = " + std::to_string(copy.position_y));
+}
+
+// our responsibility to make sure a square doesnt use the rectangles copy contructor (even though it would work)
+
+Add all the getters and setters for shapes *michael job :)
+
+note to self after memento testing make it so that only canvas can change things in memento,
+make more things private, 

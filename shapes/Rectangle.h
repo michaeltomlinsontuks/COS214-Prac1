@@ -1,16 +1,25 @@
 #ifndef RECTANGLE_H
 #define RECTANGLE_H
 
+#include <vector>
 #include "Shape.h"
+#include "../canvas/CanvasCell.h"
+using std::vector;
 
-// =============================
-// Factory Method, Prototype
-// Rectangle is a concrete product class representing rectangles. Inherits from Shape and implements clone().
-// =============================
+class RectangleFactory; // Forward declaration
 
 class Rectangle : public Shape {
+
+friend class RectangleFactory;
+
+private:
+    Rectangle(int length, int width, const string& colour, int position_x, int position_y);
+    Rectangle(const Rectangle& copy);
+
 public:
-    Shape* clone() const override; // Prototype pattern method
+    Shape* clone() override;
+    ~Rectangle() override;
+    vector<vector<CanvasCell>> draw() override;
 };
 
-#endif // RECTANGLE_H
+#endif

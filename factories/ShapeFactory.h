@@ -1,18 +1,13 @@
 #ifndef SHAPEFACTORY_H
 #define SHAPEFACTORY_H
 
-// =============================
-// Factory Method
-// ShapeFactory is the abstract base class for all shape factories. It declares the interface for creating shapes.
-// =============================
-
 #include "../shapes/Shape.h"
-#include <string>
 
 class ShapeFactory {
-protected:
-    virtual Shape* createShape() = 0;
+public:
+    virtual Shape* createShape(int length, int width, const std::string& colour, int position_x, int position_y) = 0;
     virtual void toString() = 0;
+    virtual ~ShapeFactory() {}
 };
 
-#endif // SHAPEFACTORY_H
+#endif

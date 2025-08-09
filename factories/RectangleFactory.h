@@ -1,18 +1,19 @@
 #ifndef RECTANGLEFACTORY_H
 #define RECTANGLEFACTORY_H
 
-// =============================
-// Factory Method
-// RectangleFactory is a concrete factory that creates Rectangle objects. Implements createShape() and toString().
-// =============================
-
 #include "ShapeFactory.h"
 #include "../shapes/Rectangle.h"
 
-class RectangleFactory : public ShapeFactory {
+class RectangleFactory : ShapeFactory {
+
+
 public:
-    Shape* createShape();
-    void toString();
+    RectangleFactory() = default;
+    Shape* createShape(int length, int width, const std::string& colour, int position_x, int position_y);
+
+	void toString();
+
+	RectangleFactory(RectangleFactory& copy);
 };
 
-#endif // RECTANGLEFACTORY_H
+#endif
