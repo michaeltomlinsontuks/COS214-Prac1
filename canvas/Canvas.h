@@ -46,6 +46,7 @@ public:
 	void clear();
 
 	void draw();
+	string exportCanvas();
 
 	void generateCanvas();
 };

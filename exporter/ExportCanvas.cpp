@@ -1,7 +1,17 @@
 #include "ExportCanvas.h"
 
-void ExportCanvas::exportToFile() {
-	// TODO - implement ExportCanvas::export
-	throw "Not yet implemented: ExportCanvas::export()";
+ExportCanvas::ExportCanvas(Canvas *canvas) : canvas(canvas)
+{
+}
+ExportCanvas::~ExportCanvas()
+{
+	// doesnt hold canvas (has-a relationship)
+}
 
+void ExportCanvas::exportToFile()
+{
+	// repeated structure
+	prepareCanvas();
+	renderElements();
+	saveToFile();
 }

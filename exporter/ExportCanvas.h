@@ -6,13 +6,13 @@
 class ExportCanvas
 {
 
-private:
-	Canvas *canvas;
-
 public:
+	ExportCanvas(Canvas *canvas);
+	virtual ~ExportCanvas();
 	void exportToFile();
 
-private:
+protected:
+	Canvas *canvas;
 	virtual void prepareCanvas() = 0;
 
 	virtual void renderElements() = 0;
