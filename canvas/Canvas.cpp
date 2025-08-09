@@ -2,14 +2,24 @@
 
 Memento* Canvas::captureCurrent() {
     Logger::getInstance()->info("Canvas::captureCurrent called");
-    // TODO - implement Canvas::captureCurrent
-    throw "Not yet implemented: Canvas::captureCurrent()";
+    // Create a new Memento with the current shapes
+    return new Memento(shapes);
 }
 
 void Canvas::undoAction(Memento* prev) {
     Logger::getInstance()->info("Canvas::undoAction called");
-    (void)prev;
-    throw "Not yet implemented: Canvas::undoAction(Memento*)";
+    if (!prev) return;
+    // Clear current shapes
+    for (Shape* shape : shapes) {
+        delete shape;
+    }
+    shapes.clear();
+    // Restore shapes from memento (deep copy)
+    for (int i = 0; i < prev->shapes->getLength(); ++i) {
+        Shape* restored = (*prev->shapes)[i]->clone();
+        shapes.push_back(restored);
+    }
+    generateCanvas(); // Redraw canvas with restored shapes
 }
 
 Canvas::Canvas() {
