@@ -100,8 +100,8 @@ vector<Shape *> Canvas::getShapeList()
 Shape *Canvas::getShapeInfo(int shapeId)
 {
     Logger::getInstance()->info("Canvas::getShapeInfo called with shapeId = " + std::to_string(shapeId));
-    (void)shapeId;
-    throw "Canvas::getShapeInfo - Not yet implemented";
+
+    return shapes[shapeId];
 }
 
 void Canvas::drawBorder()

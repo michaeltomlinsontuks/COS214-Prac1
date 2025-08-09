@@ -52,7 +52,7 @@ void wilmarTesting()
     for (int i = 1; i < 4; i++)
     {
 
-        Shape *Text = TF.createShape(i, i, REDHB, i, i,"Trees");
+        Shape *Text = TF.createShape(i, i, REDHB, i, i, "Trees");
 
         elements->push_back(Text);
     }
@@ -85,15 +85,17 @@ void wilmarTesting()
 
     for (int i = 1; i < 4; i++)
     {
-        int val = i*3;
+        int val = i * 3;
 
-        canvas->addShape(i, val, val, REDHB, val, val,"Str");
+        canvas->addShape(i, val, val, REDHB, val, val, "Str");
     }
     PDFExporter pdf(canvas);
     PNGExporter png(canvas);
 
     pdf.exportToFile();
     png.exportToFile();
+
+
 
     delete canvas;
 }

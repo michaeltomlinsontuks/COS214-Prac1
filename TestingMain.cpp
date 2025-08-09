@@ -32,6 +32,7 @@ void wilmarTesting()
 {
     vector<Shape *> *elements = new vector<Shape *>();
     RectangleFactory RF;
+    RF.toString();
     for (int i = 1; i < 4; i++)
     {
 
@@ -40,6 +41,7 @@ void wilmarTesting()
         elements->push_back(Rec);
     }
     SquareFactory SF;
+    SF.toString();
     for (int i = 1; i < 4; i++)
     {
 
@@ -49,10 +51,11 @@ void wilmarTesting()
     }
 
     TextboxFactory TF;
+    TF.toString();
     for (int i = 1; i < 4; i++)
     {
 
-        Shape *Text = TF.createShape(i, i, REDHB, i, i,"Trees");
+        Shape *Text = TF.createShape(i, i, REDHB, i, i, "Trees");
 
         elements->push_back(Text);
     }
@@ -85,15 +88,19 @@ void wilmarTesting()
 
     for (int i = 1; i < 4; i++)
     {
-        int val = i*3;
+        int val = i * 3;
 
-        canvas->addShape(i, val, val, REDHB, val, val,"Str");
+        canvas->addShape(i, val, val, REDHB, val, val, "Str");
     }
     PDFExporter pdf(canvas);
     PNGExporter png(canvas);
 
     pdf.exportToFile();
     png.exportToFile();
-
+    canvas->removeShape(1);
+    canvas->draw();
+    canvas->clear();
+    canvas->draw();
+    canvas->generateCanvas();
     delete canvas;
 }

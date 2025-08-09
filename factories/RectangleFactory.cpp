@@ -5,8 +5,8 @@ Shape* RectangleFactory::createShape(int length, int width, const std::string& c
 }
 
 void RectangleFactory::toString() {
-    // Example implementation
-    // std::cout << "RectangleFactory" << std::endl;
+    
+     std::cout << "RectangleFactory" << std::endl;
 }
 
 RectangleFactory::RectangleFactory(RectangleFactory& copy) {

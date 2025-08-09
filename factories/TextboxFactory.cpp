@@ -6,7 +6,7 @@ Shape* TextboxFactory::createShape(int length, int width, const std::string& col
 
 void TextboxFactory::toString() {
     // Example implementation
-    // std::cout << "TextboxFactory" << std::endl;
+    std::cout << "TextboxFactory" << std::endl;
 }
 
 TextboxFactory::TextboxFactory(TextboxFactory& copy) {
