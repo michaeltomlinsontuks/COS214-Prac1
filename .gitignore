@@ -137,3 +137,5 @@ vgcore.*
 test*
 
 *.gz
+
+*.gcov

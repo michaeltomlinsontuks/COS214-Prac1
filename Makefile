@@ -1,5 +1,5 @@
 CXX = g++
-CXXFLAGS = -Wall -Wextra -std=c++11 -fprofile-arcs -ftest-coverage
+CXXFLAGS = -Wall -Wextra -std=c++11 -g --coverage 
 LDFLAGS = -lgcov
 
 SRC = loggerOCI/OCI.cpp \
@@ -67,11 +67,9 @@ clean c:
 valgrind v: $(BIN)
 	valgrind --leak-check=full --track-origins=yes ./$(BIN)
 
-# Generate coverage reports with gcov
-coverage cov: $(BIN)
+coverage cov: all
 	./$(BIN)
-	@echo "Generating coverage.txt..."
-	@gcov -f -m -r -j $(SRC) > coverage.txt
+	gcovr --root . --exclude-directories TestingFramework --print-summary > coverage.txt
 
 # Clean coverage artifacts
 clean-coverage c-cov:
