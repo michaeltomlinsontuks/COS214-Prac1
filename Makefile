@@ -1,47 +1,53 @@
-CXX := g++
-CXXFLAGS := -g -std=c++11
+CXX = g++
+CXXFLAGS = -std=c++11 -g
 
-SRC := testMain.cpp  #<cpp files to run> do not put testing.cpp here
+SRC =loggerOCI/OCI.cpp \
+	testMain.cpp\
+	loggerOCI/Logger.cpp\
+	canvas/Canvas.cpp \
+	shapes/Rectangle.cpp \
+	factories/RectangleFactory.cpp \
+	shapes/Square.cpp \
+	factories/SquareFactory.cpp \
+	shapes/Textbox.cpp \
+	factories/TextboxFactory.cpp \
+	memento/Memento.cpp \
+	TestingFramework/array.cpp\
+	shapes/Shape.cpp \
+	memento/Caretaker.cpp
+
+HEADERS = \
+	OCI.h \
+	Canvas.h \
+	Rectangle.h \
+	RectangleFactory.h \
+	Square.h \
+	SquareFactory.h \
+	Textbox.h \
+	TextboxFactory.h \
+	Logger.h \
+	Memento.h \
+	Caretaker.h \
+	Shape.h \
+	ShapeFactory.h \
+	ANSI-color-codes.h
+
 OBJ := $(SRC:.cpp=.o)
-BIN := canvasApp
-
-# Demo target
-# List all .cpp files needed for the demo build
-DEMO_SRC := DemoMain.cpp \
-    loggerOCI/OCI.cpp loggerOCI/Logger.cpp \
-    canvas/Canvas.cpp \
-    shapes/Rectangle.cpp shapes/Square.cpp shapes/Textbox.cpp shapes/Shape.cpp \
-    factories/RectangleFactory.cpp factories/SquareFactory.cpp factories/TextboxFactory.cpp \
-    exporter/ExportCanvas.cpp exporter/PDFExporter.cpp exporter/PNGExporter.cpp \
-    memento/Caretaker.cpp memento/Memento.cpp\
-	TestingFramework/array.cpp
-
-DEMO_OBJ := $(DEMO_SRC:.cpp=.o)
-DEMO_BIN := demoApp
+BIN := app
 
 all: $(BIN)
 
-$(BIN): $(OBJ)
+$(BIN):	$(OBJ)
 	$(CXX) $(CXXFLAGS) -o $@ $^
 
-%.o: %.cpp
+%.o:	%.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-run r: $(BIN)
+run r:	$(BIN)
 	./$(BIN)
 
 clean c:
-	rm -f $(OBJ) $(BIN) $(DEMO_OBJ) $(DEMO_BIN) vgcore.*
-
-valgrind v: $(BIN)
+	rm -f $(OBJ) $(BIN) vgcore.*
+ 
+valgrind v:	$(BIN)
 	valgrind --leak-check=full --track-origins=yes ./$(BIN)
-
-demo: $(DEMO_BIN)
-	./demoApp
-
-$(DEMO_BIN): $(DEMO_OBJ)
-	$(CXX) $(CXXFLAGS) -o $@ $^
-
-# Leaks target (macOS only, runs demoApp and checks for leaks)
-leaks: $(DEMO_BIN)
-	leaks --atExit -- ./$(DEMO_BIN)
