@@ -42,6 +42,7 @@ void PDFExporter::saveToFile()
 		cout << RED << "Error in producing a file" << CRESET << endl;
 		return;
 	}
+	cout << *canvasOutput << endl;
 
 	file << *canvasOutput;
 }

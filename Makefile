@@ -14,7 +14,9 @@ SRC =loggerOCI/OCI.cpp \
 	memento/Memento.cpp \
 	TestingFramework/array.cpp\
 	shapes/Shape.cpp \
-	memento/Caretaker.cpp
+	memento/Caretaker.cpp\
+	exporter/PDFExporter.cpp\
+	exporter/ExportCanvas.cpp
 
 HEADERS = \
 	OCI.h \
