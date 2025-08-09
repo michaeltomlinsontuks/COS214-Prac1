@@ -15,8 +15,10 @@ class Memento
 private:
 	Array<Shape> *shapes;
 	Memento(vector<Shape *> &elements);
-	Memento(Memento &copy);
+
 	// add to diagramf
+public:
+	Memento(Memento &copy);
 	~Memento();
 	bool operator==(const Memento &);
 };
