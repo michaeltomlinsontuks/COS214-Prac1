@@ -63,6 +63,7 @@ clean c:
 	find . -name '*.gcno' -delete
 	find . -name '*.gcda' -delete
 	find . -name '*.gcov' -delete
+	rm -f application.log demo PDF.txt PNG.txt
 
 # Run with Valgrind
 valgrind v: $(BIN)
