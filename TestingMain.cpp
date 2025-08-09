@@ -1,6 +1,7 @@
 //
 // Created by Michael Tomlinson on 2025/08/03.
 //
+/*
 #include <iostream>
 #include <string>
 #include "loggerOCI/ANSI-color-codes.h"
@@ -8,7 +9,7 @@
 #include "TestingFramework/testing.h"
 #include "memento/Caretaker.h"
 #include "exporter/PDFExporter.h"
-#include "exporter/PNGExporter.h"
+#include "exporter/PNGExporter.h"*/
 void wilmarTesting();
 
 int main()
@@ -26,10 +27,12 @@ int main()
     return 0;
     */
     wilmarTesting();
+    return 0;
 }
 
 void wilmarTesting()
 {
+    /*
     vector<Shape *> *elements = new vector<Shape *>();
     RectangleFactory RF;
     RF.toString();
@@ -111,4 +114,5 @@ void wilmarTesting()
     canvas->draw();
     delete canvas;
     delete elements;
+    */
 }

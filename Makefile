@@ -1,24 +1,25 @@
 CXX = g++
-CXXFLAGS = -Wall -Wextra -std=c++11 -g --coverage 
+CXXFLAGS =  -std=c++11 
 LDFLAGS = -lgcov
 
-SRC = loggerOCI/OCI.cpp \
-      TestingMain.cpp \
-      loggerOCI/Logger.cpp \
-      canvas/Canvas.cpp \
-      shapes/Rectangle.cpp \
-      factories/RectangleFactory.cpp \
-      shapes/Square.cpp \
-      factories/SquareFactory.cpp \
-      shapes/Textbox.cpp \
-      factories/TextboxFactory.cpp \
-      memento/Memento.cpp \
-      TestingFramework/array.cpp \
-      shapes/Shape.cpp \
-      memento/Caretaker.cpp \
-      exporter/PDFExporter.cpp \
-      exporter/ExportCanvas.cpp \
-      exporter/PNGExporter.cpp
+
+SRC =    TestingMain.cpp 
+      #loggerOCI/OCI.cpp \  
+      #loggerOCI/Logger.cpp \
+      #canvas/Canvas.cpp \
+      #shapes/Rectangle.cpp \
+      #factories/RectangleFactory.cpp \
+      #shapes/Square.cpp \
+      #factories/SquareFactory.cpp \
+      #shapes/Textbox.cpp \
+      #factories/TextboxFactory.cpp \
+      #memento/Memento.cpp \
+      #TestingFramework/array.cpp \
+      #shapes/Shape.cpp \
+      #memento/Caretaker.cpp \
+      #exporter/PDFExporter.cpp \
+      #exporter/ExportCanvas.cpp \
+      #exporter/PNGExporter.cpp
 
 HEADERS = \
       OCI.h \
