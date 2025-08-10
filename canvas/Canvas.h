@@ -1,17 +1,14 @@
 #ifndef CANVAS_H
 #define CANVAS_H
 
-#include <vector>
 #include "../shape/Shape.h"
 #include "../factory/RectangleFactory.h"
 #include "../factory/SquareFactory.h"
 #include "../factory/TextboxFactory.h"
-#include <string>
-#include <iostream>
 #include "../loggerOCI/ANSI-color-codes.h"
 #include "../loggerOCI/Logger.h"
-#include "CanvasCell.h"
 #include "../memento/Memento.h"
+#include "CanvasCell.h"
 
 class Canvas {
 friend void canvasTesting();
