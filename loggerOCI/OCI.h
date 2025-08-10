@@ -1,10 +1,7 @@
 #ifndef OCI_H
 #define OCI_H
 
-#include <iostream>
-#include <string>
 #include "Logger.h"
-#include "ANSI-color-codes.h"
 #include "../canvas/Canvas.h"
 #include "../memento/Caretaker.h"
 #include "../memento/Memento.h"

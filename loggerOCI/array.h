@@ -1,7 +1,6 @@
 #ifndef ARRAY_H
 #define ARRAY_H
 
-//#include <stdexcept>
 #include <string>
 #include <iostream>
 #include "ANSI-color-codes.h"
