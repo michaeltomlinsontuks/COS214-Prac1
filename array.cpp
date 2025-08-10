@@ -22,7 +22,7 @@ string to_string(Array<Shape> &array)
     return obj;
 }
 */
-
+/*
 template <>
 Array<Shape>::Array(Array<Shape> &copy)
 {
@@ -35,3 +35,4 @@ Array<Shape>::Array(Array<Shape> &copy)
             array[i] = copy[i]->clone();
     }
 }
+*/

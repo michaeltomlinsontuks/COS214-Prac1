@@ -4,7 +4,6 @@ LDFLAGS = -lgcov
 
 
 SRC =	TestingMain.cpp\
-	OCI.cpp\
 	Logger.cpp \
 	Canvas.cpp \
 	Rectangle.cpp \
@@ -14,15 +13,12 @@ SRC =	TestingMain.cpp\
 	Textbox.cpp \
 	TextboxFactory.cpp \
 	Memento.cpp \
-	array.cpp \
-	Shape.cpp \
 	Caretaker.cpp \
 	PDFExporter.cpp \
 	ExportCanvas.cpp \
 	PNGExporter.cpp
 
 HEADERS = \
-	OCI.h \
 	Canvas.h \
 	Rectangle.h \
 	RectangleFactory.h \

@@ -15,7 +15,7 @@
 #include "Caretaker.h"
 
 class Canvas {
-
+friend void canvasTesting();
 private:
 	vector<Shape*> shapes;
 	std::vector<std::vector<CanvasCell>> canvas;

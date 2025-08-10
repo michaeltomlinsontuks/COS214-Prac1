@@ -10,7 +10,8 @@
 //Declare loggerTesting function as a friend
 
 class Logger {
-public:
+	friend void loggerTesting();
+private:
 	enum LogLevel {
 		INFO,
 		WARNING,
