@@ -1,10 +1,7 @@
 #ifndef SQUARE_H
 #define SQUARE_H
 
-#include <vector>
 #include "Shape.h"
-#include "../canvas/CanvasCell.h"
-using std::vector;
 
 class SquareFactory; // Forward declaration
 
@@ -20,7 +17,7 @@ private:
 public:
     Shape* clone() override;
     ~Square() override;
-    vector<vector<CanvasCell>> draw() override;
+    std::vector<std::vector<CanvasCell>> draw() override;
 };
 
 #endif

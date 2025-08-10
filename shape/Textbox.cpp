@@ -4,7 +4,7 @@ Shape* Textbox::clone() {
     Logger::getInstance()->info("Textbox cloned with values: length = " + std::to_string(this->getLength()) + ", width = " + std::to_string(this->getWidth()) + ", colour = " + this->getColour() + ", position_x = " + std::to_string(this->getPositionX()) + ", position_y = " + std::to_string(this->getPositionY()) + ", text = " + this->text);
     return new Textbox(*this);}
 
-Textbox::Textbox(int length, int width, const string& colour, int position_x, int position_y, const string& text)
+Textbox::Textbox(int length, int width, const std::string& colour, int position_x, int position_y, const std::string& text)
     : Shape(length, width, colour, position_x, position_y), text(text) {
     Logger::getInstance()->info("Textbox created with values: length = " + std::to_string(this->getLength()) + ", width = " + std::to_string(this->getWidth()) + ", colour = " + this->getColour() + ", position_x = " + std::to_string(this->getPositionX()) + ", position_y = " + std::to_string(this->getPositionY()) + ", text = " + this->text);
 }
@@ -18,9 +18,9 @@ Textbox::~Textbox() {
     // Default destructor
 }
 
-vector<vector<CanvasCell>> Textbox::draw() {
+std::vector<std::vector<CanvasCell>> Textbox::draw() {
     Logger::getInstance()->info("Textbox drawn with values: length = " + std::to_string(this->getLength()) + ", width = " + std::to_string(this->getWidth()) + ", colour = " + this->getColour() + ", position_x = " + std::to_string(this->getPositionX()) + ", position_y = " + std::to_string(this->getPositionY()) + ", text = " + this->text);
-    vector<vector<CanvasCell>> result(getLength(), vector<CanvasCell>(getWidth(), CanvasCell(getColour(), ' ')));
+    std::vector<std::vector<CanvasCell>> result(getLength(), std::vector<CanvasCell>(getWidth(), CanvasCell(getColour(), ' ')));
     if (text.empty() || getWidth() == 0 || getLength() == 0) return result;
 
     // Center the text in the box

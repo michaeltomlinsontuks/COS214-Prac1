@@ -1,10 +1,7 @@
 #ifndef RECTANGLE_H
 #define RECTANGLE_H
 
-#include <vector>
 #include "Shape.h"
-#include "../canvas/CanvasCell.h"
-using std::vector;
 
 class RectangleFactory; // Forward declaration
 
@@ -14,13 +11,13 @@ friend class RectangleFactory;
 friend void prototypeTesting();
 
 private:
-    Rectangle(int length, int width, const string& colour, int position_x, int position_y);
+    Rectangle(int length, int width, const std::string& colour, int position_x, int position_y);
     Rectangle(const Rectangle& copy);
 
 public:
     Shape* clone() override;
     ~Rectangle() override;
-    vector<vector<CanvasCell>> draw() override;
+    std::vector<std::vector<CanvasCell>> draw() override;
 };
 
 #endif

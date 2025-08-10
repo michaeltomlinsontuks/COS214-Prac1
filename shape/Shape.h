@@ -7,14 +7,8 @@
 #include "../loggerOCI/Logger.h"
 #include "../canvas/CanvasCell.h"
 
-using std::vector;
-using std::string;
-
 class Shape {
-    //Removing the testing stuff for the fitchfork submission
-    //friend string to_string(const Shape *);
-    friend void prototypeTesting();
-//Apparently we need to use private and then use getters
+friend void prototypeTesting();
 private:
     int length;
     int width;
@@ -23,17 +17,10 @@ private:
     int position_y;
 
 protected:
-
-    Shape(int length = 0, int width = 0, const string& colour = "", int position_x = 0, int position_y = 0)
+    Shape(int length = 0, int width = 0, const std::string& colour = "", int position_x = 0, int position_y = 0)
         : length(length), width(width), colour(colour), position_x(position_x), position_y(position_y) {}
     Shape(const Shape *copy)
         : length(copy->length), width(copy->width), colour(copy->colour), position_x(copy->position_x), position_y(copy->position_y) {}
-
-/*
-Removing the testing stuff for the fitchfork submission
-public:
-    bool operator==(Shape &copy);
-*/
 
 public:
     int getLength() const { return length; }
@@ -42,7 +29,7 @@ public:
     int getPositionX() const { return position_x; }
     int getPositionY() const { return position_y; }
     virtual Shape* clone() = 0;
-    virtual vector<vector<CanvasCell>> draw() = 0;
+    virtual std::vector<std::vector<CanvasCell>> draw() = 0;
     virtual ~Shape() {}
 };
 
