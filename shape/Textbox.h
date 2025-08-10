@@ -4,7 +4,7 @@
 #include <vector>
 #include <string>
 #include "Shape.h"
-#include "CanvasCell.h"
+#include "../canvas/CanvasCell.h"
 using std::vector;
 using std::string;
 

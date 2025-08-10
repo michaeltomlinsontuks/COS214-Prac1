@@ -4,34 +4,34 @@ LDFLAGS = -lgcov
 
 
 SRC =	TestingMain.cpp\
-	Logger.cpp \
-	Canvas.cpp \
-	Rectangle.cpp \
-	RectangleFactory.cpp \
-	Square.cpp \
-	SquareFactory.cpp \
-	Textbox.cpp \
-	TextboxFactory.cpp \
-	Memento.cpp \
-	Caretaker.cpp \
-	PDFExporter.cpp \
-	ExportCanvas.cpp \
-	PNGExporter.cpp
+	loggerOCI/Logger.cpp \
+	canvas/Canvas.cpp \
+	shape/Rectangle.cpp \
+	factory/RectangleFactory.cpp \
+	shape/Square.cpp \
+	factory/SquareFactory.cpp \
+	shape/Textbox.cpp \
+	factory/TextboxFactory.cpp \
+	memento/Memento.cpp \
+	memento/Caretaker.cpp \
+	exporter/PDFExporter.cpp \
+	exporter/ExportCanvas.cpp \
+	exporter/PNGExporter.cpp
 
 HEADERS = \
-	Canvas.h \
-	Rectangle.h \
-	RectangleFactory.h \
-	Square.h \
-	SquareFactory.h \
-	Textbox.h \
-	TextboxFactory.h \
-	Logger.h \
-	Memento.h \
-	Caretaker.h \
-	Shape.h \
-	ShapeFactory.h \
-	ANSI-color-codes.h
+	canvas/Canvas.h \
+	shape/Rectangle.h \
+	factory/RectangleFactory.h \
+	shape/Square.h \
+	factory/SquareFactory.h \
+	shape/Textbox.h \
+	factory/TextboxFactory.h \
+	loggerOCI/Logger.h \
+	memento/Memento.h \
+	memento/Caretaker.h \
+	shape/Shape.h \
+	factory/ShapeFactory.h \
+	loggerOCI/ANSI-color-codes.h
 
 OBJ := $(SRC:.cpp=.o)
 BIN := app
@@ -70,23 +70,22 @@ cov: all
 	    --print-summary > coverage.txt
 
 
-DEMO_SRC = OCI.cpp \
+DEMO_SRC = loggerOCI/OCI.cpp \
 	DemoMain.cpp \
-	Logger.cpp \
-	Canvas.cpp \
-	Rectangle.cpp \
-	RectangleFactory.cpp \
-	Square.cpp \
-	SquareFactory.cpp \
-	Textbox.cpp \
-	TextboxFactory.cpp \
-	Memento.cpp \
-	array.cpp \
-	Shape.cpp \
-	Caretaker.cpp \
-	PDFExporter.cpp \
-	ExportCanvas.cpp \
-	PNGExporter.cpp
+	loggerOCI/Logger.cpp \
+	canvas/Canvas.cpp \
+	shape/Rectangle.cpp \
+	factory/RectangleFactory.cpp \
+	shape/Square.cpp \
+	factory/SquareFactory.cpp \
+	shape/Textbox.cpp \
+	factory/TextboxFactory.cpp \
+	memento/Memento.cpp \
+	shape/Shape.cpp \
+	memento/Caretaker.cpp \
+	exporter/PDFExporter.cpp \
+	exporter/ExportCanvas.cpp \
+	exporter/PNGExporter.cpp
 
 DEMO_OBJ := $(DEMO_SRC:.cpp=.o)
 DEMO_BIN := demo

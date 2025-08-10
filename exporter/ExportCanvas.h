@@ -1,9 +1,9 @@
 #ifndef EXPORTCANVAS_H
 #define EXPORTCANVAS_H
 
-#include "Canvas.h"
+#include "../canvas/Canvas.h"
 #include <string>
-#include "Logger.h"
+#include "../loggerOCI/Logger.h"
 #include <fstream>
 class ExportCanvas
 {

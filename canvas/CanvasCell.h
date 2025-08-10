@@ -2,7 +2,7 @@
 #define CANVAS_CELL_H
 
 #include <string>
-#include "ANSI-color-codes.h"
+#include "../loggerOCI/ANSI-color-codes.h"
 
 struct CanvasCell {
     std::string colorCode; // e.g., BLKB, REDB, etc.

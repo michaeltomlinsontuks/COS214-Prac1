@@ -5,11 +5,11 @@
 #include <string>
 #include "Logger.h"
 #include "ANSI-color-codes.h"
-#include "Canvas.h"
-#include "Caretaker.h"
-#include "Memento.h"
-#include "PDFExporter.h"
-#include "PNGExporter.h"
+#include "../canvas/Canvas.h"
+#include "../memento/Caretaker.h"
+#include "../memento/Memento.h"
+#include "../exporter/PDFExporter.h"
+#include "../exporter/PNGExporter.h"
 
 // Forward declaration for main
 int main();

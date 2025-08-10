@@ -1,7 +1,7 @@
 #ifndef CARETAKER_H
 #define CARETAKER_H
 #include "Memento.h"
-#include "Logger.h"
+#include "../loggerOCI/Logger.h"
 class Caretaker
 {
 private:

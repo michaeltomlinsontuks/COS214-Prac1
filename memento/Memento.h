@@ -1,9 +1,9 @@
 #ifndef MEMENTO_H
 #define MEMENTO_H
 
-#include "Shape.h"
-#include "array.h"
-#include "Logger.h"
+#include "../shape/Shape.h"
+#include "../loggerOCI/array.h"
+#include "../loggerOCI/Logger.h"
 
 class Canvas;
 

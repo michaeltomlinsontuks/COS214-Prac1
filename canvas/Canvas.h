@@ -2,17 +2,16 @@
 #define CANVAS_H
 
 #include <vector>
-#include "Shape.h"
-#include "Memento.h"
-#include "RectangleFactory.h"
-#include "SquareFactory.h"
-#include "TextboxFactory.h"
+#include "../shape/Shape.h"
+#include "../factory/RectangleFactory.h"
+#include "../factory/SquareFactory.h"
+#include "../factory/TextboxFactory.h"
 #include <string>
 #include <iostream>
-#include "ANSI-color-codes.h"
-#include "Logger.h"
+#include "../loggerOCI/ANSI-color-codes.h"
+#include "../loggerOCI/Logger.h"
 #include "CanvasCell.h"
-#include "Caretaker.h"
+#include "../memento/Memento.h"
 
 class Canvas {
 friend void canvasTesting();
@@ -22,7 +21,6 @@ private:
 	int width;
 	int height;
 	std::string canvasColour;
-	Caretaker caretaker;
 
 	void drawBorder();
 

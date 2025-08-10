@@ -4,26 +4,21 @@
 
 #include <iostream>
 #include <string>
-#include "ANSI-color-codes.h"
-//Prototype
-#include "Shape.h"
-#include "Rectangle.h"
-#include "Square.h"
-#include "Textbox.h"
-//Factory Method
-#include "RectangleFactory.h"
-#include "SquareFactory.h"
-#include "TextboxFactory.h"
-//Template Method
-#include "Canvas.h"
-#include "ExportCanvas.h"
-#include "PDFExporter.h"
-#include "PNGExporter.h"
-//Memento
-#include "Memento.h"
-#include "Caretaker.h"
-//Other
-#include "Logger.h"
+#include "loggerOCI/ANSI-color-codes.h"
+#include "canvas/Canvas.h"
+#include "loggerOCI/Logger.h"
+#include "shape/Shape.h"
+#include "shape/Rectangle.h"
+#include "shape/Square.h"
+#include "shape/Textbox.h"
+#include "factory/RectangleFactory.h"
+#include "factory/SquareFactory.h"
+#include "factory/TextboxFactory.h"
+#include "exporter/PDFExporter.h"
+#include "exporter/PNGExporter.h"
+#include "memento/Memento.h"
+#include "memento/Caretaker.h"
+
 using namespace std;
 int suiteCount = 0;
 int testCount = 0;

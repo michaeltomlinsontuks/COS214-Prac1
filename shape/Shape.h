@@ -3,9 +3,9 @@
 
 #include <vector>
 #include <string>
-#include "ANSI-color-codes.h"
-#include "Logger.h"
-#include "CanvasCell.h"
+#include "../loggerOCI/ANSI-color-codes.h"
+#include "../loggerOCI/Logger.h"
+#include "../canvas/CanvasCell.h"
 
 using std::vector;
 using std::string;

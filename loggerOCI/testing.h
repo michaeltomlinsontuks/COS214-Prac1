@@ -2,7 +2,7 @@
 #define Testing_H
 #include <iostream>
 #include <string>
-#include "array.h"
+#include "loggerOCI/array.h"
 using namespace std;
 
 template <class T, class J>

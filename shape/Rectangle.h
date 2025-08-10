@@ -3,7 +3,7 @@
 
 #include <vector>
 #include "Shape.h"
-#include "CanvasCell.h"
+#include "../canvas/CanvasCell.h"
 using std::vector;
 
 class RectangleFactory; // Forward declaration
