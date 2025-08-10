@@ -21,6 +21,6 @@ Square::~Square() {
 std::vector<std::vector<CanvasCell>> Square::draw() {
     Logger::getInstance()->info("Square drawn with values: length = " + std::to_string(this->getLength()) + ", width = " + std::to_string(this->getWidth()) + ", colour = " + this->getColour() + ", position_x = " + std::to_string(this->getPositionX()) + ", position_y = " + std::to_string(this->getPositionY()));
     std::vector<std::vector<CanvasCell>> result;
-    result.resize(getLength(), vector<CanvasCell>(getWidth(), CanvasCell(getColour(), ' ')));
+    result.resize(getLength(), std::vector<CanvasCell>(getWidth(), CanvasCell(getColour(), ' ')));
     return result;
 }

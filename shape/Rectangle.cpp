@@ -21,6 +21,6 @@ Rectangle::~Rectangle() {
 std::vector<std::vector<CanvasCell>> Rectangle::draw() {
     Logger::getInstance()->info("Rectangle drawn with values: length = " + std::to_string(this->getLength()) + ", width = " + std::to_string(this->getWidth()) + ", colour = " + this->getColour() + ", position_x = " + std::to_string(this->getPositionX()) + ", position_y = " + std::to_string(this->getPositionY()));
     std::vector<std::vector<CanvasCell>> result;
-    result.resize(getLength(), vector<CanvasCell>(getWidth(), CanvasCell(getColour(), ' ')));
+    result.resize(getLength(), std::vector<CanvasCell>(getWidth(), CanvasCell(getColour(), ' ')));
     return result;
 }

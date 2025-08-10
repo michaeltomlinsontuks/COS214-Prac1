@@ -81,7 +81,6 @@ DEMO_SRC = loggerOCI/OCI.cpp \
 	shape/Textbox.cpp \
 	factory/TextboxFactory.cpp \
 	memento/Memento.cpp \
-	shape/Shape.cpp \
 	memento/Caretaker.cpp \
 	exporter/PDFExporter.cpp \
 	exporter/ExportCanvas.cpp \

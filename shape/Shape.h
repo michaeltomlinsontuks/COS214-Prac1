@@ -12,7 +12,7 @@ friend void prototypeTesting();
 private:
     int length;
     int width;
-    string colour;
+    std::string colour;
     int position_x;
     int position_y;
 
@@ -25,7 +25,7 @@ protected:
 public:
     int getLength() const { return length; }
     int getWidth() const { return width; }
-    string getColour() const { return colour; }
+    std::string getColour() const { return colour; }
     int getPositionX() const { return position_x; }
     int getPositionY() const { return position_y; }
     virtual Shape* clone() = 0;
