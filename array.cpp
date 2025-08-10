@@ -1,6 +1,6 @@
 
 #include "array.h"
-#include "../shapes/Shape.h"
+#include "Shape.h"
 
 string to_string(Array<Shape> &array)
 {

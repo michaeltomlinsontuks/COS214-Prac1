@@ -3,7 +3,7 @@
 
 #include <vector>
 #include "Shape.h"
-#include "../canvas/CanvasCell.h"
+#include "CanvasCell.h"
 using std::vector;
 
 class SquareFactory; // Forward declaration

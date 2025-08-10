@@ -1,7 +1,7 @@
 #ifndef EXPORTCANVAS_H
 #define EXPORTCANVAS_H
 
-#include "../canvas/Canvas.h"
+#include "Canvas.h"
 #include <fstream>
 class ExportCanvas
 {

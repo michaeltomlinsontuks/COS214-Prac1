@@ -2,7 +2,7 @@
 #define RECTANGLEFACTORY_H
 
 #include "ShapeFactory.h"
-#include "../shapes/Rectangle.h"
+#include "Rectangle.h"
 
 class RectangleFactory : ShapeFactory {
 

@@ -5,7 +5,7 @@
 #include <string>
 #include "Logger.h"
 #include "ANSI-color-codes.h"
-#include "../canvas/Canvas.h"
+#include "Canvas.h"
 
 // Forward declaration for main
 int main();

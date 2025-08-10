@@ -11,7 +11,7 @@ run.
 */
 
 #include <iostream>
-#include "loggerOCI/OCI.h"
+#include "OCI.h"
 using namespace std;
 
 /*

@@ -2,15 +2,15 @@
 #define CANVAS_H
 
 #include <vector>
-#include "../shapes/Shape.h"
-#include "../memento/Memento.h"
-#include "../factories/RectangleFactory.h"
-#include "../factories/SquareFactory.h"
-#include "../factories/TextboxFactory.h"
+#include "Shape.h"
+#include "Memento.h"
+#include "RectangleFactory.h"
+#include "SquareFactory.h"
+#include "TextboxFactory.h"
 #include <string>
 #include <iostream>
-#include "../loggerOCI//ANSI-color-codes.h"
-#include "../loggerOCI//Logger.h"
+#include "ANSI-color-codes.h"
+#include "Logger.h"
 #include "CanvasCell.h"
 
 class Canvas {

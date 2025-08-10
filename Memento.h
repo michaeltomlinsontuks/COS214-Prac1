@@ -1,8 +1,8 @@
 #ifndef MEMENTO_H
 #define MEMENTO_H
 
-#include "../shapes/Shape.h"
-#include "../TestingFramework/array.h"
+#include "Shape.h"
+#include "array.h"
 
 class Canvas;
 

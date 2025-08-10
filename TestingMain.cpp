@@ -4,12 +4,13 @@
 
 #include <iostream>
 #include <string>
-#include "loggerOCI/ANSI-color-codes.h"
-#include "loggerOCI/OCI.h"
-#include "TestingFramework/testing.h"
-#include "memento/Caretaker.h"
-#include "exporter/PDFExporter.h"
-#include "exporter/PNGExporter.h"
+#include "ANSI-color-codes.h"
+
+#include "testing.h"
+#include "Caretaker.h"
+#include "PDFExporter.h"
+#include "PNGExporter.h"
+
 void wilmarTesting();
 
 int main()
@@ -27,12 +28,14 @@ int main()
     return 0;
     */
     wilmarTesting();
+
+  
     return 0;
 }
 
 void wilmarTesting()
 {
-    
+
     vector<Shape *> *elements = new vector<Shape *>();
     RectangleFactory RF;
     RF.toString();
@@ -63,7 +66,7 @@ void wilmarTesting()
         elements->push_back(Text);
     }
 
-    Memento* mem  = new Memento(*elements);
+    Memento *mem = new Memento(*elements);
     Array<string> arrInstruction(0);
 
     string str = "TC";
@@ -80,7 +83,7 @@ void wilmarTesting()
 
     Memento *copy = careTakerTest.getMemento();
     TS->textCompare(*copy, *mem);
-    TS->equalsTest(*copy,*mem);
+    TS->equalsTest(*copy, *mem);
 
     for (int i = 0; i < int(elements->size()); i++)
     {
@@ -114,5 +117,4 @@ void wilmarTesting()
     canvas->draw();
     delete canvas;
     delete elements;
-    
 }

@@ -4,22 +4,22 @@ LDFLAGS = -lgcov
 
 
 SRC =	TestingMain.cpp\
-	loggerOCI/OCI.cpp\
-	loggerOCI/Logger.cpp \
-	canvas/Canvas.cpp \
-	shapes/Rectangle.cpp \
-	factories/RectangleFactory.cpp \
-	shapes/Square.cpp \
-	factories/SquareFactory.cpp \
-	shapes/Textbox.cpp \
-	factories/TextboxFactory.cpp \
-	memento/Memento.cpp \
-	TestingFramework/array.cpp \
-	shapes/Shape.cpp \
-	memento/Caretaker.cpp \
-	exporter/PDFExporter.cpp \
-	exporter/ExportCanvas.cpp \
-	exporter/PNGExporter.cpp
+	OCI.cpp\
+	Logger.cpp \
+	Canvas.cpp \
+	Rectangle.cpp \
+	RectangleFactory.cpp \
+	Square.cpp \
+	SquareFactory.cpp \
+	Textbox.cpp \
+	TextboxFactory.cpp \
+	Memento.cpp \
+	array.cpp \
+	Shape.cpp \
+	Caretaker.cpp \
+	PDFExporter.cpp \
+	ExportCanvas.cpp \
+	PNGExporter.cpp
 
 HEADERS = \
 	OCI.h \
@@ -52,8 +52,6 @@ $(BIN): $(OBJ)
 	$(CXX) $(CXXFLAGS) -c $< -o $@  
 
 
-
-
 run r: $(BIN)
 	./$(BIN)
 
@@ -69,32 +67,30 @@ clean c:
 valgrind v: $(BIN)
 	valgrind --leak-check=full --track-origins=yes ./$(BIN)
 
-coverage cov: all
+cov: all
 	./$(BIN)
 	gcovr --root . \
 	    --exclude '.*\.h' \
-	    --exclude '.*TestingFramework/.*' \
-	    --exclude '.*loggerOCI/.*' \
 	    --print-summary > coverage.txt
 
 
-DEMO_SRC = loggerOCI/OCI.cpp \
+DEMO_SRC = OCI.cpp \
 	DemoMain.cpp \
-	loggerOCI/Logger.cpp \
-	canvas/Canvas.cpp \
-	shapes/Rectangle.cpp \
-	factories/RectangleFactory.cpp \
-	shapes/Square.cpp \
-	factories/SquareFactory.cpp \
-	shapes/Textbox.cpp \
-	factories/TextboxFactory.cpp \
-	memento/Memento.cpp \
-	TestingFramework/array.cpp \
-	shapes/Shape.cpp \
-	memento/Caretaker.cpp \
-	exporter/PDFExporter.cpp \
-	exporter/ExportCanvas.cpp \
-	exporter/PNGExporter.cpp
+	Logger.cpp \
+	Canvas.cpp \
+	Rectangle.cpp \
+	RectangleFactory.cpp \
+	Square.cpp \
+	SquareFactory.cpp \
+	Textbox.cpp \
+	TextboxFactory.cpp \
+	Memento.cpp \
+	array.cpp \
+	Shape.cpp \
+	Caretaker.cpp \
+	PDFExporter.cpp \
+	ExportCanvas.cpp \
+	PNGExporter.cpp
 
 DEMO_OBJ := $(DEMO_SRC:.cpp=.o)
 DEMO_BIN := demo
