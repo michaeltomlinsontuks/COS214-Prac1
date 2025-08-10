@@ -334,6 +334,13 @@ void loggerTesting()
     startTest("Print Log");
     Logger::getInstance()->printLogFile();
     endTest("Print Log", true);
+    startTest("Clear Log");
+    Logger::getInstance()->clearLogs();
+    endTest("Clear Log", true);
+    startTest("Logger Coverage");
+    Logger::getInstance()->getLogLevelColor(Logger::UNKNOWN);
+    Logger::getInstance()->getLogLevelString(Logger::UNKNOWN);
+
     endSuite("Logger Testing");
 }
 

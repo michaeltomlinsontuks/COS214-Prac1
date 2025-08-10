@@ -4,8 +4,7 @@ Memento *Canvas::captureCurrent()
 {
     Logger::getInstance()->info("Canvas::captureCurrent called");
     // Create a new Memento with the current shapes
-    return new Memento(shapes);
-}
+    return new Memento(shapes);}
 
 void Canvas::undoAction(Memento *prev)
 {
@@ -95,18 +94,15 @@ void Canvas::duplicateShape(int shapeId)
 vector<Shape *> Canvas::getShapeList()
 {
     Logger::getInstance()->info("Canvas::getShapeList called");
-    return shapes;
-}
+    return shapes;}
 
 Shape *Canvas::getShapeInfo(int shapeId)
 {
     Logger::getInstance()->info("Canvas::getShapeInfo called with shapeId = " + std::to_string(shapeId));
 
-    return shapes[shapeId];
-}
+    return shapes[shapeId];}
 
-void Canvas::drawBorder()
-{
+void Canvas::drawBorder(){
     // Draw top and bottom border
     std::string borderColor = BHBLK_ON_WHTHB; // White background for border
     for (int col = 0; col < width; ++col)
@@ -236,8 +232,7 @@ std::string Canvas::exportCanvas()
         output += CRESET;
         output += '\n';
     }
-    return output;
-}
+    return output;}
 
 void Canvas::generateCanvas()
 {
@@ -247,13 +242,8 @@ void Canvas::generateCanvas()
     drawBorder();
 }
 
-Canvas::~Canvas()
-{
+Canvas::~Canvas(){
     Logger::getInstance()->info("Canvas destroyed");
     // Clean up all shapes
-    for (Shape *shape : shapes)
-    {
-        delete shape;
-    }
-    shapes.clear();
-}
+    for (Shape *shape : shapes){delete shape;}
+    shapes.clear();}

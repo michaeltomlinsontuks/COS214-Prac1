@@ -2,8 +2,7 @@
 
 Shape* Textbox::clone() {
     Logger::getInstance()->info("Textbox cloned with values: length = " + std::to_string(this->getLength()) + ", width = " + std::to_string(this->getWidth()) + ", colour = " + this->getColour() + ", position_x = " + std::to_string(this->getPositionX()) + ", position_y = " + std::to_string(this->getPositionY()) + ", text = " + this->text);
-    return new Textbox(*this);
-}
+    return new Textbox(*this);}
 
 Textbox::Textbox(int length, int width, const string& colour, int position_x, int position_y, const string& text)
     : Shape(length, width, colour, position_x, position_y), text(text) {

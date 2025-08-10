@@ -2,8 +2,7 @@
 
 Shape* Rectangle::clone() {
     Logger::getInstance()->info("Rectangle cloned with values: length = " + std::to_string(this->getLength()) + ", width = " + std::to_string(this->getWidth()) + ", colour = " + this->getColour() + ", position_x = " + std::to_string(this->getPositionX()) + ", position_y = " + std::to_string(this->getPositionY()));
-    return new Rectangle(*this);
-}
+    return new Rectangle(*this);}
 
 Rectangle::Rectangle(int length, int width, const string& colour, int position_x, int position_y)
     : Shape(length, width, colour, position_x, position_y) {

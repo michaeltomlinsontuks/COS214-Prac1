@@ -15,7 +15,8 @@ private:
 	enum LogLevel {
 		INFO,
 		WARNING,
-		ERROR
+		ERROR,
+		UNKNOWN
 	};
 
 private:

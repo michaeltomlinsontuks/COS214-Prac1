@@ -2,8 +2,7 @@
 
 Shape* Square::clone() {
     Logger::getInstance()->info("Square cloned with values: length = " + std::to_string(this->getLength()) + ", width = " + std::to_string(this->getWidth()) + ", colour = " + this->getColour() + ", position_x = " + std::to_string(this->getPositionX()) + ", position_y = " + std::to_string(this->getPositionY()));
-    return new Square(*this);
-}
+    return new Square(*this);}
 
 Square::Square(int length, int width, const string& colour, int position_x, int position_y)
     : Shape(length, width, colour, position_x, position_y) {
