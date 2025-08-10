@@ -11,7 +11,7 @@ void PNGExporter::prepareCanvas()
 	}
 
 	canvasOutput = new string("PNG EXPORT:\n");
-	cout << "Canvas has been prepared for PNG export" << endl;
+	Logger::getInstance()->info("Canvas has been prepared for PNG export");
 }
 void PNGExporter::renderElements()
 {
@@ -20,29 +20,18 @@ void PNGExporter::renderElements()
 		throw "Provide a canvas before exporting";
 	}
 	*canvasOutput += canvas->exportCanvas();
-	cout << "Canvas has been locally rendered for PNG export" << endl;
+	Logger::getInstance()->info("Canvas has been rendered for PNG export");
 }
 
 void PNGExporter::saveToFile()
 {
-
-	cout << "What do you wish to save this PNG as? :[default is PNG.txt] ";
-	string fileName = "";
-
-	//getline(std::cin, fileName);
-
-	if (fileName.empty())
-	{
-		fileName = "PNG";
-	}
-
-	ofstream file(fileName + ".txt");
+	ofstream file("PNG.txt");
 	if (!file)
 	{
-		cout << RED << "Error in producing a file" << CRESET << endl;
+		Logger::getInstance()->error("Error in producing a file");
 		return;
 	}
 
 	file << *canvasOutput;
-	cout << "PNG successfully exported" << endl;
+	Logger::getInstance()->info("Canvas has been saved to PNG.txt");
 }

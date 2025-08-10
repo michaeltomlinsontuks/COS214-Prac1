@@ -1,7 +1,8 @@
 
 #include "array.h"
 #include "Shape.h"
-
+//Removing the testing stuff for the fitchfork submission
+/*
 string to_string(Array<Shape> &array)
 {
     string obj = "[ ";
@@ -20,6 +21,7 @@ string to_string(Array<Shape> &array)
     obj += " ]";
     return obj;
 }
+*/
 
 template <>
 Array<Shape>::Array(Array<Shape> &copy)

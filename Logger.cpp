@@ -4,7 +4,6 @@
 //
 
 #include "Logger.h"
-#include <map>
 
 Logger* Logger::instance = nullptr;
 
@@ -209,6 +208,31 @@ std::string Logger::removeColourCodes(const std::string& input) {
         }
     }
     return output;
+}
+
+std::string Logger::getLastLine(bool noTimestamp) const {
+    std::fstream file(logFileName);
+    if (!file.is_open()) {
+        return "";
+    }
+    std::string line, lastLine;
+    while (std::getline(file, line)) {
+        lastLine = line;
+    }
+    file.close();
+    if (noTimestamp)
+    {
+        // Check if the first 6 characters are [2025-
+        if (lastLine.size() >= 6 && lastLine.substr(0, 6) == "[2025-") {
+            // Remove the first 22 characters ([YYYY-MM-DD HH:MM:SS])
+            if (lastLine.size() > 22) {
+                std::string afterTimestamp = lastLine.substr(22);
+                return afterTimestamp;
+            }
+        }
+        // If not a timestamped line, return the whole line
+    }
+    return lastLine;
 }
 
 Logger::~Logger() {

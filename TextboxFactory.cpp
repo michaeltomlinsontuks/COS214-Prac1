@@ -4,12 +4,6 @@ Shape* TextboxFactory::createShape(int length, int width, const std::string& col
     return new Textbox(length, width, colour, position_x, position_y, text);
 }
 
-void TextboxFactory::toString() {
-    // Example implementation
-    std::cout << "TextboxFactory" << std::endl;
-}
-
-TextboxFactory::TextboxFactory(TextboxFactory& copy) {
-    (void)copy;
-    // Copy constructor implementation if needed
+std::string TextboxFactory::toString() {
+    return "TextboxFactory";
 }

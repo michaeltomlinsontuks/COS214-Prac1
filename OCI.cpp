@@ -7,6 +7,9 @@
 
 OCI::OCI() : logger(Logger::getInstance()), running(false) {
     canvas = new Canvas();
+    current = canvas->captureCurrent();
+    caretaker = new Caretaker();
+    caretaker->addMemento(current);
 }
 OCI::~OCI() {
     delete canvas;
@@ -102,7 +105,6 @@ void OCI::displayMenu(int menuCode) {
             std::cout << BHGRN << "1. " << BHWHT << "Clear Canvas" << CRESET << std::endl;
             std::cout << BHGRN << "2. " << BHWHT << "Draw Canvas" << CRESET << std::endl;
             std::cout << BHGRN << "3. " << BHWHT << "Undo" << CRESET << std::endl;
-            std::cout << BHGRN << "4. " << BHWHT << "Redo" << CRESET << std::endl;
             std::cout << BHRED << "0. Back" << CRESET << std::endl;
             std::cout << std::endl;
             std::cout << BHWHT << "> " << CRESET;
@@ -131,7 +133,7 @@ void OCI::displayMenu(int menuCode) {
     }
 }
 
-void OCI::shapeSubMenu() const{
+void OCI::shapeSubMenu() {
     while (true) {
         displayMenu(1);
         int choice = validateNumberInput(5);
@@ -161,7 +163,7 @@ void OCI::shapeSubMenu() const{
     }
 }
 
-void OCI::addShape() const{
+void OCI::addShape(){
     std::cout << BHYEL << "\nAdd Shape" << CRESET << std::endl;
     std::cout << BHWHT << "Select shape type:" << CRESET << std::endl;
     std::cout << BHGRN << "1. Rectangle\n2. Square\n3. Textbox" << CRESET << std::endl;
@@ -250,9 +252,11 @@ void OCI::addShape() const{
         std::cout << BHRED << "Failed to add shape." << CRESET << std::endl;
     }
     std::cout << BHWHT << "> " << CRESET;
+    current = canvas->captureCurrent();
+    caretaker->addMemento(current);
 }
 
-void OCI::removeShape() const{
+void OCI::removeShape(){
     getShapeList();
     std::cout << BHWHT << "Enter the ID of the shape to remove: " << CRESET;
     int shapeId;
@@ -271,9 +275,11 @@ void OCI::removeShape() const{
         std::cout << BHYEL << "Remove cancelled." << CRESET << std::endl;
     }
     std::cout << BHWHT << "> " << CRESET;
+    current = canvas->captureCurrent();
+    caretaker->addMemento(current);
 }
 
-void OCI::duplicateShape() const{
+void OCI::duplicateShape(){
     getShapeList();
     std::cout << BHWHT << "Enter the ID of the shape to duplicate: " << CRESET;
     int shapeId;
@@ -285,6 +291,8 @@ void OCI::duplicateShape() const{
     canvas->duplicateShape(shapeId);
     std::cout << BHGRN << "Shape duplicated!" << CRESET << std::endl;
     std::cout << BHWHT << "> " << CRESET;
+    current = canvas->captureCurrent();
+    caretaker->addMemento(current);
 }
 
 void OCI::getShapeList() const {
@@ -320,7 +328,7 @@ void OCI::getShapeInfo() const {
     std::cout << BHWHT << "> " << CRESET;
 }
 
-void OCI::canvasSubMenu() const {
+void OCI::canvasSubMenu() {
     while (true) {
         displayMenu(2);
         int choice = validateNumberInput(4);
@@ -334,9 +342,6 @@ void OCI::canvasSubMenu() const {
                 break;
             case 3:
                 undo();
-                break;
-            case 4:
-                redo();
                 break;
             case 0:
                 return;
@@ -379,11 +384,15 @@ void OCI::exportSubMenu() const{
 }
 
 void OCI::exportPNG() const{
-    // Arguments needed: file path/name, resolution, etc.
+    PNGExporter* pngExporter = new PNGExporter(canvas);
+    pngExporter->exportToFile();
+    delete pngExporter;
 }
 
 void OCI::exportPDF() const{
-    // Arguments needed: file path/name, page size, etc.
+    PDFExporter* pdfExporter = new PDFExporter(canvas);
+    pdfExporter->exportToFile();
+    delete pdfExporter;
 }
 
 void OCI::utilitiesSubMenu() const{
@@ -415,7 +424,7 @@ void OCI::help() {
     std::cout << BHWHT << "- Enter '0' to go back or quit from any menu." << CRESET << std::endl;
     std::cout << BHWHT << "\nMenus:" << CRESET << std::endl;
     std::cout << BHWHT << "1. Shape Menu: Add, remove, duplicate, list, or get info about shapes." << CRESET << std::endl;
-    std::cout << BHWHT << "2. Canvas Menu: Clear, draw, undo, or redo actions on the canvas." << CRESET << std::endl;
+    std::cout << BHWHT << "2. Canvas Menu: Clear, draw or undo actions on the canvas." << CRESET << std::endl;
     std::cout << BHWHT << "3. Export Menu: Export your canvas as PNG or PDF." << CRESET << std::endl;
     std::cout << BHWHT << "4. Utilities Menu: Access help or view the log." << CRESET << std::endl;
     std::cout << BHWHT << "\nTips:" << CRESET << std::endl;
@@ -446,10 +455,6 @@ int OCI::validateNumberInput(const int max) const {
     return input;
 }
 
-void OCI::undo() const {
-    throw "Not yet implemented: OCI::undo()";
-}
-
-void OCI::redo() const {
-    throw "Not yet implemented: OCI::redo()";
+void OCI::undo() {
+    canvas->undoAction(caretaker->getMemento());
 }

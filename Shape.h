@@ -11,7 +11,9 @@ using std::vector;
 using std::string;
 
 class Shape {
-    friend string to_string(const Shape *);
+    //Removing the testing stuff for the fitchfork submission
+    //friend string to_string(const Shape *);
+    friend void prototypeTesting();
 //Apparently we need to use private and then use getters
 private:
     int length;
@@ -27,9 +29,11 @@ protected:
     Shape(const Shape *copy)
         : length(copy->length), width(copy->width), colour(copy->colour), position_x(copy->position_x), position_y(copy->position_y) {}
 
+/*
+Removing the testing stuff for the fitchfork submission
 public:
     bool operator==(Shape &copy);
-
+*/
 
 public:
     int getLength() const { return length; }

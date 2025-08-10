@@ -13,14 +13,14 @@ class TextboxFactory; // Forward declaration
 class Textbox : public Shape {
 
 friend class TextboxFactory;
+friend void prototypeTesting();
 
 private:
     Textbox(int length, int width, const string& colour, int position_x, int position_y, const string& text);
     Textbox(const Textbox& copy);
+    std::string text;
 
 public:
-// why text public
-    string text;
     Shape* clone() override;
     ~Textbox() override;
     vector<vector<CanvasCell>> draw() override;

@@ -6,6 +6,10 @@
 #include "Logger.h"
 #include "ANSI-color-codes.h"
 #include "Canvas.h"
+#include "Caretaker.h"
+#include "Memento.h"
+#include "PDFExporter.h"
+#include "PNGExporter.h"
 
 // Forward declaration for main
 int main();
@@ -17,6 +21,8 @@ private:
 	Logger* logger;
 	bool running;
 	Canvas* canvas; // Add Canvas pointer
+	Caretaker* caretaker;
+	Memento* current;
 
 	friend int ::main(); // Allow main() in DemoMain.cpp to access private/protected members
 
@@ -31,27 +37,25 @@ public:
 	static void displayMenu(int menuCode);
 
 private:
-	void shapeSubMenu() const;
+	void shapeSubMenu();
 
-	void addShape() const;
+	void addShape();
 
-	void removeShape() const;
+	void removeShape();
 
-	void duplicateShape() const;
+	void duplicateShape();
 
 	void getShapeList() const;
 
 	void getShapeInfo() const;
 
-	void canvasSubMenu() const;
+	void canvasSubMenu();
 
 	void clearCanvas() const;
 
 	void drawCanvas() const;
 
-	void undo() const;
-
-	void redo() const;
+	void undo();
 
 	void exportSubMenu() const;
 

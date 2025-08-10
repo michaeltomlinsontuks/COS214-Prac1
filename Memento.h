@@ -3,13 +3,17 @@
 
 #include "Shape.h"
 #include "array.h"
+#include "Logger.h"
 
 class Canvas;
 
 class Memento
 {
+	/*
+	Removing the testing stuff for the fitchfork submission
 	friend string to_string(const Memento &);
 	friend void wilmarTesting();
+	*/
 	friend Canvas;
 
 private:
@@ -17,11 +21,13 @@ private:
 	Memento(vector<Shape *> &elements);
 
 public:
-	Memento(Memento &copy);
-	// add to diagramf
+	//Memento(Memento &copy);
+	// add to diagram
 	~Memento();
-	bool operator==(const Memento &);
+	//bool operator==(const Memento &);
 };
-string to_string(const Memento &);
+
+//Removing the testing stuff for the fitchfork submission
+//string to_string(const Memento &);
 
 #endif

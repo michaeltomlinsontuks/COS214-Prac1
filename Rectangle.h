@@ -11,6 +11,7 @@ class RectangleFactory; // Forward declaration
 class Rectangle : public Shape {
 
 friend class RectangleFactory;
+friend void prototypeTesting();
 
 private:
     Rectangle(int length, int width, const string& colour, int position_x, int position_y);

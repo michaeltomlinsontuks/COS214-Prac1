@@ -11,6 +11,7 @@ class SquareFactory; // Forward declaration
 class Square : public Shape {
 
 friend class SquareFactory;
+friend void prototypeTesting();
 
 private:
     Square(int length, int width, const string& colour, int position_x, int position_y);

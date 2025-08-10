@@ -2,6 +2,8 @@
 #define EXPORTCANVAS_H
 
 #include "Canvas.h"
+#include <string>
+#include "Logger.h"
 #include <fstream>
 class ExportCanvas
 {

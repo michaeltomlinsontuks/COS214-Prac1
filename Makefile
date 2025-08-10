@@ -61,7 +61,7 @@ clean c:
 	find . -name '*.gcno' -delete
 	find . -name '*.gcda' -delete
 	find . -name '*.gcov' -delete
-	rm -f application.log demo PDF.txt PNG.txt
+	rm -f application.log demo PDF.txt PNG.txt coverage.txt
 
 
 valgrind v: $(BIN)

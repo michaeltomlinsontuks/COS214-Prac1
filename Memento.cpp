@@ -9,22 +9,15 @@ Memento::Memento(vector<Shape *> &elements)
 	{
 		shapes->operator[](i) = elements[i]->clone();
 	}
-}
-Memento::Memento(Memento &copy)
-{
-	shapes = new Array<Shape>(copy.shapes->getLength());
-
-	for (int i = 0; i < shapes->getLength(); i++)
-	{
-		shapes->operator[](i) = copy.shapes->getIndex(i)->clone();
-	}
+	Logger::getInstance()->info("Memento created");
 }
 Memento::~Memento()
 {
 
 	delete shapes;
 }
-
+//Removing the testing stuff for the fitchfork submission
+/*
 string to_string(const Memento &obj)
 {
 	string output = "";
@@ -53,3 +46,4 @@ bool Memento::operator==(const Memento &copy)
 
 	return true;
 }
+*/

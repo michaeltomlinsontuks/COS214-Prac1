@@ -12,6 +12,7 @@
 #include "ANSI-color-codes.h"
 #include "Logger.h"
 #include "CanvasCell.h"
+#include "Caretaker.h"
 
 class Canvas {
 
@@ -21,6 +22,7 @@ private:
 	int width;
 	int height;
 	std::string canvasColour;
+	Caretaker caretaker;
 
 	void drawBorder();
 
@@ -46,7 +48,7 @@ public:
 	void clear();
 
 	void draw();
-	string exportCanvas();
+	std::string exportCanvas();
 
 	void generateCanvas();
 };

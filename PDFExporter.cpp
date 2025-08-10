@@ -11,7 +11,7 @@ void PDFExporter::prepareCanvas()
 	}
 
 	canvasOutput = new string("PDF EXPORT:\n");
-	cout << "Canvas has been prepared for PDF export" << endl;
+	Logger::getInstance()->info("Canvas has been prepared for PDF export");
 }
 void PDFExporter::renderElements()
 {
@@ -20,29 +20,18 @@ void PDFExporter::renderElements()
 		throw "Provide a canvas before exporting";
 	}
 	*canvasOutput += canvas->exportCanvas();
-	cout << "Canvas has been locally rendered for PDF export" << endl;
+	Logger::getInstance()->info("Canvas has been locally rendered for PDF export");
 }
 
 void PDFExporter::saveToFile()
 {
-
-	cout << "What do you wish to save this PDF as? :[default is PDF.txt] ";
-	string fileName = "";
-
-	//getline(std::cin, fileName);
-
-	if (fileName.empty())
-	{
-		fileName = "PDF";
-	}
-
-	ofstream file(fileName + ".txt");
+	ofstream file("PDF.txt");
 	if (!file)
 	{
-		cout << RED << "Error in producing a file" << CRESET << endl;
+		Logger::getInstance()->error("Error in producing a file");
 		return;
 	}
 
 	file << *canvasOutput;
-	cout << "PDF successfully exported" << endl;
+	Logger::getInstance()->info("Canvas has been saved to PDF.txt");
 }

@@ -188,7 +188,7 @@ void Canvas::draw()
     }
 }
 
-string Canvas::exportCanvas()
+std::string Canvas::exportCanvas()
 {
     Logger::getInstance()->info("Canvas::draw called");
     // Clear the canvas to background

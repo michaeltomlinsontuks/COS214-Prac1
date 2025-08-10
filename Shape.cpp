@@ -1,9 +1,9 @@
 //
 // Created by Michael Tomlinson on 2025/08/09.
 //
-//Just used by testing
+//Just used by testing removing it for the submission stuff
 #include "Shape.h"
-
+/*
 string to_string(const Shape *shape)
 {
     string output = "";
@@ -27,3 +27,4 @@ bool Shape::operator==(Shape &copy)
     std::cout << std::endl;
     return (copy.getLength() == this->getLength() && copy.getWidth() == this->getWidth() && copy.getPositionX() == this->getPositionX() && copy.getPositionY() == this->getPositionY() && copy.getColour() == this->getColour());
 }
+*/

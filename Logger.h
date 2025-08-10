@@ -7,7 +7,10 @@
 #include <iostream>
 #include "ANSI-color-codes.h"
 
+//Declare loggerTesting function as a friend
+
 class Logger {
+public:
 	enum LogLevel {
 		INFO,
 		WARNING,
@@ -48,6 +51,8 @@ public:
 	void printLogFile() const;
 
 	void clearLogs();
+
+	std::string getLastLine(bool noTimestamp = true) const;
 
 	~Logger();
 };
