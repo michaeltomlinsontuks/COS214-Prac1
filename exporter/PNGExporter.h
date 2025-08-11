@@ -10,9 +10,7 @@ public:
 	virtual ~PNGExporter();
 
 private:
-	virtual void prepareCanvas();
 
-	virtual void renderElements();
 
 	virtual void saveToFile();
 };

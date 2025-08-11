@@ -27,7 +27,7 @@ void ExportCanvas::prepareCanvas()
 		throw "Provide a canvas before exporting";
 	}
 
-	canvasOutput = new string("PNG EXPORT:\n");
+	canvasOutput = new string("EXPORT:\n");
 	Logger::getInstance()->info("Canvas has been prepared for PNG export");
 }
 void ExportCanvas::renderElements()
@@ -37,5 +37,5 @@ void ExportCanvas::renderElements()
 		throw "Provide a canvas before exporting";
 	}
 	*canvasOutput += getCanvas()->exportCanvas();
-	Logger::getInstance()->info("Canvas has been rendered for PNG export");
+	Logger::getInstance()->info("Canvas has been rendered");
 }

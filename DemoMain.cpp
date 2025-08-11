@@ -62,25 +62,19 @@ int main()
     oci.canvas->removeShape(1);
     oci.drawCanvas();
 
-	cout << "\nSaving the current state..." << endl;
-	oci.save();
+    cout << "\nSaving the current state..." << endl;
+    oci.save();
 
     cout << "\nRemoving the duplicate shape..." << endl;
     oci.canvas->removeShape(2);
     oci.drawCanvas();
 
-	cout << "\nClearing Canvas..." << endl;
-	oci.clearCanvas();
-	oci.drawCanvas();
-
-    cout << "\nUndoing the last action..." << endl;
-	oci.undo();
+    cout << "\nClearing Canvas..." << endl;
+    oci.clearCanvas();
     oci.drawCanvas();
 
-
-    // 9. Clear the canvas
-    cout << "\nClearing the canvas..." << endl;
-    oci.clearCanvas();
+    cout << "\nUndoing the last action..." << endl;
+    oci.undo();
     oci.drawCanvas();
 
     // 10. Export (stub)
@@ -88,6 +82,11 @@ int main()
     oci.exportPNG();
     cout << "Exporting as PDF (stub)..." << endl;
     oci.exportPDF();
+
+    // 9. Clear the canvas
+    cout << "\nClearing the canvas..." << endl;
+    oci.clearCanvas();
+    oci.drawCanvas();
 
     // 11. Show log
     cout << "\n--- Demo Log ---" << endl;

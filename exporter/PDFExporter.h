@@ -10,9 +10,6 @@ public:
 	virtual ~PDFExporter();
 
 private:
-	virtual void prepareCanvas();
-
-	virtual void renderElements();
 
 	virtual void saveToFile();
 };
