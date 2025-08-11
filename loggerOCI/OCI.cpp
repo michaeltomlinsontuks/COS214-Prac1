@@ -95,7 +95,6 @@ void OCI::displayMenu(int menuCode) {
             std::cout << BHGRN << "2. " << BHWHT << "Remove Shape" << CRESET << std::endl;
             std::cout << BHGRN << "3. " << BHWHT << "Duplicate Shape" << CRESET << std::endl;
             std::cout << BHGRN << "4. " << BHWHT << "List Shapes" << CRESET << std::endl;
-            std::cout << BHGRN << "5. " << BHWHT << "Shape Info" << CRESET << std::endl;
             std::cout << BHRED << "0. Back" << CRESET << std::endl;
             std::cout << std::endl;
             std::cout << BHWHT << "> " << CRESET;
@@ -150,9 +149,6 @@ void OCI::shapeSubMenu() {
                 break;
             case 4:
                 getShapeList();
-                break;
-            case 5:
-                getShapeInfo();
                 break;
             case 0:
                 return;
@@ -269,7 +265,7 @@ void OCI::removeShape(){
     char confirm;
     std::cin >> confirm;
     if (confirm == 'y' || confirm == 'Y') {
-        canvas->removeShape(shapeId);
+        canvas->removeShape(--shapeId); //Reduce to actually line up with vector
         std::cout << BHGRN << "Shape removed!" << CRESET << std::endl;
     } else {
         std::cout << BHYEL << "Remove cancelled." << CRESET << std::endl;
@@ -288,11 +284,11 @@ void OCI::duplicateShape(){
         std::cout << BHYEL << "Duplicate cancelled (back selected)." << CRESET << std::endl;
         return;
     }
-    canvas->duplicateShape(shapeId);
+    canvas->duplicateShape(--shapeId); //Reduce to actually line up with vector
     std::cout << BHGRN << "Shape duplicated!" << CRESET << std::endl;
     std::cout << BHWHT << "> " << CRESET;
-    current = canvas->captureCurrent();
-    caretaker->addMemento(current);
+
+    caretaker->addMemento(canvas->captureCurrent());
 }
 
 void OCI::getShapeList() const {
@@ -304,28 +300,25 @@ void OCI::getShapeList() const {
     std::cout << BHGRN << "\nShape List:" << CRESET << std::endl;
     int id = 1;
     for (Shape* shape : shapes) {
-        // For now, just print the pointer and typeid. You can extend this with a getInfo() method on Shape.
-        std::cout << BHWHT << "[" << id << "] " << typeid(*shape).name() << " at " << shape << CRESET << std::endl;
+        std::string shapeType;
+
+        // Use dynamic_cast to determine the actual shape type
+        if (dynamic_cast<Rectangle*>(shape)) {
+            shapeType = "Rectangle";
+        } else if (dynamic_cast<Square*>(shape)) {
+            shapeType = "Square";
+        } else if (dynamic_cast<Textbox*>(shape)) {
+            shapeType = "Textbox";
+        } else {
+            shapeType = "Unknown";
+        }
+
+        std::cout << BHWHT << "[" << id << "] " << shapeType
+                  << " (ID: " << shape << ")"
+                  << " at position (" << shape->getPositionX()
+                  << ", " << shape->getPositionY() << ")" << CRESET << std::endl;
         id++;
     }
-}
-
-void OCI::getShapeInfo() const {
-    getShapeList();
-    std::cout << BHWHT << "Enter the ID of the shape to view info: " << CRESET;
-    int shapeId;
-    std::cin >> shapeId;
-    if (shapeId == 0) {
-        std::cout << BHYEL << "Info cancelled (back selected)." << CRESET << std::endl;
-        return;
-    }
-    Shape* info = canvas->getShapeInfo(shapeId);
-    if (info) {
-        std::cout << BHGRN << "Shape info displayed! (override this to print details)" << CRESET << std::endl;
-    } else {
-        std::cout << BHRED << "Invalid shape ID." << CRESET << std::endl;
-    }
-    std::cout << BHWHT << "> " << CRESET;
 }
 
 void OCI::canvasSubMenu() {
@@ -423,7 +416,7 @@ void OCI::help() {
     std::cout << BHWHT << "- Use the number keys to select menu options." << CRESET << std::endl;
     std::cout << BHWHT << "- Enter '0' to go back or quit from any menu." << CRESET << std::endl;
     std::cout << BHWHT << "\nMenus:" << CRESET << std::endl;
-    std::cout << BHWHT << "1. Shape Menu: Add, remove, duplicate, list, or get info about shapes." << CRESET << std::endl;
+    std::cout << BHWHT << "1. Shape Menu: Add, remove, duplicate or list shapes." << CRESET << std::endl;
     std::cout << BHWHT << "2. Canvas Menu: Clear, draw or undo actions on the canvas." << CRESET << std::endl;
     std::cout << BHWHT << "3. Export Menu: Export your canvas as PNG or PDF." << CRESET << std::endl;
     std::cout << BHWHT << "4. Utilities Menu: Access help or view the log." << CRESET << std::endl;

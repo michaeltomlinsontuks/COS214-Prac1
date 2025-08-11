@@ -50,14 +50,23 @@ int main() {
     oci.getShapeList();
 
     // 7. Duplicate the first shape
-    cout << "\nDuplicating the first shape..." << endl;
-    oci.canvas->duplicateShape(1); // Duplicate shape with ID 1
+    cout << "\nDuplicating the second shape..." << endl;
+    oci.canvas->duplicateShape(1);
     oci.drawCanvas();
+    oci.getShapeList();
 
     // 8. Remove the second shape
     cout << "\nRemoving the second shape..." << endl;
-    oci.canvas->removeShape(2); // Remove shape with ID 2
+    oci.canvas->removeShape(1);
     oci.drawCanvas();
+
+	cout << "\nRemoving the duplicate shape..." << endl;
+	oci.canvas->removeShape(2);
+	oci.drawCanvas();
+
+	cout << "\nUndoing the last action..." << endl;
+	oci.undo();
+	oci.drawCanvas();
 
     // 9. Clear the canvas
     cout << "\nClearing the canvas..." << endl;
