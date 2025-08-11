@@ -121,6 +121,7 @@ void OCI::displayMenu(int menuCode) {
             std::cout << BHYEL << "\nUtilities Menu:" << CRESET << std::endl;
             std::cout << BHGRN << "1. " << BHWHT << "Help" << CRESET << std::endl;
             std::cout << BHGRN << "2. " << BHWHT << "Log" << CRESET << std::endl;
+			std::cout << BHGRN << "3. " << BHWHT << "Save" << CRESET << std::endl;
             std::cout << BHRED << "0. Back" << CRESET << std::endl;
             std::cout << std::endl;
             std::cout << BHWHT << "> " << CRESET;
@@ -136,7 +137,7 @@ void OCI::displayMenu(int menuCode) {
 void OCI::shapeSubMenu() {
     while (true) {
         displayMenu(1);
-        int choice = validateNumberInput(5);
+        int choice = validateNumberInput(4);
         if (choice == -1) continue;
         switch (choice) {
             case 1:
@@ -325,7 +326,7 @@ void OCI::getShapeList() const {
 void OCI::canvasSubMenu() {
     while (true) {
         displayMenu(2);
-        int choice = validateNumberInput(4);
+        int choice = validateNumberInput(3);
         if (choice == -1) continue;
         switch (choice) {
             case 1:
@@ -389,10 +390,10 @@ void OCI::exportPDF() const{
     delete pdfExporter;
 }
 
-void OCI::utilitiesSubMenu() const{
+void OCI::utilitiesSubMenu(){
     while (true) {
         displayMenu(4);
-        int choice = validateNumberInput(2);
+        int choice = validateNumberInput(3);
         if (choice == -1) continue;
         switch (choice) {
             case 1:
@@ -401,6 +402,9 @@ void OCI::utilitiesSubMenu() const{
             case 2:
                 log();
                 break;
+			case 3:
+				save();
+				break;
             case 0:
                 return;
             default:
@@ -420,7 +424,7 @@ void OCI::help() {
     std::cout << BHWHT << "1. Shape Menu: Add, remove, duplicate or list shapes." << CRESET << std::endl;
     std::cout << BHWHT << "2. Canvas Menu: Clear, draw or undo actions on the canvas." << CRESET << std::endl;
     std::cout << BHWHT << "3. Export Menu: Export your canvas as PNG or PDF." << CRESET << std::endl;
-    std::cout << BHWHT << "4. Utilities Menu: Access help or view the log." << CRESET << std::endl;
+    std::cout << BHWHT << "4. Utilities Menu: Access help, view the log or save the state." << CRESET << std::endl;
     std::cout << BHWHT << "\nTips:" << CRESET << std::endl;
     std::cout << BHWHT << "- Input is validated; if you enter an invalid option, you'll be prompted again." << CRESET << std::endl;
     std::cout << BHWHT << "- For shape operations, follow the prompts to enter required details (type, color, position, etc.)." << CRESET << std::endl;
@@ -435,6 +439,10 @@ void OCI::log() const {
 void OCI::quit() {
     running = false;
     std::cout << BHYEL << "Exiting Open Canvas Interface. Goodbye!" << CRESET << std::endl;
+}
+
+void OCI::save(){
+	caretaker->addMemento(canvas->captureCurrent());
 }
 
 int OCI::validateNumberInput(const int max) const {

@@ -23,6 +23,7 @@ void Canvas::undoAction(Memento *prev)
         Shape *restored = (*prev->shapes)[i]->clone();
         shapes.push_back(restored);
     }
+
     generateCanvas(); // Redraw canvas with restored shapes
     delete prev;
 }
