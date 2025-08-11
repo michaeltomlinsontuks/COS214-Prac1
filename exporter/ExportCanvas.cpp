@@ -1,7 +1,8 @@
 #include "ExportCanvas.h"
 
-ExportCanvas::ExportCanvas(Canvas *canvas) : canvas(canvas)
+ExportCanvas::ExportCanvas(Canvas *canvas) 
 {
+	this->canvas = canvas;
 	canvasOutput = NULL;
 }
 ExportCanvas::~ExportCanvas()

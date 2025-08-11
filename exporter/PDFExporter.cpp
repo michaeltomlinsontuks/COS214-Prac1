@@ -5,8 +5,9 @@ PDFExporter::~PDFExporter() {}
 
 void PDFExporter::prepareCanvas()
 {
-	if (canvas == NULL)
+	if (getCanvas() == NULL)
 	{
+		cout<<" canvas is null"<<endl;
 		throw "Provide a canvas before exporting";
 	}
 
@@ -15,11 +16,11 @@ void PDFExporter::prepareCanvas()
 }
 void PDFExporter::renderElements()
 {
-	if (canvas == NULL)
+	if (getCanvas() == NULL)
 	{
 		throw "Provide a canvas before exporting";
 	}
-	*canvasOutput += canvas->exportCanvas();
+	*canvasOutput += getCanvas()->exportCanvas();
 	Logger::getInstance()->info("Canvas has been locally rendered for PDF export");
 }
 

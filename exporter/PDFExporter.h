@@ -9,7 +9,7 @@ public:
 	PDFExporter(Canvas * canvas);
 	virtual ~PDFExporter();
 
-protected:
+private:
 	virtual void prepareCanvas();
 
 	virtual void renderElements();

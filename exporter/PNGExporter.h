@@ -9,7 +9,7 @@ public:
 	PNGExporter(Canvas *canvas);
 	virtual ~PNGExporter();
 
-protected:
+private:
 	virtual void prepareCanvas();
 
 	virtual void renderElements();

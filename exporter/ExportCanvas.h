@@ -12,8 +12,12 @@ public:
 	void exportToFile();
 
 protected:
-	Canvas *canvas;
 	string *canvasOutput;
+	Canvas *getCanvas() { return canvas; }
+
+private:
+	Canvas *canvas;
+
 	virtual void prepareCanvas() = 0;
 
 	virtual void renderElements() = 0;

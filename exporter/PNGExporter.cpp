@@ -5,7 +5,7 @@ PNGExporter::~PNGExporter() {}
 
 void PNGExporter::prepareCanvas()
 {
-	if (canvas == NULL)
+	if (getCanvas() == NULL)
 	{
 		throw "Provide a canvas before exporting";
 	}
@@ -15,11 +15,11 @@ void PNGExporter::prepareCanvas()
 }
 void PNGExporter::renderElements()
 {
-	if (canvas == NULL)
+	if (getCanvas() == NULL)
 	{
 		throw "Provide a canvas before exporting";
 	}
-	*canvasOutput += canvas->exportCanvas();
+	*canvasOutput += getCanvas()->exportCanvas();
 	Logger::getInstance()->info("Canvas has been rendered for PNG export");
 }
 
