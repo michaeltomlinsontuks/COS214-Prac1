@@ -56,8 +56,6 @@ int main()
     oci.canvas->duplicateShape(1);
     oci.drawCanvas();
     oci.getShapeList();
-    Memento *mem = oci.canvas->captureCurrent();
-    cout << "Capturing current" << endl;
 
     // 8. Remove the second shape
     cout << "\nRemoving the second shape..." << endl;
@@ -71,8 +69,12 @@ int main()
     oci.canvas->removeShape(2);
     oci.drawCanvas();
 
+	cout << "\nClearing Canvas..." << endl;
+	oci.clearCanvas();
+	oci.drawCanvas();
+
     cout << "\nUndoing the last action..." << endl;
-    oci.canvas->undoAction(mem);
+	oci.undo();
     oci.drawCanvas();
 
 
