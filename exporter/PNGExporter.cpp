@@ -5,21 +5,22 @@ PNGExporter::~PNGExporter() {}
 
 void PNGExporter::prepareCanvas()
 {
-	if (canvas == NULL)
+	if (getCanvas() == NULL)
 	{
 		throw "Provide a canvas before exporting";
 	}
+
 
 	canvasOutput = new string("PNG EXPORT:\n");
 	Logger::getInstance()->info("Canvas has been prepared for PNG export");
 }
 void PNGExporter::renderElements()
 {
-	if (canvas == NULL)
+	if (getCanvas() == NULL)
 	{
 		throw "Provide a canvas before exporting";
 	}
-	*canvasOutput += canvas->exportCanvas();
+	*canvasOutput += getCanvas()->exportCanvas();
 	Logger::getInstance()->info("Canvas has been rendered for PNG export");
 }
 
