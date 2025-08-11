@@ -10,6 +10,7 @@ void PNGExporter::prepareCanvas()
 		throw "Provide a canvas before exporting";
 	}
 
+
 	canvasOutput = new string("PNG EXPORT:\n");
 	Logger::getInstance()->info("Canvas has been prepared for PNG export");
 }

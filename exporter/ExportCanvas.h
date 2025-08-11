@@ -18,9 +18,9 @@ protected:
 private:
 	Canvas *canvas;
 
-	virtual void prepareCanvas() = 0;
+	virtual void prepareCanvas() ;
 
-	virtual void renderElements() = 0;
+	virtual void renderElements() ;
 
 	virtual void saveToFile() = 0;
 };

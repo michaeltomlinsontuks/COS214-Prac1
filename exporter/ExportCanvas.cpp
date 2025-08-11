@@ -1,6 +1,6 @@
 #include "ExportCanvas.h"
 
-ExportCanvas::ExportCanvas(Canvas *canvas) 
+ExportCanvas::ExportCanvas(Canvas *canvas)
 {
 	this->canvas = canvas;
 	canvasOutput = NULL;
@@ -18,4 +18,24 @@ void ExportCanvas::exportToFile()
 	prepareCanvas();
 	renderElements();
 	saveToFile();
+}
+
+void ExportCanvas::prepareCanvas()
+{
+	if (getCanvas() == NULL)
+	{
+		throw "Provide a canvas before exporting";
+	}
+
+	canvasOutput = new string("PNG EXPORT:\n");
+	Logger::getInstance()->info("Canvas has been prepared for PNG export");
+}
+void ExportCanvas::renderElements()
+{
+	if (getCanvas() == NULL)
+	{
+		throw "Provide a canvas before exporting";
+	}
+	*canvasOutput += getCanvas()->exportCanvas();
+	Logger::getInstance()->info("Canvas has been rendered for PNG export");
 }
