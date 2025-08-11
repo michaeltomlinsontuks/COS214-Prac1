@@ -64,6 +64,9 @@ int main()
     oci.canvas->removeShape(1);
     oci.drawCanvas();
 
+	cout << "\nSaving the current state..." << endl;
+	oci.save();
+
     cout << "\nRemoving the duplicate shape..." << endl;
     oci.canvas->removeShape(2);
     oci.drawCanvas();

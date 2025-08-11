@@ -60,13 +60,15 @@ private:
 
 	void exportPDF() const;
 
-	void utilitiesSubMenu() const;
+	void utilitiesSubMenu();
 
 	static void help();
 
 	void log() const;
 
 	void quit();
+
+	void save();
 
 	int validateNumberInput(const int max) const;
 };
