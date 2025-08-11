@@ -136,7 +136,7 @@ void OCI::displayMenu(int menuCode) {
 void OCI::shapeSubMenu() {
     while (true) {
         displayMenu(1);
-        int choice = validateNumberInput(5);
+        int choice = validateNumberInput(4);
         if (choice == -1) continue;
         switch (choice) {
             case 1:
@@ -325,7 +325,7 @@ void OCI::getShapeList() const {
 void OCI::canvasSubMenu() {
     while (true) {
         displayMenu(2);
-        int choice = validateNumberInput(4);
+        int choice = validateNumberInput(3);
         if (choice == -1) continue;
         switch (choice) {
             case 1:
@@ -392,7 +392,7 @@ void OCI::exportPDF() const{
 void OCI::utilitiesSubMenu(){
     while (true) {
         displayMenu(4);
-        int choice = validateNumberInput(2);
+        int choice = validateNumberInput(3);
         if (choice == -1) continue;
         switch (choice) {
             case 1:
