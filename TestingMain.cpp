@@ -190,6 +190,8 @@ void mementoTesting()
     delete canvas;
     delete memento;
     delete caretaker;
+    
+
     endSuite("Memento Testing");
 }
 

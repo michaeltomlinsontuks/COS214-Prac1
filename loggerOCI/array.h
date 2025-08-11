@@ -242,12 +242,11 @@ void Array<T>::insertNewItem(T &newItem)
     array[length - 1] = new T(newItem);
 }
 
-
 template <class T>
 T *Array<T>::pop()
 // pop the last item in the array
 {
-    for (int i = length - 1; i >= 0; i--)
+    for (int i = (length - 1); i >= 0; i--)
     {
 
         if (array[i] != NULL)

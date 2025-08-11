@@ -13,6 +13,7 @@ OCI::OCI() : logger(Logger::getInstance()), running(false) {
 }
 OCI::~OCI() {
     delete canvas;
+    delete caretaker;
 }
 
 void OCI::run() {

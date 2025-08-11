@@ -11,6 +11,8 @@ Memento::Memento(vector<Shape *> &elements)
 	}
 	Logger::getInstance()->info("Memento created");
 }
+
+
 Memento::~Memento()
 {
 
