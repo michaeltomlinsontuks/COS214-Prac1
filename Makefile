@@ -94,7 +94,7 @@ demo: $(DEMO_BIN)
 $(DEMO_BIN): $(DEMO_OBJ)
 	$(CXX) $(CXXFLAGS) -o $@ $^
 
-run-demo:
+run-demo: demo
 	./$(DEMO_BIN)
 
 leak: $(DEMO_BIN)

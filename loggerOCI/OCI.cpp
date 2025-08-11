@@ -7,9 +7,9 @@
 
 OCI::OCI() : logger(Logger::getInstance()), running(false) {
     canvas = new Canvas();
-    current = canvas->captureCurrent();
+  // current = canvas->captureCurrent();
     caretaker = new Caretaker();
-    caretaker->addMemento(current);
+  //  caretaker->addMemento(current);
 }
 OCI::~OCI() {
     delete canvas;
@@ -248,8 +248,8 @@ void OCI::addShape(){
         std::cout << BHRED << "Failed to add shape." << CRESET << std::endl;
     }
     std::cout << BHWHT << "> " << CRESET;
-    current = canvas->captureCurrent();
-    caretaker->addMemento(current);
+ //   current = canvas->captureCurrent();
+  //  caretaker->addMemento(current);
 }
 
 void OCI::removeShape(){
@@ -271,8 +271,8 @@ void OCI::removeShape(){
         std::cout << BHYEL << "Remove cancelled." << CRESET << std::endl;
     }
     std::cout << BHWHT << "> " << CRESET;
-    current = canvas->captureCurrent();
-    caretaker->addMemento(current);
+  //  current = canvas->captureCurrent();
+  //  caretaker->addMemento(current);
 }
 
 void OCI::duplicateShape(){
@@ -288,7 +288,7 @@ void OCI::duplicateShape(){
     std::cout << BHGRN << "Shape duplicated!" << CRESET << std::endl;
     std::cout << BHWHT << "> " << CRESET;
 
-    caretaker->addMemento(canvas->captureCurrent());
+  //  caretaker->addMemento(canvas->captureCurrent());
 }
 
 void OCI::getShapeList() const {

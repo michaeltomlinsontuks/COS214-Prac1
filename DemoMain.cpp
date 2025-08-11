@@ -20,10 +20,12 @@ to demonstrate all frontend functionality then printout the log,
 then it will give a switch case prompt asking if the user wants to continue - if yes the program then starts OCI run
 */
 
-int main() {
+int main()
+{
     OCI oci;
     // 1. Welcome and banner
-    cout << "\n--- Welcome to the OCI Demo Mode ---\n" << endl;
+    cout << "\n--- Welcome to the OCI Demo Mode ---\n"
+         << endl;
     oci.displayBanner();
 
     // 2. Show empty canvas
@@ -54,19 +56,21 @@ int main() {
     oci.canvas->duplicateShape(1);
     oci.drawCanvas();
     oci.getShapeList();
+    oci.canvas->captureCurrent();
+    cout << "Capturing current"<<endl;
 
     // 8. Remove the second shape
     cout << "\nRemoving the second shape..." << endl;
     oci.canvas->removeShape(1);
     oci.drawCanvas();
 
-	cout << "\nRemoving the duplicate shape..." << endl;
-	oci.canvas->removeShape(2);
-	oci.drawCanvas();
+    cout << "\nRemoving the duplicate shape..." << endl;
+    oci.canvas->removeShape(2);
+    oci.drawCanvas();
 
-	cout << "\nUndoing the last action..." << endl;
-	oci.undo();
-	oci.drawCanvas();
+    cout << "\nUndoing the last action..." << endl;
+    oci.undo();
+    oci.drawCanvas();
 
     // 9. Clear the canvas
     cout << "\nClearing the canvas..." << endl;
@@ -85,20 +89,24 @@ int main() {
 
     // 12. Prompt user to continue
     int choice = -1;
-    while (choice != 0 && choice != 1) {
+    while (choice != 0 && choice != 1)
+    {
         cout << "\nWould you like to continue to the interactive menu? (1 = Yes, 0 = No): ";
         cin >> choice;
-        if (cin.fail() || (choice != 0 && choice != 1)) {
+        if (cin.fail() || (choice != 0 && choice != 1))
+        {
             cin.clear();
             cin.ignore(10000, '\n');
             cout << "Invalid input. Please enter 1 or 0." << endl;
         }
     }
-    if (choice == 1) {
+    if (choice == 1)
+    {
         oci.run();
-    } else {
+    }
+    else
+    {
         cout << "Exiting demo. Goodbye!" << endl;
     }
     return 0;
-
 }
